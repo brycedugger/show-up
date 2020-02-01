@@ -1,25 +1,44 @@
 const mongoose = require("mongoose");
 
-const BookSchema = mongoose.Schema({
+const EventSchema = mongoose.Schema({
   eventId: {
     type: String,
     trim: true,
     unique: true,
     required: true
   },
-  artist: {
+  upvotes: {
+    type: Number
+  },
+  date: {
+    type: Date,
+    required: true
+  },
+  time: {
+    type: Date,
+    required: true
+  },
+  location: {
     type: String,
     trim: true,
     required: true
   },
-  date: { 
-      type: String,
-      trim: true,
-      required: true 
-    },
-
-    //fill in required parameters used in /utils/APi.js
-    //and corresponding API routes in the routes foler
+  description: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  imgur: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Comment"
+    }
+  ]
 });
 
 module.exports = mongoose.model("Event", EventSchema);
