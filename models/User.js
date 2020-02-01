@@ -19,13 +19,22 @@ const UserSchema = mongoose.Schema({
     saved: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Event"
+            ref: "Event",
+            unique: true
         }
     ],
     created: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Event"
+            ref: "Event",
+            unique: true
+        }
+    ],
+    upvoted: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Event",
+            unique: true
         }
     ]
 

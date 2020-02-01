@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 
 const EventSchema = mongoose.Schema({
-  eventId: {
+  title: {
     type: String,
     trim: true,
-    unique: true,
     required: true
   },
   upvotes: {
