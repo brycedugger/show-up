@@ -7,7 +7,8 @@ const EventSchema = mongoose.Schema({
     required: true
   },
   upvotes: {
-    type: Number
+    type: Number,
+    default: 0
   },
   date: {
     type: Date,
