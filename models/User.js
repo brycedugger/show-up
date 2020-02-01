@@ -7,7 +7,7 @@ const UserSchema = mongoose.Schema({
       ref: "Event"
     }
   ],
-  upvoted: [
+  created: [
     {
       type: Schema.Types.ObjectId,
       ref: "Event"
