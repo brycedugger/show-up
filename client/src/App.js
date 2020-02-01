@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import Nav from "./components/Nav";
+import Main from "./components/Main";
 import Footer from "./components/Footer";
 
 class App extends Component {
@@ -11,7 +12,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Nav />
-        {/* Additional Parent Components */}
+        <Main />
         <Footer />
       </React.Fragment>
     );

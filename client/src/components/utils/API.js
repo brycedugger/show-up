@@ -8,7 +8,7 @@ import axios from "axios";
 export default {
   
   // Gets all events
-  getBooks: () => {
+  getEvent: () => {
     return axios.get("/api/events");
   },
 
@@ -30,5 +30,20 @@ export default {
     date,
     //copy parameters from above
     );
-  }
+  },
+
+    // updates a book to the database
+    updateEvent: (
+      eventId,
+      artist,
+      date,
+      //fill in all event parameters used in mongo db
+      ) => {
+      return axios.post(`/api/events`,
+      eventId, 
+      artist,
+      date,
+      //copy parameters from above
+      );
+    }
 };
