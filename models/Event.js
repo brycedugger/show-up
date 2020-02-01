@@ -28,6 +28,11 @@ const EventSchema = mongoose.Schema({
     trim: true,
     required: true
   },
+  genre: {
+    type: String,
+    trim: true,
+    required: true
+  },
   imgur: {
     type: String,
     trim: true,
