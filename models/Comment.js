@@ -10,11 +10,9 @@ const CommentSchema = mongoose.Schema({
         type: String,
         trim: true,
         required: true
-    },
-    date: {
-        type: Date,
-        required: true
-    },
+    }
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model("Comment", CommentSchema);

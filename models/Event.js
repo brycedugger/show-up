@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const EventSchema = mongoose.Schema({
-  eventId: {
+  title: {
     type: String,
     trim: true,
-    unique: true,
     required: true
   },
   upvotes: {
-    type: Number
+    type: Number,
+    default: 0
   },
   date: {
     type: Date,
@@ -18,12 +18,22 @@ const EventSchema = mongoose.Schema({
     type: Date,
     required: true
   },
+  venue: {
+    type: String,
+    trim: true,
+    required: true
+  },
   location: {
     type: String,
     trim: true,
     required: true
   },
   description: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  genre: {
     type: String,
     trim: true,
     required: true
