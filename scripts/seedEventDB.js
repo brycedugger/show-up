@@ -170,7 +170,7 @@ const eventSeed = [
   {
     artist: "RÜFÜS DU SOL",
     opener: "",
-    title: "STG Presents",
+    title: "Solace Tour 2019",
     date: "2020-3-30",
     doortime: "20:30",
     showtime: "21:30",
