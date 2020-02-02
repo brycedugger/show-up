@@ -4,7 +4,15 @@ const EventSchema = mongoose.Schema({
   title: {
     type: String,
     trim: true,
+  },
+  headliner: {
+    type: String,
+    trim: true,
     required: true
+  },
+  openers: {
+    type: String,
+    trim: true
   },
   upvotes: {
     type: Number,
@@ -16,16 +24,6 @@ const EventSchema = mongoose.Schema({
   },
   time: {
     type: Date,
-    required: true
-  },
-  venue: {
-    type: String,
-    trim: true,
-    required: true
-  },
-  location: {
-    type: String,
-    trim: true,
     required: true
   },
   description: {
@@ -43,6 +41,12 @@ const EventSchema = mongoose.Schema({
     trim: true,
     required: true
   },
+  venue: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Venue"
+    }
+  ],
   comments: [
     {
       type: Schema.Types.ObjectId,
