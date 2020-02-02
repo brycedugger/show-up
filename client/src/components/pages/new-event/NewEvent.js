@@ -2,7 +2,48 @@ import React, { Component } from "react";
 
 import API from "../../utils/API";
 
-import { Input, TextArea, SelectVenue, SelectGenre, FormBtn } from "../../assets/Form";
+import { Input } from "../../assets/Form/Input";
+import { TextArea } from "../../assets/Form/TextArea";
+import { Select } from "../../assets/Form/Select";
+import { FormBtn } from "../../assets/Form/FormBtn";
+
+const venueArray = [
+    {
+        id: "1",
+        value: "Paramount Theatre"   
+    },
+    {
+        id: "2",
+        value: "Showbox at the Market"   
+    },
+    {
+        id: "3",
+        value: "Showbox SoDo"   
+    },
+    {
+        id: "4",
+        value: "MaMu Theatre"   
+    }
+];
+
+const genreArray = [
+    {
+        id: "1",
+        value: "Rock"   
+    },
+    {
+        id: "2",
+        value: "Hip Hop"   
+    },
+    {
+        id: "3",
+        value: "Country"   
+    },
+    {
+        id: "4",
+        value: "Jazz"   
+    }
+];
 
 
 class NewEvent extends Component {
@@ -18,19 +59,39 @@ class NewEvent extends Component {
         genre: "",
         description: "",
         image: ""
-      };
+    };
+
+    viewRes = (res) => {
+        console.log("response" + res)
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
-          [name]: value
+            [name]: value
         });
-      };
-    
-      handleFormSubmit = event => {
+    };
+
+    handleSelectChange = value =>{
+        this.setState({
+          venue: value
+        });
+      }
+
+    handleFormSubmit = event => {
         event.preventDefault();
-        // if (this.state.title && this.state.author) {
-          API.saveEvent({
+        if (this.state.title && 
+            this.state.artist &&
+            this.state.openers &&
+            this.state.date &&
+            this.state.doorTime &&
+            this.state.showTime &&
+            this.state.venue &&
+            this.state.genre &&
+            this.state.description &&
+            this.state.image
+            ) {
+        API.saveEvent({
             title: this.state.title,
             artist: this.state.artist,
             openers: this.state.openers,
@@ -41,11 +102,14 @@ class NewEvent extends Component {
             genre: this.state.genre,
             description: this.state.description,
             image: this.state.image
-          })
-            .then(res => console.log(res))
+        })
+            .then(res => this.viewRes(res))
             .catch(err => console.log(err));
-        // }
-      };
+        }
+        else( 
+            alert("Finish the form.")
+        )
+    };
 
     render() {
         return (
@@ -92,19 +156,19 @@ class NewEvent extends Component {
                     name="showTime"
                     placeholder="Show Starts (hh:mm)"
                 />
-                
-                <SelectVenue
-                    value={this.state.venue}
-                    onChange={this.handleInputChange}
-                    name="venue"
-                    placeholder="Venue"
+
+                <Select
+                    // value = {this.state.selectedValue}
+                    venueOptions={venueArray} 
+                    onSelectChange={this.handleSelectChange}
+                    name = "venue"
                 />
 
-                <SelectGenre
-                    value={this.state.genre}
-                    onChange={this.handleInputChange}
-                    name="genre"
-                    placeholder="Genre"
+                <Select
+                    // value = {this.state.selectedValue}
+                    genreOptions={genreArray} 
+                    onSelectChange={this.handleSelectChange}
+                    name = "genre"
                 />
 
                 <TextArea
@@ -122,10 +186,10 @@ class NewEvent extends Component {
                 />
 
                 <FormBtn
-                // disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
+                    // disabled={!(this.state.author && this.state.title)}
+                    onClick={this.handleFormSubmit}
                 >
-                Submit Event
+                    Submit Event
               </FormBtn>
             </form>
         );

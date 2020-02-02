@@ -19,7 +19,7 @@ export default {
 
   // Saves a event to the database
   saveEvent: function(eventData) {
-    const obj = JSON.parse(JSON.stringify(eventData));
+    const obj = JSON.stringify(eventData);
     console.log("saveEvent" + obj);
     // return axios.post("/api/events", eventData);
   },
