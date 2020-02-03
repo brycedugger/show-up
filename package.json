@@ -25,6 +25,7 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.8.9",
     "react-bootstrap": "^1.0.0-beta.16",
+    "react-date-picker": "^7.10.0",
     "react-router-dom": "^5.1.2"
   }
 }
