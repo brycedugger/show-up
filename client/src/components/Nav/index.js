@@ -1,5 +1,6 @@
 import React from "react";
 
+
 function Nav() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -7,11 +8,11 @@ function Nav() {
                 Show Up
             </a>
             <ul className='navbar-nav'>
-                <li className='nav-item'>
-                    <a className="navbar-brand" href="/">
-                        Home
-                    </a>
-                </li>
+            <form class="form-inline">
+                <div class="md-form my-0">
+                    <input type="search" class="form-control ds-input" id="search-input" placeholder="Search..." />
+                </div>
+            </form>
                 <li className='nav-item'>
                     <a className="navbar-brand" href="/event">
                         Event
