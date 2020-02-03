@@ -3,5 +3,6 @@
 module.exports = {
   User: require("./User"),
   Event: require("./Event"),
+  Venue: require("./Venue"),
   Comment: require("./Comment")
 };

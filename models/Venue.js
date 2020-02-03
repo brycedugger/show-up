@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
-const VenueSchema = mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const VenueSchema = new Schema({
     name: {
         type: String,
         trim: true,
