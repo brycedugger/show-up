@@ -1,18 +1,24 @@
 import React, { Component } from "react";
 
+import NewEventForm from "./NewEventForm";
+
 
 class NewEvent extends Component {
 
+    state = {
+        title: ""
+    };
+
     render() {
         return (
-            <div className="container">
-                <div className="container mb-5 mt-5">
-                    <p>Hello from New Event Page</p>
+            <div className="wrap bg-white p-3 mx-auto rounded">
+                <p className="cardType">Results</p>
+                <div className='row'>
+                    <NewEventForm />
                 </div>
             </div>
         );
     }
-
 }
 
 export default NewEvent;
