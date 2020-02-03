@@ -15,17 +15,18 @@ class Books extends Component {
       <div className="container">
         <div className="container mb-5 mt-5">
           <Router>
-            <Route exact path='/' component={Home}/>
-            <Route exact path='/event' component={Event} />
-            <Route exact path='/newevent' component={NewEvent} />
-            <Route exact path='/profile' component={Profile} />
+            <Switch>
+              <Route path='/event' component={Event} />
+              <Route path='/newevent' component={NewEvent} />
+              <Route path='/profile' component={Profile} />
+              <Route path='/' component={Home}/>
+            </Switch>
           </Router>
         </div>
       </div>
 
     )
   }
-
 }
 
 export default Books;
