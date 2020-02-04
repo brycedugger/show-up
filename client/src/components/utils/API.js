@@ -17,19 +17,11 @@ export default {
     return axios.delete("/api/events/" + eventId);
   },
 
-  // Saves a book to the database
-  saveEvent: (
-    eventId,
-    artist,
-    date,
-    //fill in all event parameters used in mongo db
-    ) => {
-    return axios.post(`/api/events`,
-    eventId, 
-    artist,
-    date,
-    //copy parameters from above
-    );
+  // Saves a event to the database
+  saveEvent: function(eventData) {
+    const obj = JSON.stringify(eventData);
+    console.log("saveEvent" + obj);
+    // return axios.post("/api/events", eventData);
   },
 
     // updates a book to the database
