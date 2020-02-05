@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import Cards from "../../assets/Card";
+import API from "../../utils/API";
+
 
 
 class Profile extends Component {
@@ -9,6 +12,8 @@ class Profile extends Component {
                 <div className="container mb-5 mt-5">
                     <p>Hello from Profile Page</p>
                 </div>
+                <Cards />
+
             </div>
         );
     }
