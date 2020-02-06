@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Home from "./pages/home/Home";
-import Event from "./pages/event/Event";
-import NewEvent from "./pages/new-event/NewEvent";
-import Profile from "./pages/profile/Profile";
+import Home from "../pages/Home";
+import Event from "../pages/Event"
+import NewEvent from "../pages/new-event/NewEvent";
+import Profile from "../pages/Profile";
 
 
 class Books extends Component {

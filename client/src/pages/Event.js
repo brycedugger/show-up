@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import CommentBox from "../../assets/CommentBox";
-import EventInfo from "../../assets/EventInfo";
+import CommentBox from "../components/assets/CommentBox";
+import EventInfo from "../components/assets/EventInfo";
 
 
 class Event extends Component {

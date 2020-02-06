@@ -2,10 +2,10 @@ import React, { Component } from "react";
 
 import API from "../../utils/API";
 
-import { Input } from "../../assets/form/Input";
-import { TextArea } from "../../assets/form/TextArea";
-import Select  from "../../assets/form/Select";
-import { FormBtn } from "../../assets/form/FormBtn";
+import { Input } from "../../components/assets/form/Input";
+import { TextArea } from "../../components/assets/form/TextArea";
+import Select  from "../../components/assets/form/Select";
+import { FormBtn } from "../../components/assets/form/FormBtn";
 
 const venueArray = [
     {
