@@ -1,18 +1,15 @@
 .sideBarStyle {
-    background-color: aqua;
-    color: yellow;
+    /* background-color: lightgrey; */
     justify-content: flex-start;
-    flex-basis: 3;
+
 }
 
 .mainStyle {
-    background-color: magenta;
+    /* background-color: lightgrey; */
     justify-content: flex-end;
-    flex-basis: 2;
 }
 
 .profileContainer {
     display: flex;
     flex-direction: row;
-    background-color: gray;
 }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ProfileSideBarInfo from "../../pages/profile/ProfileSideBarInfo";
 import { Col } from "react-bootstrap";
 import "./style.css";
 
@@ -22,7 +23,7 @@ class ProfileSideBar extends Component {
     return (
       <div className="container">
         <div className="sideBarStyle">
-          <p>Hello from Side Bar Page</p>
+        <ProfileSideBarInfo />
         </div>
       </div>
     );
@@ -34,7 +35,7 @@ class ProfileMainContent extends Component {
     return (
       <div className="container">
         <div className="mainStyle">
-          <p>Hello from Main Content Page</p>
+        <h2>Your Bookmarked Events</h2>
         </div>
       </div>
     );
