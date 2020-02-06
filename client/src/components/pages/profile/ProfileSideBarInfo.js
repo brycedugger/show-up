@@ -3,7 +3,7 @@ import React from "react";
 function ProfileSideBarInfo (props) {
     return (
         <div>
-            <h2>Welcome!</h2>
+            <h2>Welcome!</h2> {props.firstName}
             <br></br>
             <br></br>
             <h5>First Name:</h5> 
