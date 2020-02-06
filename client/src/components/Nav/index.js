@@ -1,5 +1,5 @@
 import React from "react";
-// import DatePicker from "react-date-picker";
+import DatePicker from "react-date-picker";
 import SmallCalendar from "../assets/smallCalendar/index.js"
 
 function Nav() {
@@ -24,7 +24,7 @@ function Nav() {
                         New Event
                     </a>
                 </li>
-                {/* <DatePicker /> */}
+                <DatePicker />
                 <SmallCalendar />
                 <li className='nav-item ml-auto'>
                     <a className="navbar-brand" href="/profile">

@@ -5,180 +5,233 @@ const db = require("../models");
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/show-up"
+  "mongodb://localhost/event-data"
 );
 
 //date: "yyyy-mm-ddTTH:mm:ss"
 
 const eventSeed = [
   {
-    artist: "Maribou State",
-    opener: "Sea Moya",
     title: "Kingdoms In Colour - Album Live Tour",
+    headliner: "Maribou State",
+    openers: "Sea Moya",
+    upvotes: 30,
     date: "2020-3-31",
-    doortime: "20:30",
-    showtime: "21:30",
-    venue: "Showbox at the Market",
+    time: "21:30",
     description: "To be filled with LastFM API",
     genre: "Electronic",
-    image: "To be filled with LastFM API",
-    upvotes: 30
+    imgur: "To be filled with LastFM API",
+    venue: [
+      {
+        name: "Showbox at the Market",
+        location: "xxxy address"
+      }
+    ]
   },
   {
-    artist: "Jungle",
-    opener: "Houses",
     title: "Showbox Presents",
+    headliner: "Jungle",
+    openers: "Houses",
+    upvotes: 30,
     date: "2020-3-30",
-    doortime: "20:30",
-    showtime: "21:30",
-    venue: "Showbox Sodo",
+    time: "21:30",
     description: "To be filled with LastFM API",
     genre: "Electronic",
-    image: "To be filled with LastFM API",
-    upvotes: 30
+    imgur: "To be filled with LastFM API",
+    venue: [
+      {
+        name: "Showbox Sodo",
+        location: "xxxy address"
+      }
+    ]
   },
   {
-    artist: "Khruangbin",
-    opener: "Will Van Horn",
     title: "North American Fall 2020 Tour",
+    headliner: "Khruangbin",
+    openers: "Will Van Horn",
+    upvotes: 30,
     date: "2020-3-30",
-    doortime: "20:30",
-    showtime: "21:30",
-    venue: "The Moore Theatre",
+    time: "21:30",
     description: "To be filled with LastFM API",
     genre: "Indie",
-    image: "To be filled with LastFM API",
-    upvotes: 30
+    imgur: "To be filled with LastFM API",
+    venue: [
+      {
+        name: "The Moore Theatre",
+        location: "xxxy address"
+      }
+    ]
   },
   {
-    artist: "King Gizzard and the Lizard Wizard",
-    opener: "The Murlocs",
     title: "USA & Canada 2020",
+    headliner: "King Gizzard and the Lizard Wizard",
+    openers: "The Murlocs",
+    upvotes: 30,
     date: "2020-3-30",
-    doortime: "20:30",
-    showtime: "21:30",
-    venue: "Showbox Sodo",
+    time: "21:30",
     description: "To be filled with LastFM API",
     genre: "Metal",
-    image: "To be filled with LastFM API",
-    upvotes: 30
+    imgur: "To be filled with LastFM API",
+    venue: [
+      {
+        name: "Showbox Sodo",
+        location: "xxxy address"
+      }
+    ]
   },
   {
-    artist: "Fleet Foxes",
-    opener: "Chris Cohen",
     title: "Crack-Up Album Tour",
+    headliner: "Fleet Foxes",
+    openers: "Chris Cohen",
+    upvotes: 30,
     date: "2020-3-30",
-    doortime: "20:30",
-    showtime: "21:30",
-    venue: "Paramount Theatre",
+    time: "21:30",
     description: "To be filled with LastFM API",
     genre: "Folk",
-    image: "To be filled with LastFM API",
-    upvotes: 30
+    imgur: "To be filled with LastFM API",
+    venue: [
+      {
+        name: "Paramount Theatre",
+        location: "xxxy address"
+      }
+    ]
   },
   {
-    artist: "Local Natives",
-    opener: "Foals & Cherry Glazerr",
     title: "",
+    headliner: "Local Natives",
+    openers: "Foals & Cherry Glazerr",
+    upvotes: 30,
     date: "2020-3-30",
-    doortime: "20:30",
-    showtime: "21:30",
+    time: "21:30",
     venue: "Neptune Theatre",
     description: "To be filled with LastFM API",
     genre: "Indie",
-    image: "To be filled with LastFM API",
-    upvotes: 30
+    imgur: "To be filled with LastFM API",
+    venue: [
+      {
+        name: "Neptune Theatre",
+        location: "xxxy address"
+      }
+    ]
   },
   {
-    artist: "Oh Sees",
-    opener: "Malaikat Dan Singa",
     title: "KEXP & Neumos Present",
+    headliner: "Oh Sees",
+    openers: "Malaikat Dan Singa",
+    upvotes: 30,
     date: "2020-3-30",
-    doortime: "20:30",
-    showtime: "21:30",
-    venue: "Metal",
+    time: "21:30",
     description: "To be filled with LastFM API",
-    genre: "Electronic",
-    image: "To be filled with LastFM API",
-    upvotes: 30
+    genre: "Metal",
+    imgur: "To be filled with LastFM API",
+    venue: [
+      {
+        name: "Neumos",
+        location: "xxxy address"
+      }
+    ]
   },
   {
-    artist: "Anderson .Paak",
-    opener: "Earl Sweatshirt & Thundercat",
     title: "Best Teef In The Game Tour '19",
+    headliner: "Anderson .Paak",
+    openers: "Earl Sweatshirt & Thundercat",
+    upvotes: 30,
     date: "2020-3-30",
-    doortime: "20:30",
-    showtime: "21:30",
-    venue: "WaMu Theatre",
+    time: "21:30",
     description: "To be filled with LastFM API",
     genre: "Hip-Hop",
-    image: "To be filled with LastFM API",
-    upvotes: 30
+    imgur: "To be filled with LastFM API",
+    venue: [
+      {
+        name: "WaMu Theatre",
+        location: "xxxy address"
+      }
+    ]
   },
   {
-    artist: "Tame Impala",
-    opener: "Perfume Genius",
     title: "The Slow Rush North American Tour",
+    headliner: "Tame Impala",
+    openers: "Perfume Genius",
+    upvotes: 30,
     date: "2020-3-30",
-    doortime: "20:30",
-    showtime: "21:30",
-    venue: "The Gorge Ampetheatre",
+    time: "21:30",
     description: "To be filled with LastFM API",
     genre: "Pop",
-    image: "To be filled with LastFM API",
-    upvotes: 30
+    imgur: "To be filled with LastFM API",
+    venue: [
+      {
+        name: "The Gorge Ampetheatre",
+        location: "xxxy address"
+      }
+    ]
   },
   {
-    artist: "Rebelution",
-    opener: "Steel Pulse, The Green, Keznamdi, & DJ Mackle",
     title: "Good Vibes Summer Tour 2020",
+    headliner: "Rebelution",
+    openers: "Steel Pulse, The Green, Keznamdi, & DJ Mackle",
+    upvotes: 30,
     date: "2020-3-30",
-    doortime: "20:30",
-    showtime: "21:30",
-    venue: "Marymoor Park",
+    time: "21:30",
     description: "To be filled with LastFM API",
     genre: "Reggae",
-    image: "To be filled with LastFM API",
-    upvotes: 30
+    imgur: "To be filled with LastFM API",
+    venue: [
+      {
+        name: "Marymoor Park",
+        location: "xxxy address"
+      }
+    ]
   },
   {
-    artist: "The Strokes",
-    opener: "Alvvays",
     title: "",
+    headliner: "The Strokes",
+    openers: "Alvvays",
+    upvotes: 30,
     date: "2020-3-30",
-    doortime: "20:30",
-    showtime: "21:30",
-    venue: "WaMu Theatre",
+    time: "21:30",
     description: "To be filled with LastFM API",
     genre: "Rock",
-    image: "To be filled with LastFM API",
-    upvotes: 30
+    imgur: "To be filled with LastFM API",
+    venue: [
+      {
+        name: "WaMu",
+        location: "xxxy address"
+      }
+    ]
   },
   {
-    artist: "Mac Demarco",
-    opener: "Donnie Benet",
     title: "STG Presents",
+    headliner: "Mac Demarco",
+    openers: "Donnie Benet",
+    upvotes: 30,
     date: "2020-3-30",
-    doortime: "20:30",
-    showtime: "21:30",
-    venue: "Showbox Sodo",
+    time: "21:30",
     description: "To be filled with LastFM API",
     genre: "indie",
-    image: "To be filled with LastFM API",
-    upvotes: 30
+    imgur: "To be filled with LastFM API",
+    venue: [
+      {
+        name: "Showbox Sodo",
+        location: "xxxy address"
+      }
+    ]
   },
   {
-    artist: "RÜFÜS DU SOL",
-    opener: "",
     title: "Solace Tour 2019",
+    headliner: "RÜFÜS DU SOL",
+    openers: "",
+    upvotes: 30,
     date: "2020-3-30",
-    doortime: "20:30",
-    showtime: "21:30",
-    venue: "WaMu Theatre",
+    time: "21:30",
     description: "To be filled with LastFM API",
     genre: "Electronic",
-    image: "To be filled with LastFM API",
-    upvotes: 30
+    imgur: "To be filled with LastFM API",
+    venue: [
+      {
+        name: "WaMu Theatre",
+        location: "xxxy address"
+      }
+    ]
   }
 ];
 
