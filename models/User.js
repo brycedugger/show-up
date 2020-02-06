@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
-const UserSchema = mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const UserSchema = new Schema({
     firstName: {
         type: String,
         trim: true,
@@ -19,22 +21,19 @@ const UserSchema = mongoose.Schema({
     saved: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Event",
-            unique: true
+            ref: "Event"
         }
     ],
     created: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Event",
-            unique: true
+            ref: "Event"
         }
     ],
     upvoted: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Event",
-            unique: true
+            ref: "Event"
         }
     ]
 
