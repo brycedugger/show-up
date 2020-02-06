@@ -35,7 +35,10 @@ class ProfileMainContent extends Component {
     return (
       <div className="container">
         <div className="mainStyle">
-        <h2>Your Bookmarked Events</h2>
+            <h2>Your Bookmarked Events</h2>
+        </div>
+        <div className="mainStyle">
+            <h2>Your Created Events</h2>
         </div>
       </div>
     );
