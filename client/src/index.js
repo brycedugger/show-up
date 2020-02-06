@@ -6,8 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import App from './App';
-import Login from "./pages/login-signup/Login";
-import Signup from "./pages/login-signup/Signup";
+import Login from "./components/pages/login-signup/Login";
+import Signup from "./components/pages/login-signup/Signup";
 
 
 

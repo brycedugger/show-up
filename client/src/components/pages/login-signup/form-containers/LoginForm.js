@@ -2,16 +2,13 @@ import React, { Component } from "react";
 
 import API from "../../../utils/API";
 
-import { Input } from "../../../components/assets/form/Input";
-import { FormBtn } from "../../../components/assets/form/FormBtn";
+import { Input } from "../../../assets/form/Input";
+import { FormBtn } from "../../../assets/form/FormBtn";
 
 
 class Login extends Component {
 
     state = {
-        emailAddress: "",
-        firstName: "",
-        lastName: "",
         username: "",
         password: ""
     };
@@ -27,16 +24,10 @@ class Login extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.emailAddress && 
-            this.state.firstName && 
-            this.state.lastName && 
-            this.state.username && 
+        if (this.state.username && 
             this.state.password
             ) {
-        API.createUser({
-            emailAddress: this.state.emailAddress,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
+        API.login({
             username: this.state.username,
             password: this.state.password
         })
@@ -51,30 +42,6 @@ class Login extends Component {
     render() {
         return (
             <form>
-
-                <Input
-                    label={"Email Address:"}
-                    name="emailAddress"
-                    value={this.state.password}
-                    onChange={this.handleInputChange}
-                    placeholder="Password"
-                />
-
-                <Input
-                    label={"First Name:"}
-                    name="firstName"
-                    value={this.state.password}
-                    onChange={this.handleInputChange}
-                    placeholder="Password"
-                />
-
-                <Input
-                    label={"Last Name:"}
-                    name="lastName"
-                    value={this.state.password}
-                    onChange={this.handleInputChange}
-                    placeholder="Password"
-                />
 
                 <Input
                     label={"Username:"}
