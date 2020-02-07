@@ -5,8 +5,10 @@ const db = require("../models");
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/event-data"
-);
+  "mongodb://localhost/show-up", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 //date: "yyyy-mm-ddTTH:mm:ss"
 
