@@ -1,0 +1,24 @@
+.sideBarStyle {
+    justify-content: flex-start;
+}
+
+.mainStyle {
+    justify-content: flex-start;
+}
+
+.createdEventsStyle {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.profileContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.editProfile {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 70px;
+}
