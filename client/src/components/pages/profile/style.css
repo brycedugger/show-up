@@ -17,3 +17,9 @@
     display: flex;
     flex-direction: row;
 }
+
+.editProfile {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 70px;
+}

@@ -1,9 +1,10 @@
 import React from "react";
+import "./style.css";
 
 function ProfileSideBarInfo (props) {
     return (
         <div>
-            <h2>Welcome!</h2> {props.firstName}
+            <h2>Welcome!</h2>
             <br></br>
             <br></br>
             <h5>First Name</h5> 

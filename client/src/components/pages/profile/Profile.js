@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ProfileSideBarInfo from "../../pages/profile/ProfileSideBarInfo";
+import EditProfileBtn from "../../pages/profile/editProfileBtn";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import "./style.css";
@@ -30,6 +31,7 @@ class ProfileSideBar extends Component {
       <div className="container">
         <div className="sideBarStyle">
           <ProfileSideBarInfo />
+          <EditProfileBtn />
         </div>
       </div>
     );
