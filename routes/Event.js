@@ -75,4 +75,17 @@ module.exports = (app) => {
                 res.status(400).json(err);
             });
     });
+
+    // route to delete ALL events from the DB
+    app.delete("/api/events/", (req, res) => {
+        const { eventId } = req.params;
+
+        db.Event.deleteMany({})
+            .then(deletedEvents => {
+                res.status(200).json(deletedEvents);
+            })
+            .catch(err => {
+                res.status(400).json(err);
+            });
+    });
 };
