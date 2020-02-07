@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 
-import UpvoteBtn from "../UpvoteBtn";
+// import UpvoteBtn from "../UpvoteBtn";
 
 class EventCard extends Component {
 
@@ -19,7 +19,7 @@ class EventCard extends Component {
                     </ul>
                 </div>
                 <div className="card-footer">
-                    <UpvoteBtn />
+                    {/* <UpvoteBtn /> */}
                     {/* favorite button */}
                 </div>
             </div>
