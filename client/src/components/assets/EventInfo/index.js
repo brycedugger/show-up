@@ -1,15 +1,17 @@
 import React from "react";
+import Card from "react-bootstrap/Card";
 
-function EventInfo (props) {
-    return (
-        <div>
-            <h1>Event Title</h1>
-            <p>Date:</p> {props.date}
-            <p>Time:</p> {props.time}
-            <p>Venue:</p> {props.venue}
-            <p>Address:</p> {props.address}
-        </div>
-    );
+function EventInfo({ children }) {
+  return (
+    <div>
+      <Card style={{ width: "18rem" }}>
+        <Card.Img variant="top" src="..." />
+        <Card.Body>
+          <Card.Text>{children}</Card.Text>
+        </Card.Body>
+      </Card>
+    </div>
+  );
 }
 
 export default EventInfo;

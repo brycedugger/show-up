@@ -12,6 +12,15 @@ export default {
     return axios.get("/api/events");
   },
 
+  // Add Event Search
+  // eventSearch: () => {
+  //   return axios.get("/api/events" + id);
+  // },
+
+  
+  //Add get single event
+
+
   // Deletes the book with the given id
   deleteEvent: (eventId) => {
     return axios.delete("/api/events/" + eventId);

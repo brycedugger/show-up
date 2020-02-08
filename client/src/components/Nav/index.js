@@ -1,6 +1,6 @@
 import React from "react";
-import DatePicker from "react-date-picker";
 import SmallCalendar from "../assets/smallCalendar/index.js"
+import Button from "react-bootstrap/Button"
 
 function Nav() {
     return (
@@ -12,6 +12,9 @@ function Nav() {
                 <form class="form-inline">
                     <div class="md-form my-0">
                         <input type="search" class="form-control ds-input" id="search-input" placeholder="Search..." />
+                        <Button variant="secondary" type="submit">
+                          Search
+                        </Button>
                     </div>
                 </form>
                 <li className='nav-item'>
@@ -24,7 +27,6 @@ function Nav() {
                         New Event
                     </a>
                 </li>
-                <DatePicker />
                 <SmallCalendar />
                 <li className='nav-item ml-auto'>
                     <a className="navbar-brand" href="/profile">
