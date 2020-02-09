@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Select(props) {
-    console.log(props)
     return (
         <div className="form-group">
             <label>{props.label}</label>

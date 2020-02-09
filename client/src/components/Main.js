@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from "../pages/Home";
 import Event from "../pages/Event"
 import NewEvent from "../pages/new-event/NewEvent";
+import UpdateEvent from "../pages/update-event/UpdateEvent";
 import Profile from "../pages/Profile";
 
 
@@ -18,6 +19,7 @@ class Books extends Component {
             <Switch>
               <Route path='/event' component={Event} />
               <Route path='/newevent' component={NewEvent} />
+              <Route path='/updateevent' component={UpdateEvent} />
               <Route path='/profile' component={Profile} />
               <Route path='/' component={Home}/>
             </Switch>

@@ -8,8 +8,8 @@ import Select from "../../../components/assets/form/Select";
 import SelectVenue from "../../../components/assets/form/SelectVenue";
 import { FormBtn } from "../../../components/assets/form/FormBtn";
 
-import venueJson from "./venue.json";
-import genreJson from "./genre.json";
+import venueJson from "../../../components/assets/form/venue.json";
+import genreJson from "../../../components/assets/form/genre.json";
 
 
 class NewEventForm extends Component {
@@ -125,7 +125,7 @@ class NewEventForm extends Component {
                     name="time"
                     value={this.state.time}
                     onChange={this.handleInputChange}
-                    placeholder="Doors Open (hh:mm)"
+                    placeholder="Time (hh:mm)"
                 />
 
                 <SelectVenue

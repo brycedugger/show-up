@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { Redirect } from "react-router-dom"
+
 import API from "../../../utils/API";
 
 import { Input } from "../../../components/assets/form/Input";
@@ -9,8 +11,8 @@ import SelectVenue from "../../../components/assets/form/SelectVenue";
 import { FormBtn } from "../../../components/assets/form/FormBtn";
 
 
-import venueJson from "./venue.json";
-import genreJson from "./genre.json";
+import venueJson from "../../../components/assets/form/venue.json";
+import genreJson from "../../../components/assets/form/genre.json";
 
 
 class UpdateEventForm extends Component {
@@ -28,6 +30,38 @@ class UpdateEventForm extends Component {
         image: ""
     };
 
+    componentDidMount() {
+        this.getEvent();
+    }
+
+    getEvent = () => {
+        API.getOneEvent("1")
+            .then(res => {
+                const data = res.data
+                console.log("data" + (JSON.stringify(data)))
+                console.log("time" + data.time)
+                this.setState({ 
+                    title: data.title,
+                    headliner: data.headliner,
+                    openers: data.openers,
+                    date: data.date,
+                    //time is undefined. something to do with Date property
+                    //in models in relation to my get request.
+                    time: data.time,
+                    //venue and address values stored, select isn't being updated.
+                    venue: data.venue,
+                    address: data.address,
+                    //genre value stored. select isn't being updated.
+                    genre: data.genre,
+                    description: data.description,
+                    image: data.image,
+                });
+            })
+            .catch(err => {
+                console.log('err :', err);
+            });
+    };
+
     handleVenueInputChange = e => {
         this.setState({ 
             [e.target.name]: e.target.value, 
@@ -39,18 +73,25 @@ class UpdateEventForm extends Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
+    profileRedirect = () => {
+        console.log("profile redirect")
+        return <Redirect to='/profile' />
+    }
+
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.title &&
             this.state.headliner &&
             this.state.date &&
             this.state.time &&
+            //may have to remove the venue check. All checks for that matter
             this.state.venue &&
             this.state.genre &&
             this.state.image
             //add form check for image link, date, and time inputs
         ) {
-            API.saveEvent({
+            API.updateEvent({
+                eventId: this.state.eventId,
                 title: this.state.title,
                 headliner: this.state.headliner,
                 openers: this.state.openers,
@@ -85,50 +126,17 @@ class UpdateEventForm extends Component {
         )
     };
 
-    handleDeleteEvent = event => {
-        event.preventDefault();
-        if (this.state.title &&
-            this.state.headliner &&
-            this.state.date &&
-            this.state.time &&
-            this.state.venue &&
-            this.state.genre &&
-            this.state.image
-            //add form check for image link, date, and time inputs
-        ) {
-            API.deleteEvent({
-                title: this.state.title,
-                headliner: this.state.headliner,
-                openers: this.state.openers,
-                date: this.state.date,
-                time: this.state.time,
-                venue: this.state.venue,
-                address: this.state.address,
-                genre: this.state.genre,
-                description: this.state.description,
-                image: this.state.image
+    handleDeleteEvent = eventId => {
+        API.deleteEvent(eventId)
+            .then(res => {
+                if (res.data.deletedCount === 1) {
+                    // console.log("res.data" + (JSON.stringify(res.data)))
+                    this.profileRedirect();
+                }
             })
-                .then(
-                    res => {
-                    //add redirect to profile on form submit, replace setState?
-                    this.setState({
-                        title: "",
-                        headliner: "",
-                        openers: "",
-                        date: "",
-                        time: "",
-                        //update so these return to normal on submit.
-                        venue: "Select a Venue",
-                        genre: "Select a Genre",
-                        description: "",
-                        image: "" 
-                    })
-                })
-                .catch(err => console.log(err));
-        }
-        else( 
-            alert("Finish the form.")
-        )
+            .catch(err => {
+                console.log('err :', err);
+            });
     };
 
     render() {
@@ -172,7 +180,7 @@ class UpdateEventForm extends Component {
                     name="time"
                     value={this.state.time}
                     onChange={this.handleInputChange}
-                    placeholder="Doors Open (hh:mm)"
+                    placeholder="Time (hh:mm)"
                 />
 
                 <SelectVenue
@@ -181,6 +189,9 @@ class UpdateEventForm extends Component {
                     address="address"
                     arrayOfData={venueJson}
                     handleChange={this.handleVenueInputChange}
+                    {...console.log("venue" + this.state.venue)}
+                    {...console.log("address" + this.state.address)}
+
                 />
 
                 <Select
@@ -207,15 +218,17 @@ class UpdateEventForm extends Component {
                 />
 
                 <FormBtn
-                    onClick={this.handleFormSubmit}
-                >
-                    Update Event
-                </FormBtn>
-                <FormBtn
                     onClick={this.handleDeleteEvent}
                 >
                     Delete Event
                 </FormBtn>
+
+                <FormBtn
+                    onClick={this.handleFormSubmit}
+                >
+                    Update Event
+                </FormBtn>
+
             </form>
         );
     }
