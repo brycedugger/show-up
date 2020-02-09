@@ -18,7 +18,7 @@ const userSeed = [
 ];
 
 db.User
-  .remove({})
+  .deleteMany({})
   .then(() => db.User.collection.insertMany(userSeed))
   .then(data => {
     console.log(data.result.n + " user data inserted!");

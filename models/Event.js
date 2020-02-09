@@ -14,7 +14,7 @@ const EventSchema = new Schema({
   },
   openers: {
     type: String,
-    trim: true
+    trim: false
   },
   upvotes: {
     type: Number,
@@ -28,7 +28,12 @@ const EventSchema = new Schema({
     type: Date,
     required: true
   },
-  description: {
+  venue: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  address: {
     type: String,
     trim: true,
     required: true
@@ -38,17 +43,16 @@ const EventSchema = new Schema({
     trim: true,
     required: true
   },
-  imgur: {
+  description: {
+    type: String,
+    trim: true,
+    required: false
+  },
+  image: {
     type: String,
     trim: true,
     required: true
   },
-  venue: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Venue"
-    }
-  ],
   comments: [
     {
       type: Schema.Types.ObjectId,

@@ -19,19 +19,26 @@ module.exports = (app) => {
     
     // route to create a event in the DB
     app.post("/api/events/", (req, res) => {
+        console.log("hello from routes post" + (req.body.title))
+
+
         const {
-            eventId,
-            artist,
-            date,
+            title, headliner, openers,
+            date, time, venue, address,
+            genre, description, image
 
             //fill in required parameters from API.js and models
 
         } = req.body;
 
         db.Event.create({
-            eventId,
-            artist,
-            date,
+            title, headliner, openers,
+            date, time, venue, address,
+            genre, description, image
+
+        //date and time showing as below
+        // "date" : ISODate("2001-01-01T08:00:00Z"),
+        // "time" : ISODate("2001-01-01T08:00:00Z"),
 
             //fill in required parameters from API.js and models
 

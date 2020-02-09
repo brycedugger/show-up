@@ -27,10 +27,16 @@ export default {
   },
 
   // Saves a event to the database
-  saveEvent: function(eventData) {
-    const obj = JSON.stringify(eventData);
-    console.log("saveEvent" + obj);
-    // return axios.post("/api/events", eventData);
+  saveEvent: function(
+    title, headliner, openers,
+    date, time, venue, address,
+    genre, description, image
+    ) {
+    return axios.post("/api/events",
+    title, headliner, openers,
+    date, time, venue, address,
+    genre, description, image
+    );
   },
 
     // updates a book to the database
