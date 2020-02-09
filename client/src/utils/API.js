@@ -6,10 +6,15 @@ import axios from "axios";
 //not called events.
 
 export default {
-  
+
   // Gets all events
   getEvent: () => {
-    return axios.get("/api/events");
+    return axios.get("/api/events/all");
+  },
+
+  // Gets all events
+  getOneEvent: (eventId) => {
+    return axios.get("/api/events/" + eventId);
   },
 
   // Add Event Search
@@ -17,34 +22,36 @@ export default {
   //   return axios.get("/api/events" + id);
   // },
 
-  
-  //Add get single event
 
+  // Saves a event to the database
+  saveEvent: (
+    title, headliner, openers,
+    date, time, venue, address,
+    genre, description, image
+  ) => {
+    return axios.post("/api/events",
+      title, headliner, openers,
+      date, time, venue, address,
+      genre, description, image
+    );
+  },
+
+  // updates event in the database
+  updateEvent: (
+    eventId, title, headliner, openers,
+    date, time, venue, address,
+    genre, description, image
+  ) => {
+    return axios.put("/api/events/" + eventId,
+      title, headliner, openers,
+      date, time, venue, address,
+      genre, description, image
+    );
+  },
 
   // Deletes the book with the given id
   deleteEvent: (eventId) => {
     return axios.delete("/api/events/" + eventId);
-  },
+  }
 
-  // Saves a event to the database
-  saveEvent: function(eventData) {
-    const obj = JSON.stringify(eventData);
-    console.log("saveEvent" + obj);
-    // return axios.post("/api/events", eventData);
-  },
-
-    // updates a book to the database
-    updateEvent: (
-      eventId,
-      artist,
-      date,
-      //fill in all event parameters used in mongo db
-      ) => {
-      return axios.post(`/api/events`,
-      eventId, 
-      artist,
-      date,
-      //copy parameters from above
-      );
-    }
 };
