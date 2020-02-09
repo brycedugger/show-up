@@ -12,13 +12,16 @@ export default {
     return axios.get("/api/events");
   },
 
-  // Add Event Search
+  // Add Event Search by artist
   // eventSearch: () => {
   //   return axios.get("/api/events" + id);
   // },
 
   
   //Add get single event
+  getSingleEvent: (eventId) => {
+    return axios.get("/api/events/" + eventId);
+  },
 
 
   // Deletes the book with the given id
