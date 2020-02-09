@@ -25,12 +25,12 @@ export default {
 
   // Saves a event to the database
   saveEvent: (
-    title, headliner, openers,
+    eventId, title, headliner, openers,
     date, time, venue, address,
     genre, description, image
   ) => {
     return axios.post("/api/events",
-      title, headliner, openers,
+      eventId, title, headliner, openers,
       date, time, venue, address,
       genre, description, image
     );

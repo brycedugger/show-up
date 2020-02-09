@@ -15,6 +15,7 @@ import genreJson from "../../../components/assets/form/genre.json";
 class NewEventForm extends Component {
 
     state = {
+        eventId: "5", 
         title: "",
         headliner: "",
         openers: "",
@@ -50,6 +51,7 @@ class NewEventForm extends Component {
             //add form check for image link, date, and time inputs
         ) {
             API.saveEvent({
+                eventId: this.state.eventId,
                 title: this.state.title,
                 headliner: this.state.headliner,
                 openers: this.state.openers,

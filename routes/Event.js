@@ -30,17 +30,19 @@ module.exports = (app) => {
     // route to create a event in the DB
     app.post("/api/events/", (req, res) => {
         console.log("hello from routes post " + (req.body.title))
+        console.log("req.params" + (JSON.stringify(req.body)))
+
 
 
         const {
-            title, headliner, openers,
+            eventId, title, headliner, openers,
             date, time, venue, address,
             genre, description, image
 
         } = req.body;
 
         db.Event.create({
-            title, headliner, openers,
+            eventId, title, headliner, openers,
             date, time, venue, address,
             genre, description, image
 
