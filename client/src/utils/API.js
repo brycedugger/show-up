@@ -22,14 +22,6 @@ export default {
   //   return axios.get("/api/events" + id);
   // },
 
-<<<<<<< HEAD
-  
-  //Add get single event
-  getSingleEvent: (eventId) => {
-    return axios.get("/api/events/" + eventId);
-  },
-=======
->>>>>>> 55b62d4d8a6f3aa57f0e9a9c219411b9ad1ea8de
 
   // Saves a event to the database
   saveEvent: (
@@ -60,6 +52,10 @@ export default {
   // Deletes the book with the given id
   deleteEvent: (eventId) => {
     return axios.delete("/api/events/" + eventId);
+  },
+
+  getArtist: (artist) => {
+    return axios.get("/api/artistInfo/" + artist);
   }
 
 };

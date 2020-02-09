@@ -4,8 +4,11 @@ import Card from "react-bootstrap/Card";
 function EventInfo({ children }) {
   return (
     <div>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="..." />
+      <Card>
+        <Card.Img
+          variant="top"
+          src="eventImagePlaceHolder.jpg"
+        />
         <Card.Body>
           <Card.Text>{children}</Card.Text>
         </Card.Body>

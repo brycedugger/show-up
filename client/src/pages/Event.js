@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CommentBox from "../components/assets/CommentBox";
+import {CommentBox, CommentDisplay} from "../components/assets/Comment";
 import EventInfo from "../components/assets/EventInfo";
 import ArtistInfo from "../components/assets/ArtistInfo";
 
@@ -8,16 +8,67 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import API from "../utils/API";
+import moment from "moment";
 
 class Event extends Component {
   state = {
-    events: {}
+    title: "",
+    headliner: "",
+    openers: "",
+    date: "",
+    time: "",
+    venue: "",
+    address: "",
+    genre: "",
+    description: "",
+    image: "",
+    artistName: "",
+    artistImage: "",
+    loginStatus: false
   };
 
   componentDidMount() {
-    API.getSingleEvent(this.props.match.params.id)
-      .then(res => this.setState({ event: res.data }))
+    API.getOneEvent("1")
+      .then(res => {
+        const data = res.data;
+        this.setState({
+          title: data.title,
+          headliner: data.headliner,
+          openers: data.openers,
+          date: moment(data.date).format("MMMM Do YYYY, h:mm:ss a"),
+          //time is undefined. something to do with Date property
+          //in models in relation to my get request.
+
+          //venue and address values stored, select isn't being updated.
+          venue: data.venue,
+          address: data.address,
+          //genre value stored. select isn't being updated.
+          genre: data.genre,
+          description: data.description,
+          image: data.image
+        });
+      })
       .catch(err => console.log(err));
+  }
+
+  lastfmCall() {
+    API.getArtist("Cher")
+      .then(res => {
+        const data = res.data;
+        console.log(res.data);
+        this.setState({
+          artistName: data.name
+        });
+      })
+      .catch(err => console.log(err));
+  }
+
+  checkLogin (loginStatus) {
+    if (loginStatus === true) {
+      console.log("User logged in");
+    }else{
+      console.log("User not logged in");
+    }
   }
 
   render() {
@@ -26,21 +77,32 @@ class Event extends Component {
         <Row>
           <Col>
             <div>
-              <EventInfo>
-                <h1>Event Title{this.state.events.title}</h1>
-                <p>Headliner: {this.state.events.headliner}</p>
-                <p>Opener: {this.state.events.openers}</p>
-                <p>Date: {this.state.events.date}</p>
-                <p>Time: {this.state.events.time}</p>
-                <p>Venue: {this.state.events.venue}</p>
-                <p>Address: {this.state.events.address}</p>
-                <p>Description: {this.state.events.description}</p>
+              <EventInfo md={8}>
+                <h2>{this.state.title}</h2>
+                <p>Headliner: {this.state.headliner}</p>
+                <p>Opener: {this.state.openers}</p>
+                <p>Date: {this.state.date}</p>
+                <p>Time: {this.state.time}</p>
+                <p>Venue: {this.state.venue}</p>
+                <p>Address: {this.state.address}</p>
+                <p>Description: {this.state.description}</p>
               </EventInfo>
-              <ArtistInfo />
             </div>
-            <CommentBox />
+            <br></br>
+            <div>
+              <ArtistInfo>
+                <h2>About Artist</h2>
+                <p>Name: {this.state.artistName}</p>
+              </ArtistInfo>
+            </div>
+            <br></br>
+            <div>
+              <CommentBox onClick={() => this.checkLogin()}/>
+              <br></br>
+              <CommentDisplay></CommentDisplay>
+            </div>
           </Col>
-          <Col md={{ span: 4, offset: 4 }}>
+          <Col md={4}>
             <FullCalendar />
           </Col>
         </Row>
