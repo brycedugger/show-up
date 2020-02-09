@@ -18,20 +18,12 @@ export default {
   // },
 
   
-  //Add get single event
-
-
-  // Deletes the book with the given id
-  deleteEvent: (eventId) => {
-    return axios.delete("/api/events/" + eventId);
-  },
-
   // Saves a event to the database
-  saveEvent: function(
+  saveEvent: (
     title, headliner, openers,
     date, time, venue, address,
     genre, description, image
-    ) {
+    ) => {
     return axios.post("/api/events",
     title, headliner, openers,
     date, time, venue, address,
@@ -39,18 +31,22 @@ export default {
     );
   },
 
-    // updates a book to the database
+    // updates event in the database
     updateEvent: (
-      eventId,
-      artist,
-      date,
-      //fill in all event parameters used in mongo db
+      eventId, title, headliner, openers,
+      date, time, venue, address,
+      genre, description, image
       ) => {
-      return axios.post(`/api/events`,
-      eventId, 
-      artist,
-      date,
-      //copy parameters from above
+      return axios.post("/api/events" + eventId,
+      title, headliner, openers,
+      date, time, venue, address,
+      genre, description, image
       );
-    }
+    },
+
+  // Deletes the book with the given id
+  deleteEvent: (eventId) => {
+    return axios.delete("/api/events/" + eventId);
+  }
+
 };

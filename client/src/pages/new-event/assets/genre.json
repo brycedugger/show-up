@@ -1,0 +1,50 @@
+[
+    {
+        "id": "0",
+        "value": "Select a Genre"
+    },
+    {
+        "id": "1",
+        "value": "Alternative"
+    },
+    {
+        "id": "2",
+        "value": "Country"
+    },
+    {
+        "id": "3",
+        "value": "Electronic"
+    },
+    {
+        "id": "4",
+        "value": "Folk"
+    },
+    {
+        "id": "5",
+        "value": "Hip Hop"
+    },
+    {
+        "id": "6",
+        "value": "Jazz"
+    },
+    {
+        "id": "7",
+        "value": "Metal"
+    },
+    {
+        "id": "8",
+        "value": "Pop"
+    },
+    {
+        "id": "9",
+        "value": "Rap"
+    },
+    {
+        "id": "10",
+        "value": "Reggae"
+    },
+    {
+        "id": "11",
+        "value": "Rock"
+    }
+]

@@ -19,7 +19,7 @@ module.exports = (app) => {
     
     // route to create a event in the DB
     app.post("/api/events/", (req, res) => {
-        console.log("hello from routes post" + (req.body.title))
+        console.log("hello from routes post " + (req.body.title))
 
 
         const {
@@ -56,7 +56,7 @@ module.exports = (app) => {
 
 
     // route to update ONE event from the DB
-    app.put("/api/events/unsave/:id", (req, res) => {
+    app.put("/api/events/:eventId", (req, res) => {
         db.Event.updateOne({ _id: req.params.id }, { saved: false })
             .then(dbEvent => {
                 res.status(200).json(dbEvent);
@@ -82,17 +82,5 @@ module.exports = (app) => {
                 res.status(400).json(err);
             });
     });
-
-    // route to delete ALL events from the DB
-    app.delete("/api/events/", (req, res) => {
-        const { eventId } = req.params;
-
-        db.Event.deleteMany({})
-            .then(deletedEvents => {
-                res.status(200).json(deletedEvents);
-            })
-            .catch(err => {
-                res.status(400).json(err);
-            });
-    });
+    
 };
