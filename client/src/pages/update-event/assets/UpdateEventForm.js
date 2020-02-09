@@ -8,11 +8,12 @@ import Select from "../../../components/assets/form/Select";
 import SelectVenue from "../../../components/assets/form/SelectVenue";
 import { FormBtn } from "../../../components/assets/form/FormBtn";
 
+
 import venueJson from "./venue.json";
 import genreJson from "./genre.json";
 
 
-class NewEventForm extends Component {
+class UpdateEventForm extends Component {
 
     state = {
         title: "",
@@ -63,7 +64,53 @@ class NewEventForm extends Component {
             })
                 .then(
                     res => {
-                    //add redirect to different page on form submit, replace setState?
+                    //add redirect to profile on form submit, replace setState?
+                    this.setState({
+                        title: "",
+                        headliner: "",
+                        openers: "",
+                        date: "",
+                        time: "",
+                        //update so these return to normal on submit.
+                        venue: "Select a Venue",
+                        genre: "Select a Genre",
+                        description: "",
+                        image: "" 
+                    })
+                })
+                .catch(err => console.log(err));
+        }
+        else( 
+            alert("Finish the form.")
+        )
+    };
+
+    handleDeleteEvent = event => {
+        event.preventDefault();
+        if (this.state.title &&
+            this.state.headliner &&
+            this.state.date &&
+            this.state.time &&
+            this.state.venue &&
+            this.state.genre &&
+            this.state.image
+            //add form check for image link, date, and time inputs
+        ) {
+            API.deleteEvent({
+                title: this.state.title,
+                headliner: this.state.headliner,
+                openers: this.state.openers,
+                date: this.state.date,
+                time: this.state.time,
+                venue: this.state.venue,
+                address: this.state.address,
+                genre: this.state.genre,
+                description: this.state.description,
+                image: this.state.image
+            })
+                .then(
+                    res => {
+                    //add redirect to profile on form submit, replace setState?
                     this.setState({
                         title: "",
                         headliner: "",
@@ -162,11 +209,16 @@ class NewEventForm extends Component {
                 <FormBtn
                     onClick={this.handleFormSubmit}
                 >
-                    Submit Event
-              </FormBtn>
+                    Update Event
+                </FormBtn>
+                <FormBtn
+                    onClick={this.handleDeleteEvent}
+                >
+                    Delete Event
+                </FormBtn>
             </form>
         );
     }
 }
 
-export default NewEventForm;
+export default UpdateEventForm;
