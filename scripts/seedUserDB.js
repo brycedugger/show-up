@@ -7,6 +7,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/show-up", {
 });
 
 const userSeed = [{
+        id: 1,
         "firstName": "Jane",
         "lastName": "Smith",
         "userName": "janesmith",
