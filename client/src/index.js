@@ -6,16 +6,14 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import App from './App';
-import Login from "./pages/login-signup/Login";
-import Signup from "./pages/login-signup/Signup";
+import LISU from "./pages/login-signup/LISU";
 
 
 
 ReactDOM.render(
     <Router>
         <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
+            <Route path="/lisu" component={LISU} />
             <Route path='/' component={App} />
             {/* <Route component={NotFoundPage} /> */}
         </Switch>

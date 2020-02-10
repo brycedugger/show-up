@@ -152,7 +152,7 @@ class NewEventForm extends Component {
                     onClick={this.handleFormSubmit}
                 >
                     Submit Event
-              </FormBtn>
+                </FormBtn>
             </form>
         );
     }
