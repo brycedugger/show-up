@@ -16,7 +16,10 @@ const userSeed = [{
         "upvoted": [4, 5, 6]
     },];
 
-db.User.remove({}).then(() => db.User.collection.insertMany(userSeed)).then(data => {
+db.User
+  .deleteMany({})
+  .then(() => db.User.collection.insertMany(userSeed))
+  .then(data => {
     console.log(data.result.n + " user data inserted!");
     process.exit(0);
 }).catch(err => {

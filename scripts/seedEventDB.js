@@ -20,15 +20,11 @@ const eventSeed = [
     upvotes: 30,
     date: "2020-3-31",
     time: "21:30",
-    description: "To be filled with LastFM API",
+    venue: "Showbox at the Market",
+    address: "1426 1st Ave, Seattle, WA 98101",
     genre: "Electronic",
-    imgur: "To be filled with LastFM API",
-    venue: [
-      {
-        name: "Showbox at the Market",
-        location: "xxxy address"
-      }
-    ]
+    description: "To be filled with LastFM API",
+    image: "To be filled with LastFM API"
   },
   {
     title: "Showbox Presents",
@@ -37,15 +33,11 @@ const eventSeed = [
     upvotes: 30,
     date: "2020-3-30",
     time: "21:30",
-    description: "To be filled with LastFM API",
+    venue: "Showbox Sodo",
+    address: "1700 1st Ave S, Seattle, WA 98134",
     genre: "Electronic",
-    imgur: "To be filled with LastFM API",
-    venue: [
-      {
-        name: "Showbox Sodo",
-        location: "xxxy address"
-      }
-    ]
+    description: "To be filled with LastFM API",
+    image: "To be filled with LastFM API"
   },
   {
     title: "North American Fall 2020 Tour",
@@ -54,15 +46,11 @@ const eventSeed = [
     upvotes: 30,
     date: "2020-3-30",
     time: "21:30",
-    description: "To be filled with LastFM API",
+    venue: "Moore Theatre",
+    address: "1932 2nd Ave, Seattle, WA 98101",
     genre: "Indie",
-    imgur: "To be filled with LastFM API",
-    venue: [
-      {
-        name: "The Moore Theatre",
-        location: "xxxy address"
-      }
-    ]
+    description: "To be filled with LastFM API",
+    image: "To be filled with LastFM API"
   },
   {
     title: "USA & Canada 2020",
@@ -71,15 +59,11 @@ const eventSeed = [
     upvotes: 30,
     date: "2020-3-30",
     time: "21:30",
-    description: "To be filled with LastFM API",
+    venue: "Showbox Sodo",
+    address: "1700 1st Ave S, Seattle, WA 98134",
     genre: "Metal",
-    imgur: "To be filled with LastFM API",
-    venue: [
-      {
-        name: "Showbox Sodo",
-        location: "xxxy address"
-      }
-    ]
+    description: "To be filled with LastFM API",
+    image: "To be filled with LastFM API"
   },
   {
     title: "Crack-Up Album Tour",
@@ -88,15 +72,11 @@ const eventSeed = [
     upvotes: 30,
     date: "2020-3-30",
     time: "21:30",
-    description: "To be filled with LastFM API",
+    venue: "Paramount Theatre",
+    address: "911 Pine St, Seattle, WA 98101",
     genre: "Folk",
-    imgur: "To be filled with LastFM API",
-    venue: [
-      {
-        name: "Paramount Theatre",
-        location: "xxxy address"
-      }
-    ]
+    description: "To be filled with LastFM API",
+    image: "To be filled with LastFM API"
   },
   {
     title: "",
@@ -106,15 +86,10 @@ const eventSeed = [
     date: "2020-3-30",
     time: "21:30",
     venue: "Neptune Theatre",
-    description: "To be filled with LastFM API",
+    address: "1303 NE 45th St, Seattle, WA 98105",
     genre: "Indie",
-    imgur: "To be filled with LastFM API",
-    venue: [
-      {
-        name: "Neptune Theatre",
-        location: "xxxy address"
-      }
-    ]
+    description: "To be filled with LastFM API",
+    image: "To be filled with LastFM API"
   },
   {
     title: "KEXP & Neumos Present",
@@ -123,15 +98,11 @@ const eventSeed = [
     upvotes: 30,
     date: "2020-3-30",
     time: "21:30",
+    venue: "Neumos",
+    address: "925 E Pike St, Seattle, WA 98122",
+    genre: "Punk",
     description: "To be filled with LastFM API",
-    genre: "Metal",
-    imgur: "To be filled with LastFM API",
-    venue: [
-      {
-        name: "Neumos",
-        location: "xxxy address"
-      }
-    ]
+    image: "To be filled with LastFM API"
   },
   {
     title: "Best Teef In The Game Tour '19",
@@ -140,15 +111,11 @@ const eventSeed = [
     upvotes: 30,
     date: "2020-3-30",
     time: "21:30",
-    description: "To be filled with LastFM API",
+    venue: "WaMu Theatre",
+    address: "800 Occidental Ave S, Seattle, WA 98134",
     genre: "Hip-Hop",
-    imgur: "To be filled with LastFM API",
-    venue: [
-      {
-        name: "WaMu Theatre",
-        location: "xxxy address"
-      }
-    ]
+    description: "To be filled with LastFM API",
+    image: "To be filled with LastFM API"
   },
   {
     title: "The Slow Rush North American Tour",
@@ -157,15 +124,11 @@ const eventSeed = [
     upvotes: 30,
     date: "2020-3-30",
     time: "21:30",
-    description: "To be filled with LastFM API",
+    venue: "The Gorge Ampetheatre",
+    address: "xxx",
     genre: "Pop",
-    imgur: "To be filled with LastFM API",
-    venue: [
-      {
-        name: "The Gorge Ampetheatre",
-        location: "xxxy address"
-      }
-    ]
+    description: "To be filled with LastFM API",
+    image: "To be filled with LastFM API"
   },
   {
     title: "Good Vibes Summer Tour 2020",
@@ -174,15 +137,11 @@ const eventSeed = [
     upvotes: 30,
     date: "2020-3-30",
     time: "21:30",
-    description: "To be filled with LastFM API",
+    venue: "Marymoor Park",
+    address: "6046 West Lake Sammamish Pkwy NE, Redmond, WA 98052",
     genre: "Reggae",
-    imgur: "To be filled with LastFM API",
-    venue: [
-      {
-        name: "Marymoor Park",
-        location: "xxxy address"
-      }
-    ]
+    description: "To be filled with LastFM API",
+    image: "To be filled with LastFM API"
   },
   {
     title: "",
@@ -191,15 +150,11 @@ const eventSeed = [
     upvotes: 30,
     date: "2020-3-30",
     time: "21:30",
+    venue: "WaMu Theatre",
+    address: "800 Occidental Ave S, Seattle, WA 98134",
+    genre: "Alternative",
     description: "To be filled with LastFM API",
-    genre: "Rock",
-    imgur: "To be filled with LastFM API",
-    venue: [
-      {
-        name: "WaMu",
-        location: "xxxy address"
-      }
-    ]
+    image: "To be filled with LastFM API"
   },
   {
     title: "STG Presents",
@@ -208,15 +163,11 @@ const eventSeed = [
     upvotes: 30,
     date: "2020-3-30",
     time: "21:30",
+    venue: "Showbox Sodo",
+    address: "1700 1st Ave S, Seattle, WA 98134",
+    genre: "Indie",
     description: "To be filled with LastFM API",
-    genre: "indie",
-    imgur: "To be filled with LastFM API",
-    venue: [
-      {
-        name: "Showbox Sodo",
-        location: "xxxy address"
-      }
-    ]
+    image: "To be filled with LastFM API"
   },
   {
     title: "Solace Tour 2019",
@@ -225,20 +176,16 @@ const eventSeed = [
     upvotes: 30,
     date: "2020-3-30",
     time: "21:30",
-    description: "To be filled with LastFM API",
+    venue: "WaMu Theatre",
+    address: "800 Occidental Ave S, Seattle, WA 98134",
     genre: "Electronic",
-    imgur: "To be filled with LastFM API",
-    venue: [
-      {
-        name: "WaMu Theatre",
-        location: "xxxy address"
-      }
-    ]
+    description: "To be filled with LastFM API",
+    image: "To be filled with LastFM API"
   }
 ];
 
 db.Event
-  .remove({})
+  .deleteMany({})
   .then(() => db.Event.collection.insertMany(eventSeed))
   .then(data => {
     console.log(data.result.n + " events inserted!");

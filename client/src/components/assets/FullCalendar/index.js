@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import DatePicker from "react-date-picker";
+import Calendar from "react-calendar";
 
-class smallCalendar extends Component {
+class FullCalendar extends Component {
   state = {
     date: new Date()
   };
@@ -11,10 +11,10 @@ class smallCalendar extends Component {
   render() {
     return (
       <div>
-        <DatePicker onChange={this.onChange} value={this.state.date} />
+        <Calendar onChange={this.onChange} value={this.state.date} />
       </div>
     );
   }
 }
 
-export default smallCalendar;
+export default FullCalendar;
