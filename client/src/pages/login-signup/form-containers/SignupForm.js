@@ -6,7 +6,7 @@ import { Input } from "../../../components/assets/form/Input";
 import { FormBtn } from "../../../components/assets/form/FormBtn";
 
 
-class Login extends Component {
+class Signup extends Component {
 
     state = {
         emailAddress: "",
@@ -103,4 +103,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default Signup;
