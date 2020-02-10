@@ -38,7 +38,6 @@ export default {
 
   // updates one event in the database with id of _id
   updateEvent: (obj) => {
-
     console.log("id " + JSON.stringify((obj)))
     console.log("title" + JSON.stringify((obj.title)))
     return axios.put("/api/events/" + obj._id,
@@ -47,8 +46,9 @@ export default {
   },
 
   // Deletes the book with the given id
-  deleteEvent: (eventId) => {
-    return axios.delete("/api/events/" + eventId);
+  deleteEvent: (obj) => {
+    console.log("id of event " + JSON.stringify((obj._id)))
+    return axios.delete("/api/events/" + obj._id);
   },
 
   getArtist: (artist) => {

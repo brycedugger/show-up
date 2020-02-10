@@ -39,22 +39,17 @@ module.exports = (app) => {
 
         } = req.body;
 
-        db.Event.create({
-            title, headliner, openers,
+        db.Event.create(
+            {title, headliner, openers,
             date, time, venue, address,
-            genre, description, image
-
-            //date and time showing as below
-            // "date" : ISODate("2001-01-01T08:00:00Z"),
-            // "time" : ISODate("2001-01-01T08:00:00Z"),
-
+            genre, description, image}
+            )
+        .then(savedEvent => {
+            res.status(200).json(savedEvent);
         })
-            .then(savedEvent => {
-                res.status(200).json(savedEvent);
-            })
-            .catch(err => {
-                res.status(400).json(err);
-            });
+        .catch(err => {
+            res.status(400).json(err);
+        });
     });
 
 
@@ -97,12 +92,11 @@ module.exports = (app) => {
 
 
     // route to delete ONE event from the DB
-    app.delete("/api/events/:eventId", (req, res) => {
-        const { eventId } = req.params;
-        console.log("req.params" + (JSON.stringify(req.body)))
+    app.delete("/api/events/:_id", (req, res) => {
 
+        // console.log("req.params" + (JSON.stringify(req.params._id)))
 
-        db.Event.deleteOne({ eventId: eventId })
+        db.Event.deleteOne({ _id: req.params._id })
             .then(deletedEvent => {
                 res.status(200).json(deletedEvent);
             })

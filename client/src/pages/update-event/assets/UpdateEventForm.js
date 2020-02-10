@@ -17,6 +17,8 @@ import genreJson from "../../../components/assets/form/genre.json";
 
 class UpdateEventForm extends Component {
 
+    
+
     state = {
         _id: "", 
         title: "",
@@ -28,17 +30,21 @@ class UpdateEventForm extends Component {
         address:"",
         genre: "",
         description: "",
-        image: ""
+        image: "",
+
+        redirect: false
     };
 
     componentDidMount() {
         this.getEvent();
+        // console.log('this.props', this.props)
+        // this.props.history.push('/');
     }
 
     getEvent = () => {
         //this needs to be updated so that stephanie's code has a _id
         //param loaded with the button
-        API.getOneEvent("5e4087e33e083445a4ef8c4d")
+        API.getOneEvent("5e40b5aaaf05f23b88814da2")
             .then(res => {
                 const data = res.data
                 // console.log("data" + (JSON.stringify(data)))
@@ -77,11 +83,6 @@ class UpdateEventForm extends Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
-    profileRedirect = () => {
-        console.log("profile redirect")
-        return <Redirect to='/profile' />
-    }
-
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.title &&
@@ -109,8 +110,7 @@ class UpdateEventForm extends Component {
             })
                 .then(
                     res => {
-                    //add redirect to profile on form submit, replace setState?
-                    // console.log("res" + (JSON.stringify(res)))
+                    //add redirect to the event's page.
                     alert("Success.")
                 })
                 .catch(err => console.log(err));
@@ -120,12 +120,32 @@ class UpdateEventForm extends Component {
         )
     };
 
-    handleDeleteEvent = eventId => {
-        API.deleteEvent(eventId)
+    // setRedirect = () => {
+    //     console.log("setRedirect")
+    //     this.setState({
+    //       redirect: true
+    //     })
+    // }
+
+    // profileRedirect = () => {
+    //     if (this.state.redirect) {
+    //         console.log("profileRedirect")
+    //         return <Redirect to='/profile' />
+    //       }
+    // }
+
+    handleDeleteEvent = event => {
+        event.preventDefault();
+        API.deleteEvent({
+            _id: this.state._id
+        })
             .then(res => {
                 if (res.data.deletedCount === 1) {
-                    // console.log("res.data" + (JSON.stringify(res.data)))
-                    this.profileRedirect();
+                    // this.profileRedirect();
+
+                    //add redirect to the home page.
+
+                    alert("success")
                 }
             })
             .catch(err => {
@@ -183,9 +203,6 @@ class UpdateEventForm extends Component {
                     address="address"
                     arrayOfData={venueJson}
                     handleChange={this.handleVenueInputChange}
-                    // {...console.log("venue" + this.state.venue)}
-                    // {...console.log("address" + this.state.address)}
-
                 />
 
                 <Select
