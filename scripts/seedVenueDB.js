@@ -14,10 +14,6 @@ mongoose.connect(
 
 const venueSeed = [
   {
-      name: "Select a Venue",
-      location: "1426 1st Ave, Seattle, WA 98101",
-  },
-  {
       name: "Barboza",
       location: "925 E Pike St, Seattle, WA 98122",
   },

@@ -63,19 +63,8 @@ class NewEventForm extends Component {
             })
                 .then(
                     res => {
-                    //add redirect to different page on form submit, replace setState?
-                    this.setState({
-                        title: "",
-                        headliner: "",
-                        openers: "",
-                        date: "",
-                        time: "",
-                        //update so these return to normal on submit.
-                        venue: "Select a Venue",
-                        genre: "Select a Genre",
-                        description: "",
-                        image: "" 
-                    })
+                    //add redirect to the event's page.
+                    alert("Success")
                 })
                 .catch(err => console.log(err));
         }
@@ -163,7 +152,7 @@ class NewEventForm extends Component {
                     onClick={this.handleFormSubmit}
                 >
                     Submit Event
-              </FormBtn>
+                </FormBtn>
             </form>
         );
     }

@@ -21,11 +21,12 @@ mongoose.set("useCreateIndex", true);
 
 // Define API routes here
 require("./routes/event")(app);
+require("./routes/UserData")(app);
 
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
 
 // start the server
