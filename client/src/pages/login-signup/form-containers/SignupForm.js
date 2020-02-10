@@ -32,20 +32,24 @@ class Signup extends Component {
             this.state.lastName && 
             this.state.username && 
             this.state.password
-            ) {
-        API.createUser({
-            emailAddress: this.state.emailAddress,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            username: this.state.username,
-            password: this.state.password
-        })
-            .then(res => this.viewRes(res))
+        )   {
+            API.createUser({
+                emailAddress: this.state.emailAddress,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                username: this.state.username,
+                password: this.state.password
+            })
+            .then(
+                res => {
+                //add redirect to the event's page.
+                alert("Success")
+            })
             .catch(err => console.log(err));
-        }
-        // else( 
-        //     alert("Finish the form.")
-        // )
+            }
+        else( 
+            alert("Finish the form.")
+        )
     };
 
     render() {
@@ -77,7 +81,7 @@ class Signup extends Component {
                 />
 
                 <Input
-                    label={"Username:"}
+                    label={"Select a Username:"}
                     name="username"
                     value={this.state.username}
                     onChange={this.handleInputChange}
@@ -85,7 +89,7 @@ class Signup extends Component {
                 />
                 
                 <Input
-                    label={"Password:"}
+                    label={"Select a Password:"}
                     name="password"
                     value={this.state.password}
                     onChange={this.handleInputChange}
@@ -93,11 +97,10 @@ class Signup extends Component {
                 />
 
                 <FormBtn
-                    // disabled={!(this.state.author && this.state.title)}
                     onClick={this.handleFormSubmit}
                 >
                     Submit Event
-              </FormBtn>
+                </FormBtn>
             </form>
         );
     }

@@ -13,12 +13,10 @@ class Login extends Component {
         password: ""
     };
 
-    viewRes = (res) => {
-        console.log("response" + res)
-    }
-
     handleInputChange = e => {
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({ 
+            [e.target.name]: e.target.value 
+        });
     };
 
 
@@ -26,18 +24,23 @@ class Login extends Component {
         event.preventDefault();
         if (this.state.username && 
             this.state.password
-            ) {
-        API.login({
-            username: this.state.username,
-            password: this.state.password
-        })
+        ) {
+            API.login({
+                username: this.state.username,
+                password: this.state.password
+            })
             .then(res => this.viewRes(res))
+            .then(
+                res => {
+                //add redirect to the event's page.
+                alert("Success")
+            })
             .catch(err => console.log(err));
-        }
-        // else( 
-        //     alert("Finish the form.")
-        // )
-    };
+    }
+    else( 
+        alert("Finish the form.")
+    )
+};
 
     render() {
         return (
@@ -60,11 +63,10 @@ class Login extends Component {
                 />
 
                 <FormBtn
-                    // disabled={!(this.state.author && this.state.title)}
                     onClick={this.handleFormSubmit}
                 >
                     Submit Event
-              </FormBtn>
+                </FormBtn>
             </form>
         );
     }
