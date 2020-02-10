@@ -12,9 +12,9 @@ export default {
     return axios.get("/api/events/all");
   },
 
-  // Gets all events
-  getOneEvent: (eventId) => {
-    return axios.get("/api/events/" + eventId);
+  // Gets one event
+  getOneEvent: (_id) => {
+    return axios.get("/api/events/" + _id);
   },
 
   // Add Event Search by artist
@@ -36,16 +36,13 @@ export default {
     );
   },
 
-  // updates event in the database
-  updateEvent: (
-    eventId, title, headliner, openers,
-    date, time, venue, address,
-    genre, description, image
-  ) => {
-    return axios.put("/api/events/" + eventId,
-      title, headliner, openers,
-      date, time, venue, address,
-      genre, description, image
+  // updates one event in the database with id of _id
+  updateEvent: (obj) => {
+
+    console.log("id " + JSON.stringify((obj)))
+    console.log("title" + JSON.stringify((obj.title)))
+    return axios.put("/api/events/" + obj._id,
+     obj
     );
   },
 

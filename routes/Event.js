@@ -13,8 +13,8 @@ module.exports = (app) => {
             });
     });
 
-    app.get("/api/events/:eventId", (req, res) => {
-        db.Event.findOne()
+    app.get("/api/events/:_id", (req, res) => {
+        db.Event.findById({ _id: req.params._id })
             .then(events => {
                 res.status(200).json(events);
             })
@@ -26,11 +26,11 @@ module.exports = (app) => {
 
     //------------------------------------------------------------------
 
-    
+
     // route to create a event in the DB
     app.post("/api/events/", (req, res) => {
         console.log("hello from routes post " + (req.body.title))
-
+        console.log("req.params" + (JSON.stringify(req.body)))
 
         const {
             title, headliner, openers,
@@ -44,9 +44,9 @@ module.exports = (app) => {
             date, time, venue, address,
             genre, description, image
 
-        //date and time showing as below
-        // "date" : ISODate("2001-01-01T08:00:00Z"),
-        // "time" : ISODate("2001-01-01T08:00:00Z"),
+            //date and time showing as below
+            // "date" : ISODate("2001-01-01T08:00:00Z"),
+            // "time" : ISODate("2001-01-01T08:00:00Z"),
 
         })
             .then(savedEvent => {
@@ -62,13 +62,7 @@ module.exports = (app) => {
 
 
     // route to update ONE event from the DB
-    app.put("/api/events/:eventId", (req, res) => {
-
-        //all values passed here are set to null
-
-        console.log("req.params" + (JSON.stringify(req.params.eventId)))
-        console.log("req.params" + (req.params.eventId))
-
+    app.put("/api/events/:_id", (req, res) => {
 
         const {
             title, headliner, openers,
@@ -76,17 +70,20 @@ module.exports = (app) => {
             genre, description, image
 
         } = req.body;
+        console.log("req.body" + (JSON.stringify(req.body)))
+        console.log("req.param" + (req.params._id))
 
-         console.log("const" + (JSON.stringify(req.body)))
+        db.Event.findByIdAndUpdate(
+            { _id: req.params._id },
 
-        db.Event.updateOne({ _id: req.params.id }, {
-            title: title, headliner: headliner, openers: openers,
-            date: date, time: time, venue: venue, address: address,
-            genre: genre, description: description, image: image
+            {
+                title, headliner, openers,
+                date, time, venue, address,
+                genre, description, image
+            },
 
-        })
+            { useFindAndModify: false })
 
-        // db.Event.updateOne({ _id: req.params.id })
             .then(dbEvent => {
                 res.status(200).json(dbEvent);
             })
@@ -102,6 +99,8 @@ module.exports = (app) => {
     // route to delete ONE event from the DB
     app.delete("/api/events/:eventId", (req, res) => {
         const { eventId } = req.params;
+        console.log("req.params" + (JSON.stringify(req.body)))
+
 
         db.Event.deleteOne({ eventId: eventId })
             .then(deletedEvent => {
