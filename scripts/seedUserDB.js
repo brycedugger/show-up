@@ -11,12 +11,8 @@ const userSeed = [{
         "firstName": "Jane",
         "lastName": "Smith",
         "userName": "janesmith",
-        "saved": [
-            1, 2, 3
-        ],
-        "created": [
-            1, 2
-        ],
+        "saved": [1, 2, 3],
+        "created": [1, 2],
         "upvoted": [4, 5, 6]
     },];
 
