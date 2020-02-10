@@ -1,28 +1,30 @@
 import React, { Component } from "react";
+import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import "./style.css";
-
-import UpvoteBtn from "../UpvoteBtn";
 
 class EventCard extends Component {
 
+    eventRoute = "/event/" + this.props._id;
+
     render() {
         return (
-            <div className="card">
-                <img className="card-img-top" src={this.props.imgur} alt={this.props.headliner} />
-                <div className="card-body">
-                    <h5 className="card-title">{this.props.title}</h5>
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">Headliner: {this.props.headliner}</li>
-                        <li className="list-group-item">Openers: {this.props.openers}</li>
-                        <li className="list-group-item">Venue: {this.props.venue}</li>
-                        <li className="list-group-item">{this.props.date}</li>
-                    </ul>
-                </div>
-                <div className="card-footer">
-                    <UpvoteBtn />
+            <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={this.props.image} alt={this.props.headliner} />
+                <Card.Body>
+                    <Card.Title><a href={this.eventRoute}>{this.props.title}</a></Card.Title>
+                    <Card.Text>{this.props.description}</Card.Text>
+                </Card.Body>
+                <ListGroup className="list-group-flush">
+                    <ListGroupItem>Headliner: {this.props.headliner}</ListGroupItem>
+                    <ListGroupItem>Openers: {this.props.openers}</ListGroupItem>
+                    <ListGroupItem>Venue: {this.props.venue}</ListGroupItem>
+                    <ListGroupItem>Date: {this.props.date}</ListGroupItem>
+                </ListGroup>
+                <Card.Footer>
+                    {/* upvote button */}
                     {/* favorite button */}
-                </div>
-            </div>
+                </Card.Footer>
+            </Card>
         )
     }
 
