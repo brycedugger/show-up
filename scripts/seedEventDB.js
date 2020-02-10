@@ -14,7 +14,6 @@ mongoose.connect(
 
 const eventSeed = [
   {
-    eventId: "1", 
     title: "Kingdoms In Colour - Album Live Tour",
     headliner: "Maribou State",
     openers: "Sea Moya",
@@ -28,7 +27,6 @@ const eventSeed = [
     image: "To be filled with LastFM API"
   },
   {
-    eventId: "2", 
     title: "Showbox Presents",
     headliner: "Jungle",
     openers: "Houses",

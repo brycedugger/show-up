@@ -18,6 +18,7 @@ import genreJson from "../../../components/assets/form/genre.json";
 class UpdateEventForm extends Component {
 
     state = {
+        _id: "", 
         title: "",
         headliner: "",
         openers: "",
@@ -35,12 +36,14 @@ class UpdateEventForm extends Component {
     }
 
     getEvent = () => {
-        API.getOneEvent("1")
+        //this needs to be updated so that stephanie's code has a _id
+        //param loaded with the button
+        API.getOneEvent("5e4087e33e083445a4ef8c4d")
             .then(res => {
                 const data = res.data
-                console.log("data" + (JSON.stringify(data)))
-                console.log("time" + data.time)
+                // console.log("data" + (JSON.stringify(data)))
                 this.setState({ 
+                    _id: data._id,
                     title: data.title,
                     headliner: data.headliner,
                     openers: data.openers,
@@ -54,8 +57,9 @@ class UpdateEventForm extends Component {
                     //genre value stored. select isn't being updated.
                     genre: data.genre,
                     description: data.description,
-                    image: data.image,
+                    image: data.image
                 });
+                // console.log(this.state)
             })
             .catch(err => {
                 console.log('err :', err);
@@ -91,7 +95,7 @@ class UpdateEventForm extends Component {
             //add form check for image link, date, and time inputs
         ) {
             API.updateEvent({
-                eventId: this.state.eventId,
+                _id: this.state._id,
                 title: this.state.title,
                 headliner: this.state.headliner,
                 openers: this.state.openers,
@@ -106,18 +110,8 @@ class UpdateEventForm extends Component {
                 .then(
                     res => {
                     //add redirect to profile on form submit, replace setState?
-                    this.setState({
-                        title: "",
-                        headliner: "",
-                        openers: "",
-                        date: "",
-                        time: "",
-                        //update so these return to normal on submit.
-                        venue: "Select a Venue",
-                        genre: "Select a Genre",
-                        description: "",
-                        image: "" 
-                    })
+                    // console.log("res" + (JSON.stringify(res)))
+                    alert("Success.")
                 })
                 .catch(err => console.log(err));
         }
@@ -189,8 +183,8 @@ class UpdateEventForm extends Component {
                     address="address"
                     arrayOfData={venueJson}
                     handleChange={this.handleVenueInputChange}
-                    {...console.log("venue" + this.state.venue)}
-                    {...console.log("address" + this.state.address)}
+                    // {...console.log("venue" + this.state.venue)}
+                    // {...console.log("address" + this.state.address)}
 
                 />
 
