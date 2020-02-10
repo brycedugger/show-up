@@ -17,7 +17,7 @@ export default {
     return axios.get("/api/events/" + _id);
   },
 
-  // Add Event Search
+  // Add Event Search by artist
   // eventSearch: () => {
   //   return axios.get("/api/events" + id);
   // },
@@ -47,8 +47,12 @@ export default {
   },
 
   // Deletes the book with the given id
-  deleteEvent: (_id) => {
-    return axios.delete("/api/events/" + _id);
+  deleteEvent: (eventId) => {
+    return axios.delete("/api/events/" + eventId);
+  },
+
+  getArtist: (artist) => {
+    return axios.get("/api/artistInfo/" + artist);
   }
 
 };

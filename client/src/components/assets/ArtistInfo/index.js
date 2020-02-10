@@ -1,13 +1,13 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 
-function EventInfo({ children }) {
+function ArtistInfo({ children }) {
   return (
     <div>
       <Card>
         <Card.Img
           variant="top"
-          src="eventImagePlaceHolder.jpg"
+          src="artistImagePlaceHolder.jpg"
         />
         <Card.Body>
           <Card.Text>{children}</Card.Text>
@@ -17,4 +17,4 @@ function EventInfo({ children }) {
   );
 }
 
-export default EventInfo;
+export default ArtistInfo;
