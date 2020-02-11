@@ -10,7 +10,7 @@ function ArtistInfo({ children }) {
           src="artistImagePlaceHolder.jpg"
         />
         <Card.Body>
-          <Card.Text>{children}</Card.Text>
+          {children}
         </Card.Body>
       </Card>
     </div>
