@@ -48,6 +48,7 @@ function Select(props) {
             <select
                 name={props.name}
                 className='form-control'
+                value={props.genre}
                 onChange={props.handleChange}>
                 {props.arrayOfData.map(data => {
                     return (

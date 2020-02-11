@@ -1,12 +1,13 @@
 import React from 'react';
 
-function Select(props) {
+function SelectVenue(props) {
     return (
         <div className="form-group">
             <label>{props.label}</label>
             <select
                 name={props.name}
                 address={props.address}
+                value={props.venue}
                 className='form-control'
                 onChange={props.handleChange}>
                 {props.arrayOfData.map(data => {
@@ -26,4 +27,4 @@ function Select(props) {
         </div>
     );
 }
-export default Select;
+export default SelectVenue;

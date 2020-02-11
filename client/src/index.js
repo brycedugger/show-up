@@ -6,19 +6,21 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import App from './App';
-import LISU from "./pages/login-signup/LISU";
+import LoginForm from "./pages/login-signup/LoginForm";
+import SignupForm from "./pages/login-signup/SignupForm";
 
 
 
 ReactDOM.render(
     <Router>
         <Switch>
-            <Route path="/lisu" component={LISU} />
+            <Route exact path='/login' component={LoginForm} />
+            <Route exact path='/signup' component={SignupForm} />                
             <Route path='/' component={App} />
             {/* <Route component={NotFoundPage} /> */}
         </Switch>
     </Router>
-, document.getElementById('root'));
+    , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
