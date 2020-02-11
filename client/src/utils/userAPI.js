@@ -1,6 +1,16 @@
 import axios from "axios";
 
-export default { // Gets the user info
+export default { 
+
+    signup: (username, password) => {
+        return axios.post('/signup', { username, password });
+    },
+    
+    login: (email, firstName, lastName, username, password) => {
+        return axios.post('/login', { email, firstName, lastName, username, password });
+    },
+
+    // Gets the user info
     getUser: () => {
         return axios.get("/api/user");
     },

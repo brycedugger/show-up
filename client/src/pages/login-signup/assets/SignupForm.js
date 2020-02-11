@@ -6,10 +6,10 @@ import { Input } from "../../../components/assets/form/Input";
 import { FormBtn } from "../../../components/assets/form/FormBtn";
 
 
-class Signup extends Component {
+class SignupForm extends Component {
 
     state = {
-        emailAddress: "",
+        email: "",
         firstName: "",
         lastName: "",
         username: "",
@@ -27,14 +27,14 @@ class Signup extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.emailAddress && 
+        if (this.state.email && 
             this.state.firstName && 
             this.state.lastName && 
             this.state.username && 
             this.state.password
         )   {
             API.createUser({
-                emailAddress: this.state.emailAddress,
+                emailAddress: this.state.email,
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 username: this.state.username,
@@ -58,26 +58,26 @@ class Signup extends Component {
 
                 <Input
                     label={"Email Address:"}
-                    name="emailAddress"
-                    value={this.state.password}
+                    name="email"
+                    value={this.state.email}
                     onChange={this.handleInputChange}
-                    placeholder="Password"
+                    placeholder="Email"
                 />
 
                 <Input
                     label={"First Name:"}
                     name="firstName"
-                    value={this.state.password}
+                    value={this.state.firstName}
                     onChange={this.handleInputChange}
-                    placeholder="Password"
+                    placeholder="First Name"
                 />
 
                 <Input
                     label={"Last Name:"}
                     name="lastName"
-                    value={this.state.password}
+                    value={this.state.lastName}
                     onChange={this.handleInputChange}
-                    placeholder="Password"
+                    placeholder="Last Name"
                 />
 
                 <Input
@@ -101,9 +101,12 @@ class Signup extends Component {
                 >
                     Submit Event
                 </FormBtn>
+                
+                <a href="/lisu/login" className="btn-link">Already have an account? Login here.</a>
+
             </form>
         );
     }
 }
 
-export default Signup;
+export default SignupForm;

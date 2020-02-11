@@ -6,7 +6,7 @@ import { Input } from "../../../components/assets/form/Input";
 import { FormBtn } from "../../../components/assets/form/FormBtn";
 
 
-class Login extends Component {
+class LoginForm extends Component {
 
     state = {
         username: "",
@@ -24,23 +24,22 @@ class Login extends Component {
         event.preventDefault();
         if (this.state.username && 
             this.state.password
-        ) {
+        )   {
             API.login({
                 username: this.state.username,
                 password: this.state.password
             })
-            .then(res => this.viewRes(res))
             .then(
                 res => {
                 //add redirect to the event's page.
                 alert("Success")
             })
             .catch(err => console.log(err));
-    }
-    else( 
-        alert("Finish the form.")
-    )
-};
+        }
+        else( 
+            alert("Finish the form.")
+        )
+    };
 
     render() {
         return (
@@ -67,9 +66,11 @@ class Login extends Component {
                 >
                     Submit Event
                 </FormBtn>
+
+                <a href="/lisu/signup" className="btn-link">New to Show Up? Sign-up now.</a>
             </form>
         );
     }
 }
 
-export default Login;
+export default LoginForm;

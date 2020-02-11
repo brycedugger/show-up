@@ -2,8 +2,10 @@ import React, { Component } from "react";
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import LoginForm from "./form-containers/LoginForm";
-import SignupForm from "./form-containers/SignupForm";
+import "./assets/style.css";
+
+import LoginForm from "./assets/LoginForm";
+import SignupForm from "./assets/SignupForm";
 import Home from "../Home";
 
 
@@ -12,8 +14,11 @@ class LISU extends Component {
 
     render() {
         return (
-            <div className="wrap bg-white p-3 mx-auto rounded">
-                <p className="cardType"></p>
+            <div class="form-container mb-5">
+                <p className="name">Show Up!</p>
+                <p className="motto">Find a show, get out there, and show up!</p>
+                <div className="wrap bg-white p-3 mx-auto rounded">
+                    <p className="cardType"></p>
                     <Router>
                         <Switch>
                             <Route path='/lisu/login' component={LoginForm} />
@@ -21,6 +26,7 @@ class LISU extends Component {
                             <Route path='/' component={Home} />
                         </Switch>
                     </Router>
+                </div>
             </div>
         );
     }
