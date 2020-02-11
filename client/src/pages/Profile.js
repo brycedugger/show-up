@@ -1,11 +1,46 @@
 import React, { Component } from "react";
+import UserAPI from "../utils/userAPI";
 import ProfileSideBarInfo from "../pages/profile-components/ProfileSideBarInfo";
 import EditProfileBtn from "../pages/profile-components/EditProfileBtn";
-// import EventCard from "../components/assets/EventCard/index";
-import { Row } from "react-bootstrap";
-import { Col } from "react-bootstrap";
+import EventCard from "../components/assets/EventCard/index";
+
 
 class Profile extends Component {
+
+  state = {
+    bookmarkedEvents =[],
+    createdEvents =[]
+  }
+
+  componentDidMount() {
+    this.getBookmarkedEvents();
+    this.getCreatedEvents();
+  }
+
+  getBookmarkedEvents() {
+    UserAPI.getBookmarked()
+      .then(res => {
+        this.setState(
+          { bookmarkedEvents: res.data }
+        );
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  getCreatedEvents() {
+    UserAPI.getCreated()
+      .then(res => {
+        this.setState(
+          { createdEvents: res.data }
+        );
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
     return (
       <div className="profileContainer">
@@ -15,11 +50,19 @@ class Profile extends Component {
           </Col>
           <Col>
             <ProfileBookmarkContent />
-            {/* <EventCard /> */}
+            {this.state.bookmarkedEvents.map(event => {
+              return (
+                <EventCard key={event._id} {...event} />
+              )
+            })}
           </Col>
           <Col md={{ span: 6, offset: 4 }}>
             <ProfileCreatedEventContent />
-            {/* <EventCard /> */}
+            {this.state.createdEvents.map(event => {
+              return (
+                <EventCard key={event._id} {...event} />
+              )
+            })}
           </Col>
         </Row>
       </div>
