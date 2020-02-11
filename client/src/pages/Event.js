@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { CommentBox, CommentDisplay } from "../components/assets/Comment";
 import EventInfo from "../components/assets/EventInfo";
 import ArtistInfo from "../components/assets/ArtistInfo";
-import { useParams } from "react-router";
 import FullCalendar from "../components/assets/FullCalendar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -28,10 +27,9 @@ class Event extends Component {
   };
 
   componentDidMount() {
-    const eventId = useParams();
-    console.log(eventId);
-    API.getOneEvent(eventId)
+    API.getOneEvent(this.props.match.params.id)
       .then(res => {
+        console.log(res);
         const data = res.data;
         this.setState({
           title: data.title,
