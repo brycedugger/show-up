@@ -33,7 +33,6 @@ module.exports = (app) => {
 
     // route to create a event in the DB
     app.post("/api/events/", (req, res) => {
-        console.log("hello from routes post " + (req.body.title))
         console.log("req.params" + (JSON.stringify(req.body)))
 
         const {
@@ -49,7 +48,11 @@ module.exports = (app) => {
             genre, description, image}
             )
         .then(savedEvent => {
-            res.status(200).json(savedEvent);
+            console.log("savedEvent: " + savedEvent)
+            res.status(200).json({
+                success:true,
+                redirectUrl: "/profile"
+            });
         })
         .catch(err => {
             res.status(400).json(err);
