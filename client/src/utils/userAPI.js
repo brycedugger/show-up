@@ -5,14 +5,6 @@ export default { // Gets the user info
         return axios.get("/api/user");
     },
 
-    getBookmarked: (userId) => {
-        return axios.get("/api/user/bookmarked/" + userId);
-    },
-
-    getCreated: (userId) => {
-        return axios.get("/api/user/created/" + userId);
-    },
-
     deleteUser: (userId) => {
         return axios.delete("/api/user" + userId);
     },

@@ -23,30 +23,6 @@ module.exports = (app) => {
             });
     });
 
-    // Get bookmarked events from specific user
-    app.get("/api/users/bookmarked/:_id", (req, res) => {
-        db.User.findById({ _id: req.params._id })
-            .populate("saved")
-            .then(user => {
-                res.status(200).json(user);
-            })
-            .catch(err => {
-                res.status(400).json(err);
-            });
-    });
-
-    // Get created events from specific user
-    app.get("/api/users/created/:_id", (req, res) => {
-        db.User.findById({ _id: req.params._id })
-            .populate("created")
-            .then(user => {
-                res.status(200).json(user);
-            })
-            .catch(err => {
-                res.status(400).json(err);
-            });
-    });
-
 
     //------------------------------------------------------------------
 

@@ -30,6 +30,12 @@ const UserSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: "Event"
         }
+    ],
+    upvoted: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Event"
+        }
     ]
 
     //fill in required parameters used in /utils/APi.js
