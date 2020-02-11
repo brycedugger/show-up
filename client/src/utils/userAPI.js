@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default { // Gets the user info
-    getUser: () => {
-        return axios.get("/api/user");
+    getUser: (userId) => {
+        return axios.get("/api/user/" + userId);
     },
 
     deleteUser: (userId) => {
