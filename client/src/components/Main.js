@@ -17,7 +17,7 @@ class Books extends Component {
           <Router>
             <Switch>
               <Route path='/eventform' component={EventForm} />
-              <Route path='/event' component={Event} />
+              <Route path='/event/:id' component={Event} />
               <Route path='/profile' component={Profile} />
               <Route path='/' component={Home}/>
             </Switch>

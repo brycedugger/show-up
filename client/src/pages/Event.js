@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import {CommentBox, CommentDisplay} from "../components/assets/Comment";
+import { CommentBox, CommentDisplay } from "../components/assets/Comment";
 import EventInfo from "../components/assets/EventInfo";
 import ArtistInfo from "../components/assets/ArtistInfo";
-
 import FullCalendar from "../components/assets/FullCalendar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import API from "../utils/API";
-import moment from "moment";
+// import moment from "moment";
 
 class Event extends Component {
   state = {
@@ -22,20 +21,21 @@ class Event extends Component {
     genre: "",
     description: "",
     image: "",
-    artistName: "",
-    artistImage: "",
+    // artistName: "Cher",
+    // artistImage: "",
     loginStatus: false
   };
 
   componentDidMount() {
-    API.getOneEvent("1")
+    API.getOneEvent(this.props.match.params.id)
       .then(res => {
+        console.log(res);
         const data = res.data;
         this.setState({
           title: data.title,
           headliner: data.headliner,
           openers: data.openers,
-          date: moment(data.date).format("MMMM Do YYYY, h:mm:ss a"),
+          // date: moment(data.date).format("MMMM Do YYYY, h:mm:ss a"),
           //time is undefined. something to do with Date property
           //in models in relation to my get request.
 
@@ -49,24 +49,22 @@ class Event extends Component {
         });
       })
       .catch(err => console.log(err));
+
+    // API.artistSearch(data.headliner)
+    // .then(res => {
+    //   const data = res.data;
+    //   console.log(res.data);
+    //   this.setState({
+    //     artistName: data.name
+    //   });
+    // })
+    // .catch(err => console.log(err));
   }
 
-  lastfmCall() {
-    API.getArtist("Cher")
-      .then(res => {
-        const data = res.data;
-        console.log(res.data);
-        this.setState({
-          artistName: data.name
-        });
-      })
-      .catch(err => console.log(err));
-  }
-
-  checkLogin (loginStatus) {
+  checkLogin(loginStatus) {
     if (loginStatus === true) {
       console.log("User logged in");
-    }else{
+    } else {
       console.log("User not logged in");
     }
   }
@@ -97,7 +95,7 @@ class Event extends Component {
             </div>
             <br></br>
             <div>
-              <CommentBox onClick={() => this.checkLogin()}/>
+              <CommentBox onClick={() => this.checkLogin()} />
               <br></br>
               <CommentDisplay></CommentDisplay>
             </div>
