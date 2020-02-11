@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+const db = require('./models');
 // for tokens
 const jwt = require("jsonwebtoken"); 
 // passport
