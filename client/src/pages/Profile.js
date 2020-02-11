@@ -1,11 +1,36 @@
 import React, { Component } from "react";
 import ProfileSideBarInfo from "../pages/profile-components/ProfileSideBarInfo";
 import EditProfileBtn from "../pages/profile-components/EditProfileBtn";
-// import EventCard from "../components/assets/EventCard/index";
-import { Row } from "react-bootstrap";
-import { Col } from "react-bootstrap";
+import UserAPI from "../utils/userAPI";
+//import EventCard from "../components/assets/EventCard/index";
+import { Row, Col } from "react-bootstrap";
 
 class Profile extends Component {
+  state = {
+    firstName: "",
+    lastName: "",
+    username: "",
+    bookmarkedEvents: [],
+    createdEvents: []
+  }
+
+  componentDidMount() {
+    UserAPI.getUser("5e422d62dc87c90abd979306")
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          firstName: res.data.firstName,
+          lastName: res.data.lastName,
+          username: res.data.username,
+          bookmarkedEvents: res.data.saved,
+          createdEvents: res.data.created
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
     return (
       <div className="profileContainer">
@@ -15,11 +40,11 @@ class Profile extends Component {
           </Col>
           <Col>
             <ProfileBookmarkContent />
-            {/* <EventCard /> */}
+            
           </Col>
           <Col md={{ span: 6, offset: 4 }}>
             <ProfileCreatedEventContent />
-            {/* <EventCard /> */}
+            
           </Col>
         </Row>
       </div>

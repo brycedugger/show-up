@@ -10,7 +10,7 @@ function EventInfo({ children }) {
           src="eventImagePlaceHolder.jpg"
         />
         <Card.Body>
-          <Card.Text>{children}</Card.Text>
+          {children}
         </Card.Body>
       </Card>
     </div>

@@ -30,7 +30,8 @@ export function CommentDisplay() {
           <strong className="text-success">@MartinoMont</strong>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-            dolor sit amet, <a href="#">#consecteturadipiscing </a>.
+            dolor sit amet, <a href="www.youtube.com">#consecteturadipiscing </a>.
+
           </p>
         </div>
       </li>

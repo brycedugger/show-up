@@ -17,8 +17,8 @@ class Books extends Component {
         <div className="container mb-5 mt-5">
           <Router>
             <Switch>
-              <Route path='/event' component={Event} />
               <Route path='/newevent' component={NewEventForm} />
+              <Route path='/event/:id' component={Event} />
               <Route path='/profile' component={Profile} />
               <Route path='/updateevent' component={UpdateEventForm} />
 

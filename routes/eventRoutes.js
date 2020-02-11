@@ -1,6 +1,7 @@
 const db = require("../models");
 
 module.exports = (app) => {
+    const apiKey = process.env.lastfm;
 
     // GET ROUTES
     //------------------------------------------------------------------
@@ -124,5 +125,25 @@ module.exports = (app) => {
                 res.status(400).json(err);
             });
     });
-    
+
+
+  //------------------------------------------------------------------
+//   app.post("/api/artistInfo/:artist", (req, res) => {
+//     // let artist = req.body.artistName;
+//     const queryURL =
+//       "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=";
+//     queryURL += artist;
+//     queryURL += "&api_key=";
+//     queryURL += apiKey;
+//     queryURL += "&format=json";
+
+//     console.log(queryURL);
+
+//     axios.get(queryURL)
+//     .then(function(response) {
+//       console.log(response);
+//       res.json(response);
+//     })
+//     .catch(err => console.log(err));
+//   });
 };
