@@ -22,13 +22,11 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // middleware: passport
-app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
-app.use(passport.session());
 require('./config/middleware/passport')(passport, db);
 
 // connect to Mongo DB
-mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/show-up`, {
+mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/${process.env.DB_NAME}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });

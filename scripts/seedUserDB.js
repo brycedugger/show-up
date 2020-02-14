@@ -7,11 +7,12 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/show-up", {
 });
 
 const userSeed = [{
-    "email": "jane@smith.com",
-    "firstName": "Jane",
-    "lastName": "Smith",
-    "userName": "janesmith",
-    "password": "noyas",
+    "email": "bryce.dugger@outlook.com",
+    "firstName": "Bryce",
+    "lastName": "Dugger",
+    "username": "bdugger",
+    "password": "$2a$08$FThZYKtqROUSxQmRoMA4Ve5n8DYOAyCGjijdXJbs802xMX.B6PF4.",
+    //showupapp is non encrypted version
     "saved": [],
     "created": [],
 },];

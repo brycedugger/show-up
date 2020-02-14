@@ -2,12 +2,12 @@ import axios from "axios";
 
 export default { 
 
-    signup: (username, password) => {
-        return axios.post('/signup', { username, password });
+    login: (username, password) => {
+        return axios.post('/login', { username, password });
     },
     
-    login: (email, firstName, lastName, username, password) => {
-        return axios.post('/login', { email, firstName, lastName, username, password });
+    signup: (email, firstName, lastName, username, password) => {
+        return axios.post('/signup', { email, firstName, lastName, username, password });
     },
 
     getUser: (userId) => {
