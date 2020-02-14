@@ -23,11 +23,6 @@ function Nav() {
           </div>
         </form>
         <li className="nav-item">
-          <a className="navbar-brand" href="/event">
-            Event
-          </a>
-        </li>
-        <li className="nav-item">
           <a className="navbar-brand" href="/newevent">
             New Event
           </a>

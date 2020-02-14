@@ -1,64 +1,42 @@
 import React, { Component } from "react";
 import { CommentBox, CommentDisplay } from "../components/assets/Comment";
 import EventInfo from "../components/assets/EventInfo";
-import ArtistInfo from "../components/assets/ArtistInfo";
 import FullCalendar from "../components/assets/FullCalendar";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import {Row, Col, Card} from "react-bootstrap";
 import API from "../utils/API";
 // import moment from "moment";
 
 class Event extends Component {
   state = {
-    title: "",
-    headliner: "",
-    openers: "",
-    date: "",
-    time: "",
-    venue: "",
-    address: "",
-    genre: "",
-    description: "",
-    image: "",
-    // artistName: "Cher",
-    // artistImage: "",
-    loginStatus: false
+    event: {},
+    lastfm: []
   };
 
   componentDidMount() {
     API.getOneEvent(this.props.match.params.id)
       .then(res => {
-        console.log(res);
-        const data = res.data;
         this.setState({
-          title: data.title,
-          headliner: data.headliner,
-          openers: data.openers,
-          // date: moment(data.date).format("MMMM Do YYYY, h:mm:ss a"),
-          //time is undefined. something to do with Date property
-          //in models in relation to my get request.
+          event: res.data
+        });
+        this.searchArtist(res.data.headliner);
+      })
+      .catch(err => console.log(err));
+  }
 
-          //venue and address values stored, select isn't being updated.
-          venue: data.venue,
-          address: data.address,
-          //genre value stored. select isn't being updated.
-          genre: data.genre,
-          description: data.description,
-          image: data.image
+  searchArtist(artist) {
+    API.artistSearch(artist, process.env.REACT_APP_LAST_FM)
+      .then(res => {
+        const data = res.data;
+        console.log(res.data);
+        console.log(res.data.artist.name);
+
+        this.setState({
+          lastfm: res.data
         });
       })
       .catch(err => console.log(err));
-
-    // API.artistSearch(data.headliner)
-    // .then(res => {
-    //   const data = res.data;
-    //   console.log(res.data);
-    //   this.setState({
-    //     artistName: data.name
-    //   });
-    // })
-    // .catch(err => console.log(err));
+      console.log(this.state.lastfm.artist.name);
   }
 
   checkLogin(loginStatus) {
@@ -75,23 +53,17 @@ class Event extends Component {
         <Row>
           <Col>
             <div>
-              <EventInfo md={8}>
-                <h2>{this.state.title}</h2>
-                <p>Headliner: {this.state.headliner}</p>
-                <p>Opener: {this.state.openers}</p>
-                <p>Date: {this.state.date}</p>
-                <p>Time: {this.state.time}</p>
-                <p>Venue: {this.state.venue}</p>
-                <p>Address: {this.state.address}</p>
-                <p>Description: {this.state.description}</p>
-              </EventInfo>
+              <EventInfo {...this.state.event} />
             </div>
             <br></br>
             <div>
-              <ArtistInfo>
-                <h2>About Artist</h2>
-                <p>Name: {this.state.artistName}</p>
-              </ArtistInfo>
+              <Card>
+                <Card.Img variant="top" src="/artistImagePlaceHolder.jpg" />
+                <Card.Body>
+                  <h2>About Artist</h2>
+                  {/* <p>Name: {this.state.lastfm.artist.name}</p> */}
+                </Card.Body>
+              </Card>
             </div>
             <br></br>
             <div>
