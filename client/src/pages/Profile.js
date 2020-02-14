@@ -57,6 +57,7 @@ class ProfileSideBar extends Component {
       <div className="container">
         <div className="sideBarStyle">
           <ProfileSideBarInfo />
+          <br></br>
           <EditProfileBtn />
         </div>
       </div>
