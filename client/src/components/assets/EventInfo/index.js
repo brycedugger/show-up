@@ -1,20 +1,36 @@
-import React from "react";
-import Card from "react-bootstrap/Card";
+import React, { Component } from "react";
+import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 
-function EventInfo({ children }) {
-  return (
-    <div>
-      <Card>
-        <Card.Img
-          variant="top"
-          src="eventImagePlaceHolder.jpg"
-        />
-        <Card.Body>
-          {children}
-        </Card.Body>
-      </Card>
-    </div>
-  );
+class EventInfo extends Component {
+  render() {
+    return (
+      <div>
+        <Card>
+          <Card.Img
+            variant="top"
+            src={this.props.image}
+            alt={this.props.headliner}
+          />
+          <Card.Body>
+            <Card.Title>{this.props.title}</Card.Title>
+              <ListGroup variant="flush">
+                <ListGroup.Item>
+                  Headliner: {this.props.headliner}
+                </ListGroup.Item>
+                <ListGroup.Item>Opener: {this.props.openers}</ListGroup.Item>
+                <ListGroup.Item>Date: {this.props.date}</ListGroup.Item>
+                <ListGroup.Item>Time: {this.props.time}</ListGroup.Item>
+                <ListGroup.Item>Venue: {this.props.venue}</ListGroup.Item>
+                <ListGroup.Item>Address: {this.props.address}</ListGroup.Item>
+                <ListGroup.Item>
+                  Description: {this.props.description}
+                </ListGroup.Item>
+              </ListGroup>
+          </Card.Body>
+        </Card>
+      </div>
+    );
+  }
 }
 
 export default EventInfo;
