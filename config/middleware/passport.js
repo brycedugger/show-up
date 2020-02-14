@@ -105,7 +105,7 @@ module.exports = (passport, db) => {
           .then(user => {
             if (!user) {
               return done(null, false, {
-                message: 'Email address does not exist.'
+                message: 'Username does not exist.'
               });
             }
 

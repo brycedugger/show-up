@@ -15,6 +15,7 @@ module.exports = (app, passport, jwt) => {
 
   // logging in
   app.post('/login', (req, res, next) => {
+    console.log(req.body)
     passport.authenticate('local-login', { session: false }, (err, user, info) => {
       // redirect if there was an issue with the login
       if (!user || err) {
