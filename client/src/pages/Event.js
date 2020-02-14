@@ -3,7 +3,6 @@ import { CommentBox, CommentDisplay } from "../components/assets/Comment";
 import EventInfo from "../components/assets/EventInfo";
 import FullCalendar from "../components/assets/FullCalendar";
 import Container from "react-bootstrap/Container";
-// import BookmarkButton from "";
 import {Row, Col, Card} from "react-bootstrap";
 import API from "../utils/API";
 // import moment from "moment";

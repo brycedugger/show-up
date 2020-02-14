@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Card, ListGroup } from "react-bootstrap";
+import BookmarkButton from "../BookmarkButton";
 
 class EventInfo extends Component {
   render() {
@@ -13,6 +14,7 @@ class EventInfo extends Component {
           />
           <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>
+              <BookmarkButton></BookmarkButton>
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   Headliner: {this.props.headliner}
