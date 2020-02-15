@@ -30,7 +30,6 @@ handleGetUser = token => {
       bookmarkedEvents: res.data.saved,
       createdEvents: res.data.created
     });
-    console.log("hello" + (JSON.stringify(res.data)))
   })
   .catch(err => {
     console.log(err);

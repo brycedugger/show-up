@@ -3,6 +3,10 @@ const secret = process.env.SECRET_KEY;
 const verifyToken = require('../config/middleware/verifyToken');
 
 module.exports = (app,  jwt) => { // route to get the user data from the User DB
+
+// GET ROUTES
+//------------------------------------------------------------------
+
     app.get("/api/user/all", (req, res) => {
         db.User.find().then(user => {
             res.status(200).json(user);
@@ -10,7 +14,6 @@ module.exports = (app,  jwt) => { // route to get the user data from the User DB
             res.status(400).json(err);
         });
     });
-
 
 
     // route to get the user's model using the userId from the token
@@ -35,6 +38,9 @@ module.exports = (app,  jwt) => { // route to get the user data from the User DB
         });
     });
 
+// POST ROUTES
+//------------------------------------------------------------------
+
     // route to create a user in the db
     app.post("/api/user/", (req, res) => {
         console.log("User " + (
@@ -53,3 +59,9 @@ module.exports = (app,  jwt) => { // route to get the user data from the User DB
         })
     });
 };
+
+// PUT ROUTES
+//------------------------------------------------------------------
+
+// DELETE ROUTES
+//------------------------------------------------------------------
