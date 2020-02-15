@@ -1,8 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 import SmallCalendar from "../assets/smallCalendar/index.js";
 import Button from "react-bootstrap/Button";
 
-function Nav() {
+class Nav extends Component {
+
+  clearTokenFromLS() {
+    localStorage.removeItem('token');
+  }
+
+render() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="/">
@@ -28,14 +34,35 @@ function Nav() {
           </a>
         </li>
         <SmallCalendar />
-        <li className="nav-item ml-auto">
-          <a className="navbar-brand" href="/profile">
-            Profile
-          </a>
-        </li>
+
+        {/* navlinks */}
+
+          {!this.props.isLoggedIn ? (
+            <li className="nav-item ml-auto">
+              <a className="navbar-brand" href="/profile">
+                Profile
+              </a>
+            </li>
+          ) : (
+            <React.Fragment>
+              <li className="nav-item ml-auto">
+                <a className="navbar-brand" href="/profile">
+                  Profile
+                </a>
+              </li>
+
+              <li className="nav-item ml-auto">
+                <a className='navbar-brand' href='/' onClick={this.clearTokenFromLS}>
+                  Logout
+                </a>
+              </li>
+            </React.Fragment>
+          )}
+
       </ul>
     </nav>
   );
+}
 }
 
 export default Nav;

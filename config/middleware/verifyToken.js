@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
 
         // set the token
         req.token = bearerToken;
-
+        console.log('req.token in verifytoken', req.token)
         // continue to next middleware
         next();
     } else {

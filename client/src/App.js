@@ -17,10 +17,25 @@ class App extends Component {
   //   }
   // };
 
+  state = {
+    isLoggedIn: false
+  };
+
+  componentDidMount() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.setState({ isLoggedIn: false });
+    } else {
+      this.setState({ isLoggedIn: true });
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
-        <Nav onClick={this.handleFormSubmit} />
+        <Nav 
+          onClick={this.handleFormSubmit} 
+          isLoggedIn={this.state.isLoggedIn}/>
         <Main />
         <Footer />
       </React.Fragment>

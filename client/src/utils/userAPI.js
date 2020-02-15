@@ -10,9 +10,16 @@ export default {
         return axios.post("/signup",  signupObj);
     },
 
-    getUser: (userId) => {
-        return axios.get("/api/user/" + userId);
+    getUser: (token) => {
+        console.log("token" + (JSON.stringify(token)))
+        return axios.get("/api/user/", {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
     },
+    
 
     deleteUser: (userId) => {
         return axios.delete("/api/user" + userId);

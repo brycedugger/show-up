@@ -1,6 +1,8 @@
 const db = require("../models");
+const secret = process.env.SECRET_KEY;
+const verifyToken = require('../config/middleware/verifyToken');
 
-module.exports = (app) => { // route to get the user data from the User DB
+module.exports = (app,  jwt) => { // route to get the user data from the User DB
     app.get("/api/user/all", (req, res) => {
         db.User.find().then(user => {
             res.status(200).json(user);
@@ -9,15 +11,28 @@ module.exports = (app) => { // route to get the user data from the User DB
         });
     });
 
-    app.get("/api/user/:id", (req, res) => {
-        db.User.findById({ _id: req.params.id })
-            .populate("saved")
-            .populate("created")
-            .then(user => {
-                res.status(200).json(user);
-            }).catch(err => {
-                res.status(400).json(err);
-            });
+
+
+    // route to get the user's model using the userId from the token
+    app.get("/api/user", verifyToken, (req, res) => {
+            // console.log("get 1 " + req.token)
+        jwt.verify(req.token, secret, (err, token) => {
+            // console.log("get 2 " + (JSON.stringify(token)))
+            if (err) {
+                // console.log(err)
+                res.status(403).json({ error: 'Token is invalid.' });
+            } else {
+                db.User.findById({ _id: token.user._id })
+                    .populate("saved")
+                    .populate("created")
+                    .then(user => {
+                        res.status(200).json(user);
+                    }).catch(err => {
+                        res.status(400).json({ error: err });
+                    }
+                );
+            }
+        });
     });
 
     // route to create a user in the db

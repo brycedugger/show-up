@@ -35,7 +35,7 @@ mongoose.set("useCreateIndex", true);
 // Define API routes here
 require("./routes/eventRoutes")(app);
 require("./routes/auth")(app, passport, jwt);
-require("./routes/UserData")(app);
+require("./routes/UserData")(app, jwt);
 
 // Send every other request to the React app
 // Define any API routes before this runs

@@ -44,11 +44,10 @@ class LoginForm extends Component {
             })
                 .then(
                     res => {
+                        // store the token and userId in local storage
+                        window.localStorage.token = res.data.token;
                         if (res.status === 200) {
-                            // this.setRedirect();
-                            alert("success")
-                            // window.localStorage.token = res.data.token;
-                        // window.localStorage.userId = res.data.user._id;
+                            this.setRedirect();
                         }
                     })
                 .catch(err => console.log(err));

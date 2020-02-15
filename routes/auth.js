@@ -29,9 +29,9 @@ module.exports = (app, passport, jwt) => {
         }
 
         // generate a signed son web token with the contents of user object and return it in the response
-        jwt.sign({ _id: user._id }, secret, (err, token) => {
+        jwt.sign({ user }, secret, (err, token) => {
           // returns the token
-          return res.status(200).json({ token, userId: user._id });
+          return res.status(200).json({ token });
         });
       });
     })(req, res, next);

@@ -51,10 +51,9 @@ class SignupForm extends Component {
             })
                 .then(
                     res => {
-                        // if (res.status === 200) {
-                            // this.setRedirect();
-                            alert("success")
-                        // }
+                        if (res.status === 200) {
+                            this.setRedirect();
+                        }
                     })
                 .catch(err => console.log(err));
         }
@@ -65,7 +64,7 @@ class SignupForm extends Component {
 
     render() {
         if (this.state.redirect === true) {
-            return <Redirect to="/" />
+            return <Redirect to="/login" />
         }
         return (
             <div class="form-container mb-5">
