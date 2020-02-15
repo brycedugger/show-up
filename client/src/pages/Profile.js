@@ -44,6 +44,7 @@ handleGetUser = token => {
             <ProfileSideBar 
             firstName={this.state.firstName} 
             lastName={this.state.lastName}
+            username={this.state.username}
             />
           </Col>
           <Col>
@@ -68,6 +69,7 @@ class ProfileSideBar extends Component {
           <ProfileSideBarInfo 
           firstName={this.props.firstName}
           lastName={this.props.lastName}
+          username={this.props.username}
           />
           <EditProfileBtn />
         </div>

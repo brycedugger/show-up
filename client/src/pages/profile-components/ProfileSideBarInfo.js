@@ -17,7 +17,7 @@ class ProfileSideBarInfo extends Component {
                 
                 <br></br>
                 <h5>Username</h5>
-                <p>{this.props.userName}</p>
+                <p>{this.props.username}</p>
                 </div>
         );
     }
