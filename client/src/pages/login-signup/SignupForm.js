@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { Redirect } from "react-router-dom"
 
-import API from "../../utils/API";
+import API from "../../utils/userAPI";
 
 import { Input } from "../../components/assets/form/Input";
 import { FormBtn } from "../../components/assets/form/FormBtn";
@@ -42,8 +42,8 @@ class SignupForm extends Component {
             this.state.username &&
             this.state.password
         ) {
-            API.createUser({
-                emailAddress: this.state.email,
+            API.signup({
+                email: this.state.email,
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 username: this.state.username,
@@ -64,7 +64,7 @@ class SignupForm extends Component {
 
     render() {
         if (this.state.redirect === true) {
-            return <Redirect to="/" />
+            return <Redirect to="/login" />
         }
         return (
             <div class="form-container mb-5">
@@ -117,10 +117,10 @@ class SignupForm extends Component {
                         <FormBtn
                             onClick={this.handleFormSubmit}
                         >
-                            Submit Event
+                            Sign Up
                         </FormBtn>
 
-                        <a href="/lisu/login" className="btn-link">Already have an account? Login here.</a>
+                        <a href="/login" className="btn-link">Already have an account? Login here.</a>
 
                     </form>
                 </div>

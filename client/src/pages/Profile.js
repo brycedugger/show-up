@@ -15,20 +15,26 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    UserAPI.getUser("5e4490c8694df08945be188c")
-      .then(res => {
-        this.setState({
-          firstName: res.data.firstName,
-          lastName: res.data.lastName,
-          username: res.data.username,
-          bookmarkedEvents: res.data.saved,
-          createdEvents: res.data.created
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+
+    const token = localStorage.getItem("token");
+    this.handleGetUser(token);
   }
+
+handleGetUser = token => {
+  UserAPI.getUser(token)
+  .then(res => {
+    this.setState({
+      firstName: res.data.firstName,
+      lastName: res.data.lastName,
+      username: res.data.username,
+      bookmarkedEvents: res.data.saved,
+      createdEvents: res.data.created
+    });
+  })
+  .catch(err => {
+    console.log(err);
+  })
+};
 
   render() {
     return (

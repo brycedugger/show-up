@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { Redirect } from "react-router-dom"
 
-import API from "../../utils/API";
+import API from "../../utils/userAPI";
 
 import { Input } from "../../components/assets/form/Input";
 import { FormBtn } from "../../components/assets/form/FormBtn";
@@ -18,10 +18,12 @@ class LoginForm extends Component {
 
     };
 
+
     handleInputChange = e => {
         this.setState({
             [e.target.name]: e.target.value
         });
+        console.log(this.state);
     };
 
     setRedirect = () => {
@@ -41,6 +43,8 @@ class LoginForm extends Component {
             })
                 .then(
                     res => {
+                        // store the token and userId in local storage
+                        window.localStorage.token = res.data.token;
                         if (res.status === 200) {
                             this.setRedirect();
                         }
@@ -84,10 +88,10 @@ class LoginForm extends Component {
                         <FormBtn
                             onClick={this.handleFormSubmit}
                         >
-                            Submit Event
+                            Login
                         </FormBtn>
 
-                        <a href="/lisu/signup" className="btn-link">New to Show Up? Sign-up now.</a>
+                        <a href="/signup" className="btn-link">New to Show Up? Sign-up now.</a>
                     </form>
                 </div>
             </div>

@@ -1,17 +1,22 @@
 const mongoose = require("mongoose");
 const db = require("../models");
+require('dotenv').config();
+const db_name = process.env.DB_NAME;
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/show-up", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+// This file empties the Users collection and inserts the events below
+
+mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/${db_name}`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
 const userSeed = [{
-    "email": "jane@smith.com",
-    "firstName": "Jane",
-    "lastName": "Smith",
-    "userName": "janesmith",
-    "password": "noyas",
+    "email": "bryce.dugger@outlook.com",
+    "firstName": "Bryce",
+    "lastName": "Dugger",
+    "username": "bdugger",
+    "password": "$2a$08$FThZYKtqROUSxQmRoMA4Ve5n8DYOAyCGjijdXJbs802xMX.B6PF4.",
+    //showupapp is non encrypted version
     "saved": [],
     "created": [],
 },];

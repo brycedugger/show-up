@@ -29,7 +29,6 @@ const UserSchema = new Schema({
     password: {
         type: String,
         trim: true,
-        minlength: 6,
         required: true
     },
     saved: [
@@ -44,9 +43,6 @@ const UserSchema = new Schema({
             ref: "Event"
         }
     ]
-
-    //fill in required parameters used in /utils/APi.js
-    //and corresponding API routes in the routes foler
 });
 
 module.exports = mongoose.model("User", UserSchema);

@@ -22,13 +22,11 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // middleware: passport
-app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
-app.use(passport.session());
 require('./config/middleware/passport')(passport, db);
 
 // connect to Mongo DB
-mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/show-up`, {
+mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/${process.env.DB_NAME}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -37,7 +35,7 @@ mongoose.set("useCreateIndex", true);
 // Define API routes here
 require("./routes/eventRoutes")(app);
 require("./routes/auth")(app, passport, jwt);
-require("./routes/UserData")(app);
+require("./routes/UserData")(app, jwt);
 
 // Send every other request to the React app
 // Define any API routes before this runs
