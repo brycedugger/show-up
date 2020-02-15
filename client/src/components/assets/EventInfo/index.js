@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Card, ListGroup } from "react-bootstrap";
-import BookmarkButton from "../BookmarkButton";
+import BookmarkButton from "../bookmarkButton";
 
 class EventInfo extends Component {
   render() {
