@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // import { Redirect } from "react-router-dom"
 
 import API from "../../utils/API";
+import UserAPI from "../../utils/userAPI";
 
 import { Input } from "../../components/assets/form/Input";
 import { TextArea } from "../../components/assets/form/TextArea";
@@ -27,10 +28,18 @@ class NewEventForm extends Component {
         genre: "",
         description: "",
         image: "",
+        token: "",
 
         redirect: false
 
     };
+
+
+    componentDidMount() {
+
+        this.setState({ token: localStorage.getItem("token") });
+
+    }
 
     handleVenueInputChange = e => {
         this.setState({
@@ -47,6 +56,19 @@ class NewEventForm extends Component {
         this.setState({
             redirect: true
         })
+    }
+
+    addEventToUsersDb = data => {
+        UserAPI.createdEvent({
+            token: this.state.token,
+            _id: data._id
+        })
+            .then(
+                res => {
+                    // this.props.history.push(res.data.redirectUrl);
+                    alert("success")
+                })
+            .catch (err => console.log(err));
     }
 
     handleFormSubmit = event => {
@@ -73,7 +95,7 @@ class NewEventForm extends Component {
             })
                 .then(
                     res => {
-                        this.props.history.push(res.data.redirectUrl);
+                        this.addEventToUsersDb(res.data)
                     })
                 .catch(err => console.log(err));
         }
@@ -82,96 +104,96 @@ class NewEventForm extends Component {
         )
     };
 
-    render() {
+render() {
 
-        if (this.state.redirect === true) {
-        }
-
-        return (
-            <div className="wrap bg-white p-3 mx-auto rounded">
-                <p className="cardType"></p>
-                <form>
-
-                    <Input
-                        label={"Title (optional):"}
-                        name="title"
-                        value={this.state.title}
-                        onChange={this.handleInputChange}
-                        placeholder="Title"
-                    />
-
-                    <Input
-                        label={"Headliner:"}
-                        name="headliner"
-                        value={this.state.headliner}
-                        onChange={this.handleInputChange}
-                        placeholder="Headliner"
-                    />
-
-                    <Input
-                        label={"Openers (optional):"}
-                        name="openers"
-                        value={this.state.openers}
-                        onChange={this.handleInputChange}
-                        placeholder="Openers"
-                    />
-
-                    <Input
-                        label={"Date:"}
-                        name="date"
-                        value={this.state.date}
-                        onChange={this.handleInputChange}
-                        placeholder="Date (dd/mm/yyyy)"
-                    />
-
-                    <Input
-                        label={"Time:"}
-                        name="time"
-                        value={this.state.time}
-                        onChange={this.handleInputChange}
-                        placeholder="Time (hh:mm)"
-                    />
-
-                    <SelectVenue
-                        label={"Venue:"}
-                        name="venue"
-                        address="address"
-                        arrayOfData={venueJson}
-                        handleChange={this.handleVenueInputChange}
-                    />
-
-                    <Select
-                        label={"Genre:"}
-                        name="genre"
-                        arrayOfData={genreJson}
-                        handleChange={this.handleInputChange}
-                    />
-
-                    <TextArea
-                        label={"Description (optional):"}
-                        name="description"
-                        value={this.state.description}
-                        onChange={this.handleInputChange}
-                        placeholder="Description"
-                    />
-
-                    <Input
-                        label={"Image (1:1 image ratio):"}
-                        name="image"
-                        value={this.state.image}
-                        onChange={this.handleInputChange}
-                        placeholder="Image (Link)"
-                    />
-
-                    <FormBtn
-                        onClick={this.handleFormSubmit}
-                    >
-                        Submit Event
-                </FormBtn>
-                </form>
-            </div>
-        );
+    if (this.state.redirect === true) {
     }
+
+    return (
+        <div className="wrap bg-white p-3 mx-auto rounded">
+            <p className="cardType"></p>
+            <form>
+
+                <Input
+                    label={"Title (optional):"}
+                    name="title"
+                    value={this.state.title}
+                    onChange={this.handleInputChange}
+                    placeholder="Title"
+                />
+
+                <Input
+                    label={"Headliner:"}
+                    name="headliner"
+                    value={this.state.headliner}
+                    onChange={this.handleInputChange}
+                    placeholder="Headliner"
+                />
+
+                <Input
+                    label={"Openers (optional):"}
+                    name="openers"
+                    value={this.state.openers}
+                    onChange={this.handleInputChange}
+                    placeholder="Openers"
+                />
+
+                <Input
+                    label={"Date:"}
+                    name="date"
+                    value={this.state.date}
+                    onChange={this.handleInputChange}
+                    placeholder="Date (dd/mm/yyyy)"
+                />
+
+                <Input
+                    label={"Time:"}
+                    name="time"
+                    value={this.state.time}
+                    onChange={this.handleInputChange}
+                    placeholder="Time (hh:mm)"
+                />
+
+                <SelectVenue
+                    label={"Venue:"}
+                    name="venue"
+                    address="address"
+                    arrayOfData={venueJson}
+                    handleChange={this.handleVenueInputChange}
+                />
+
+                <Select
+                    label={"Genre:"}
+                    name="genre"
+                    arrayOfData={genreJson}
+                    handleChange={this.handleInputChange}
+                />
+
+                <TextArea
+                    label={"Description (optional):"}
+                    name="description"
+                    value={this.state.description}
+                    onChange={this.handleInputChange}
+                    placeholder="Description"
+                />
+
+                <Input
+                    label={"Image (1:1 image ratio):"}
+                    name="image"
+                    value={this.state.image}
+                    onChange={this.handleInputChange}
+                    placeholder="Image (Link)"
+                />
+
+                <FormBtn
+                    onClick={this.handleFormSubmit}
+                >
+                    Submit Event
+                </FormBtn>
+            </form>
+        </div>
+    );
+}
 }
 
 export default NewEventForm;

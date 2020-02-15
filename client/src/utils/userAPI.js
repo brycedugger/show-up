@@ -16,11 +16,25 @@ export default {
     //db.usersas a response.
 
     getUser: (token) => {
+        console.log(token)
         return axios.get("/api/user/", {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           }
+        });
+    },
+
+     // get route that sends our token to the server to update the created array
+     // with the event id of the event the user created
+
+    createdEvent: (obj) => {
+        const token = obj.token
+        return axios.put("/api/user/" + obj._id, { 
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
         });
     },
 
