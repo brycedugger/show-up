@@ -15,7 +15,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    UserAPI.getUser("5e4490c8694df08945be188c")
+    UserAPI.getUser("5e4846aac75a010df308f2a2")
       .then(res => {
         this.setState({
           firstName: res.data.firstName,
@@ -28,6 +28,7 @@ class Profile extends Component {
       .catch(err => {
         console.log(err);
       });
+      // console.log(res.data);
   }
 
   render() {
@@ -56,7 +57,7 @@ class ProfileSideBar extends Component {
     return (
       <div className="container">
         <div className="sideBarStyle">
-          <ProfileSideBarInfo />
+          <ProfileSideBarInfo name={this.state.firstName}/>
           <br></br>
           <EditProfileBtn />
         </div>

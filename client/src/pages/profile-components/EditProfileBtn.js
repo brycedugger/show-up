@@ -1,6 +1,6 @@
 import React, {useState, Component} from "react";
 import {Button, Modal, Form, Row, Col } from 'react-bootstrap';
-import "./style.css"
+import "./style.css";
 
 class ModalFeature extends Component {
     constructor(props) {
@@ -58,40 +58,31 @@ function EditProfileBtn() {
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Group as={Row}
-                        controlId="formPlaintextPassword">
+                        controlId="formPlaintext">
                         <Form.Label column sm="2">
                             First Name
                         </Form.Label>
                         <Col sm="10">
-                            <Form.Control type="password" placeholder=""/>
+                            <Form.Control type="text" placeholder=""/>
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row}
-                        controlId="formPlaintextPassword">
+                        controlId="formPlaintext">
                         <Form.Label column sm="2">
                             Last Name
                         </Form.Label>
                         <Col sm="10">
-                            <Form.Control type="password" placeholder=""/>
-                        </Col>
-                    </Form.Group>
-                    <Form.Group as={Row}
-                        controlId="formPlaintextPassword">
-                        <Form.Label column sm="2">
-                            Username
-                        </Form.Label>
-                        <Col sm="10">
-                            <Form.Control type="password" placeholder=""/>
+                            <Form.Control type="text" placeholder=""/>
                         </Col>
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary"
-                        onClick={handleClose}>
+                        onClick={handleClose} data-dismiss="modal">
                         Close
                     </Button>
                     <Button variant="primary"
-                        onClick={handleClose}>
+                        data-dismiss="modal" onClick={() => { this.handleSave() }}>
                         Save Changes
                     </Button>
                 </Modal.Footer>
