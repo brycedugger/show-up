@@ -48,10 +48,6 @@ class NewEventForm extends Component {
             redirect: true
         })
     }
-    test = () => {
-        console.log(this.props)
-        console.log(this)
-    }
 
     handleFormSubmit = event => {
         event.preventDefault();
@@ -77,7 +73,6 @@ class NewEventForm extends Component {
             })
                 .then(
                     res => {
-                        this.test()
                         this.props.history.push(res.data.redirectUrl);
                     })
                 .catch(err => console.log(err));
@@ -90,7 +85,6 @@ class NewEventForm extends Component {
     render() {
 
         if (this.state.redirect === true) {
-            // return <Redirect to="/profile" />
         }
 
         return (

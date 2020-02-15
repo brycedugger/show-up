@@ -16,7 +16,6 @@ export default {
     //db.usersas a response.
 
     getUser: (token) => {
-        console.log("token" + (JSON.stringify(token)))
         return axios.get("/api/user/", {
         headers: {
             'Content-Type': 'application/json',

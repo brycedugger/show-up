@@ -30,7 +30,6 @@ class LoginForm extends Component {
         this.setState({
             redirect: true
         })
-        console.log("redirect" + this.state);
     }
 
     handleFormSubmit = event => {
@@ -59,7 +58,6 @@ class LoginForm extends Component {
 
     render() {
         if (this.state.redirect === true) {
-            {console.log("hello from redirect")}
             return <Redirect to="/" />
         }
         return (
