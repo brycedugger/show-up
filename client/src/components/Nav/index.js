@@ -1,41 +1,34 @@
 import React from "react";
 import SmallCalendar from "../assets/smallCalendar/index.js";
-import Button from "react-bootstrap/Button";
+import { Navbar, Nav, Form, Button, FormControl } from "react-bootstrap";
+import "./style.css";
 
-function Nav() {
+function mainNav() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a className="navbar-brand" href="/">
+    <Navbar className="navbar" expand="lg">
+      <Navbar.Brand href="/" className="navBrand">
         Show Up
-      </a>
-      <ul className="navbar-nav">
-        <form className="form-inline">
-          <div className="md-form my-0">
-            <input
-              type="search"
-              className="form-control ds-input"
-              id="search-input"
-              placeholder="Search..."
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav id="searchSection" className="ml-auto">
+          <Form inline>
+            <FormControl
+              type="text"
+              placeholder="Search"
+              className="searchBar mr-sm-2"
             />
-            <Button variant="secondary" type="submit">
-              Search
-            </Button>
-          </div>
-        </form>
-        <li className="nav-item">
-          <a className="navbar-brand" href="/newevent">
-            New Event
-          </a>
-        </li>
-        <SmallCalendar />
-        <li className="nav-item ml-auto">
-          <a className="navbar-brand" href="/profile">
-            Profile
-          </a>
-        </li>
-      </ul>
-    </nav>
+            <Button variant="outline-success">Search</Button>
+          </Form>
+          <SmallCalendar />
+        </Nav>
+        <Nav className="ml-auto">
+          <Nav.Link href="/newevent">Post New Event</Nav.Link>
+          <Nav.Link href="/profile">Profile</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 
-export default Nav;
+export default mainNav;
