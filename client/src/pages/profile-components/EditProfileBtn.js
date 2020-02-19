@@ -1,5 +1,6 @@
 import React, {useState, Component} from "react";
 import {Button, Modal, Form, Row, Col } from 'react-bootstrap';
+import User from "../../pages/profile-components/User";
 import "./style.css";
 
 class ModalFeature extends Component {
@@ -16,13 +17,24 @@ class ModalFeature extends Component {
     // Called when the component may be receiving new props. React may call this even if props have not changed,
     // so be sure to compare new and existing props if you only want to handle changes.
     componentWillReceiveProps(nextProps) {
-        this.setState({firstName: nextProps.firstName, lastName: nextProps.lastName });
+        this.setState({
+            email: nextProps.email,
+            firstName: nextProps.firstName, 
+            lastName: nextProps.lastName,
+            password: nextProps.password,
+        });
+    }
+    emailHandler(e) {
+        this.setState({ email: e.target.value });
     }
     firstNameHandler(e) {
-        this.setState({firstName: e.target.value});
+        this.setState({ firstName: e.target.value });
     }
     lastNameHandler(e) {
-        this.setState({lastName: e.target.value});
+        this.setState({ lastName: e.target.value });
+    }
+    passwordHandler(e) {
+        this.setState({ password: e.target.value });
     }
     handleSave() {
         const userInfo = this.state;
@@ -51,7 +63,7 @@ function EditProfileBtn() {
                         Email Address
                         </Form.Label>
                         <Col sm="10">
-                            <Form.Control type="text" placeholder=""/>
+                            <Form.Control type="text"/>
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row}
@@ -60,7 +72,7 @@ function EditProfileBtn() {
                         First Name
                         </Form.Label>
                         <Col sm="10">
-                            <Form.Control type="text" placeholder=""/>
+                            <Form.Control type="text"/>
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row}
@@ -69,7 +81,7 @@ function EditProfileBtn() {
                         Last Name
                         </Form.Label>
                         <Col sm="10">
-                            <Form.Control type="text" placeholder=""/>
+                            <Form.Control type="text"/>
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row}
@@ -78,16 +90,16 @@ function EditProfileBtn() {
                             Password
                         </Form.Label>
                         <Col sm="10">
-                            <Form.Control type="text" placeholder=""/>
+                            <Form.Control type="text"/> 
                         </Col>
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary"
+                    <Button className="secondary"
                         onClick={handleClose} data-dismiss="modal">
                         Close
                     </Button>
-                    <Button variant="primary"
+                    <Button className="primary"
                     data-dismiss="modal" onClick={() => { this.handleSave() }}>
                         Save Changes
                     </Button>

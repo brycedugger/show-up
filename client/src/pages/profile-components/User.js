@@ -1,6 +1,5 @@
-import React from "react";
+import React, { Component } from "react";
 import EditProfileBtn from "../../pages/profile-components/EditProfileBtn";
-
 
 class User extends Component {
     constructor(props) {
@@ -24,30 +23,54 @@ class User extends Component {
         this.setState({requiredItem: index});
     }
 
-    saveModalDetails(props) {
+    saveModalDetails(item) {
         const requiredItem = this.state.requiredItem;
         let initialUserInfo = this.state.user;
-        initialUserInfo[requiredItem] = props;
+        initialUserInfo[requiredItem] = item;
         this.setState({user: initialUserInfo});
     }
 
     render() {
-        const user = this.state.user.map((props, index)) => {
+        const user = this.state.user.map((item, index) => {
             return (
-                <div>
-                    <h2>Welcome!</h2>
-                        <br></br>
-                        <br></br>
-                    <h5>First Name</h5> 
-                    <p></p> {this.state.firstName}
-                        <br></br>
-                    <h5>Last Name</h5> 
-                    <p></p> {this.state.lastName}
-                        <br></br>
-                    <Button variant="primary" onClick={() => this.replaceModalItem(index)}>
-                        Edit Profile
-                </Button> {" "}
+                <tr key={index}>
+                    <td>{
+                        item.email
+                    }</td>
+                    <td>{" "}
+                        - {" "}</td>
+                    <td>{
+                        item.firstName
+                    }</td>
+                    <td>
+                        <button className="primary" data-toggle="modal"
+                            onClick={
+                                () => this.replaceModalItem(index)
+                        }>Edit Profile</button>
+                        {" "} </td>
+                </tr>
             )
-        }
+        });
+
+        const requiredItem = this.state.requiredItem;
+        let modalData = this.state.user[requiredItem];
+        return (
+            <div>
+                <table className="table table-striped">
+                    <tbody> {user} </tbody>
+                </table>
+                <EditProfileBtn title={
+                        modalData.email
+                    }
+                    msg={
+                        modalData.firstname
+                    }
+                    saveModalDetails={
+                        this.saveModalDetails
+                    }/>
+            </div>
+        );
     }
-} 
+}
+
+export default User;

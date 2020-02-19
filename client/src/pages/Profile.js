@@ -10,6 +10,7 @@ class Profile extends Component {
     firstName: "",
     lastName: "",
     username: "",
+    email: "",
     bookmarkedEvents: [],
     createdEvents: []
   }
@@ -26,6 +27,7 @@ handleGetUser = token => {
       firstName: res.data.firstName,
       lastName: res.data.lastName,
       username: res.data.username,
+      email: res.data.email,
       bookmarkedEvents: res.data.saved,
       createdEvents: res.data.created
     });
@@ -45,6 +47,7 @@ handleGetUser = token => {
             firstName={this.state.firstName} 
             lastName={this.state.lastName}
             username={this.state.username}
+            email={this.state.email}
             />
           </Col>
           <Col>
@@ -70,6 +73,7 @@ class ProfileSideBar extends Component {
           firstName={this.props.firstName}
           lastName={this.props.lastName}
           username={this.props.username}
+          email={this.props.email}
           />
           <EditProfileBtn />
         </div>
