@@ -4,7 +4,7 @@ import EditProfileBtn from "../pages/profile-components/EditProfileBtn";
 import UserAPI from "../utils/userAPI";
 import EventCard from "../components/assets/EventCard/index";
 import { Row, Col } from "react-bootstrap";
-// import UpvoteButton from "../components/assets/upvoteButton";
+import UpvoteButton from "../components/assets/upvoteButton";
 
 class Profile extends Component {
   state = {
@@ -80,7 +80,7 @@ class ProfileSideBar extends Component {
 
         <br></br>
         <br></br>
-          {/* <UpvoteButton /> */}
+          <UpvoteButton />
         </div>
       </div>
     );
