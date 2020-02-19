@@ -24,7 +24,7 @@ const eventSeed = [
     address: "1426 1st Ave, Seattle, WA 98101",
     genre: "Electronic",
     description: "To be filled with LastFM API",
-    image: "To be filled with LastFM API"
+    image: "https://pilerats.com/assets/Uploads/maribou-state-interview.jpg"
   },
   {
     title: "Showbox Presents",
@@ -76,7 +76,7 @@ const eventSeed = [
     address: "911 Pine St, Seattle, WA 98101",
     genre: "Folk",
     description: "To be filled with LastFM API",
-    image: "To be filled with LastFM API"
+    image: "https://media.pitchfork.com/photos/5ba3aa2a4899de2cf8705ae0/2:1/w_790/Fleet-Foxes.jpg"
   },
   {
     title: "",

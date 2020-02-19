@@ -21,7 +21,6 @@ module.exports = (app, jwt) => {
     // route to get the user's model using the userId from the token
     app.get("/api/user", verifyToken, (req, res) => {
         jwt.verify(req.token, secret, (err, token) => {
-            console.log("get 2 " + (JSON.stringify(token)))
             if (err) {
                 // console.log(err)
                 res.status(403).json({ error: 'Token is invalid.' });

@@ -1,16 +1,18 @@
 import React, { Component } from "react";
-import { CommentBox, CommentDisplay } from "../components/assets/Comment";
 import EventInfo from "../components/assets/EventInfo";
 import FullCalendar from "../components/assets/FullCalendar";
 import Container from "react-bootstrap/Container";
-import {Row, Col, Card} from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
+import CommentForm from "../components/assets/Comment/CommentForm";
+import CommentBlock from "../components/assets/Comment/CommentBlock";
 import API from "../utils/API";
-// import moment from "moment";
+import UserAPI from "../utils/userAPI";
 
 class Event extends Component {
   state = {
     event: {},
-    lastfm: []
+    lastfm: [],
+    username: ""
   };
 
   componentDidMount() {
@@ -22,12 +24,27 @@ class Event extends Component {
         this.searchArtist(res.data.headliner);
       })
       .catch(err => console.log(err));
+
+    const token = localStorage.getItem("token");
+    this.handleGetUser(token);
   }
+
+  handleGetUser = token => {
+    UserAPI.getUser(token)
+      .then(res => {
+        this.setState({
+          username: res.data.username,
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  };
 
   searchArtist(artist) {
     API.artistSearch(artist, process.env.REACT_APP_LAST_FM)
       .then(res => {
-        const data = res.data;
+        //const data = res.data;
         console.log(res.data);
         console.log(res.data.artist.name);
 
@@ -36,7 +53,7 @@ class Event extends Component {
         });
       })
       .catch(err => console.log(err));
-      console.log(this.state.lastfm.artist.name);
+    console.log(this.state.lastfm.artist.name);
   }
 
   checkLogin(loginStatus) {
@@ -44,6 +61,27 @@ class Event extends Component {
       console.log("User logged in");
     } else {
       console.log("User not logged in");
+    }
+  }
+
+  displayComments() {
+    if (this.state.event.comments.length >= 1) {
+      return (
+        <React.Fragment>
+          {this.state.event.comments.map(comment => {
+            return (
+              <CommentBlock key={comment._id} {...comment} />
+            )
+          })}
+        </React.Fragment>
+      )
+    }
+    else {
+      return (
+        <React.Fragment>
+          <h3>No Comments</h3>
+        </React.Fragment>
+      )
     }
   }
 
@@ -67,9 +105,9 @@ class Event extends Component {
             </div>
             <br></br>
             <div>
-              <CommentBox onClick={() => this.checkLogin()} />
-              <br></br>
-              <CommentDisplay></CommentDisplay>
+              <CommentForm eventId={this.state.event._id} />
+              <hr></hr>
+              {this.state.event.comments && this.displayComments()}
             </div>
           </Col>
           <Col md={4}>

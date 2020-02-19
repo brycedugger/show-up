@@ -15,7 +15,6 @@ module.exports = (passport, db) => {
       },
       // required callback function
       (req, username, password, done) => {
-        console.log(username)
         // function to generate hash password
         const hashPassword = password => {
           return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
@@ -49,8 +48,6 @@ module.exports = (passport, db) => {
                   password: hashedPassword
 
                 };
-                console.log("newUser" + (JSON.stringify(newUser)))
-                console.log("req.body" + (JSON.stringify(req.body)))
 
                 // use mongoose to create the new user passing in the newUser object
                 db.User.create(newUser)
@@ -118,7 +115,6 @@ module.exports = (passport, db) => {
             return done(null, user);
           })
           .catch(err => {
-            console.log('err', err);
             return done(null, false, {
               message: 'Something went wrong with your login.'
             });
