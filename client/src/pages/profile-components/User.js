@@ -11,10 +11,10 @@ class User extends Component {
             requiredItem: 0,
             user: [
                 {
-                    "email": "bryce.dugger@outlook.com",
-                    "firstName": "Bryce",
-                    "lastName": "Dugger",
-                    "password": "$2a$08$FThZYKtqROUSxQmRoMA4Ve5n8DYOAyCGjijdXJbs802xMX.B6PF4."
+                    email: "bryce.dugger@outlook.com",
+                    firstName: "Bryce",
+                    lastName: "Dugger",
+                    password: "$2a$08$FThZYKtqROUSxQmRoMA4Ve5n8DYOAyCGjijdXJbs802xMX.B6PF4."
                 }
             ]
         }
