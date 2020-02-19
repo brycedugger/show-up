@@ -5,16 +5,16 @@ import EditProfileBtn from "../../pages/profile-components/EditProfileBtn";
 class User extends Component {
     constructor(props) {
         super(props);
-
         this.replaceModalItem = this.replaceModalItem.bind(this);
         this.saveModalDetails = this.saveModalDetails.bind(this);
         this.state = {
             requiredItem: 0,
             user: [
                 {
-                    firstName: "Jane",
-                    lastName: "Smith",
-                    userName: "janesmith"
+                    "email": "bryce.dugger@outlook.com",
+                    "firstName": "Bryce",
+                    "lastName": "Dugger",
+                    "password": "$2a$08$FThZYKtqROUSxQmRoMA4Ve5n8DYOAyCGjijdXJbs802xMX.B6PF4."
                 }
             ]
         }
@@ -31,12 +31,6 @@ class User extends Component {
         this.setState({user: initialUserInfo});
     }
 
-    // deleteItem(index) {
-    //     let initialUserInfo = this.state.user;
-    //     initialUserInfo.splice(index, 1);
-    //     this.setState({user: initialUserInfo});
-    // }
-
     render() {
         const user = this.state.user.map((props, index)) => {
             return (
@@ -45,10 +39,10 @@ class User extends Component {
                         <br></br>
                         <br></br>
                     <h5>First Name</h5> 
-                    <p></p> {props.firstName}
+                    <p></p> {this.state.firstName}
                         <br></br>
                     <h5>Last Name</h5> 
-                    <p></p> {props.lastName}
+                    <p></p> {this.state.lastName}
                         <br></br>
                     <Button variant="primary" onClick={() => this.replaceModalItem(index)}>
                         Edit Profile

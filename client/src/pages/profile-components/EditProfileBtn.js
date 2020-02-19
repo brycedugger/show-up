@@ -7,24 +7,22 @@ class ModalFeature extends Component {
         super(props);
         this.handleSave = this.handleSave.bind(this);
         this.state = {
+            email: "",
             firstName: "",
             lastName: "",
-            userName: ""
+            password: ""
         }
     }
     // Called when the component may be receiving new props. React may call this even if props have not changed,
     // so be sure to compare new and existing props if you only want to handle changes.
     componentWillReceiveProps(nextProps) {
-        this.setState({firstName: nextProps.firstName, lastName: nextProps.lastName, userName: nextProps.userName});
+        this.setState({firstName: nextProps.firstName, lastName: nextProps.lastName });
     }
     firstNameHandler(e) {
         this.setState({firstName: e.target.value});
     }
     lastNameHandler(e) {
         this.setState({lastName: e.target.value});
-    }
-    userNameHandler(e) {
-        this.setState({userName: e.target.value});
     }
     handleSave() {
         const userInfo = this.state;
@@ -48,10 +46,9 @@ function EditProfileBtn() {
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Group as={Row}
-                        controlId="formPlaintextPassword">
-
+                        controlId="formPlaintext">
                         <Form.Label column sm="2">
-                            First Name
+                        Email Address
                         </Form.Label>
                         <Col sm="10">
                             <Form.Control type="text" placeholder=""/>
@@ -60,7 +57,25 @@ function EditProfileBtn() {
                     <Form.Group as={Row}
                         controlId="formPlaintext">
                         <Form.Label column sm="2">
-                            Last Name
+                        First Name
+                        </Form.Label>
+                        <Col sm="10">
+                            <Form.Control type="text" placeholder=""/>
+                        </Col>
+                    </Form.Group>
+                    <Form.Group as={Row}
+                        controlId="formPlaintext">
+                        <Form.Label column sm="2">
+                        Last Name
+                        </Form.Label>
+                        <Col sm="10">
+                            <Form.Control type="text" placeholder=""/>
+                        </Col>
+                    </Form.Group>
+                    <Form.Group as={Row}
+                        controlId="formPlaintext">
+                        <Form.Label column sm="2">
+                            Password
                         </Form.Label>
                         <Col sm="10">
                             <Form.Control type="text" placeholder=""/>
