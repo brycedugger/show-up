@@ -40,8 +40,6 @@ class UpvoteButton extends Component {
     }
 }
 
-// console.log("Event was upvoted" + eventId);
-
 class Vote extends Component {
     handleClick = () => this.props.onVote(this.props.id);
     render() {
