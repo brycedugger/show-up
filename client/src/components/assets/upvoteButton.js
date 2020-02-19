@@ -9,16 +9,41 @@ const eventList = [{
 ]
 
 class UpvoteButton extends Component {
-    handleEvent = e => console.log("Event was upvoted" + e);
+    state = {
+        events: []
+    };
+
+    componentDidMount() {
+        this.setState({ events: eventList });
+    }
+    
+    handleEvent = (upcomingeventId) => {
+        const updatedVotingList = this.state.events.map(upcomingEvent => {
+            if (upcomingEvent.id === upcomingeventId) {
+                return Object.assign({}, upcomingEvent, {
+                    votes: upcomingEvent.votes + 1
+                });
+            } else {
+                return upcomingEvent;
+            }
+        });
+
+        this.setState({
+            events: updatedVotingList
+        });
+    };
+
     render() {
-        return eventList.map(upcomingEvent => (
+        return this.state.events.map(upcomingEvent => (
         <Vote key={upcomingEvent.id} id={upcomingEvent.id} event={upcomingEvent.event} votes={upcomingEvent.votes} onVote={this.handleEvent} />
         ));
     }
 }
 
+// console.log("Event was upvoted" + eventId);
+
 class Vote extends Component {
-    handleClick = e => this.props.onVote(this.props.id);
+    handleClick = () => this.props.onVote(this.props.id);
     render() {
         return (
             <div className="UpvoteButton">
