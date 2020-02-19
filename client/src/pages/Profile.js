@@ -4,6 +4,7 @@ import EditProfileBtn from "../pages/profile-components/EditProfileBtn";
 import UserAPI from "../utils/userAPI";
 import EventCard from "../components/assets/EventCard/index";
 import { Row, Col } from "react-bootstrap";
+// import UpvoteButton from "../components/assets/upvoteButton";
 
 class Profile extends Component {
   state = {
@@ -76,6 +77,10 @@ class ProfileSideBar extends Component {
           email={this.props.email}
           />
           <EditProfileBtn />
+
+        <br></br>
+        <br></br>
+          {/* <UpvoteButton /> */}
         </div>
       </div>
     );
