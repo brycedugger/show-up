@@ -59,10 +59,10 @@ class User extends Component {
                 <table className="table table-striped">
                     <tbody> {user} </tbody>
                 </table>
-                <EditProfileBtn title={
+                <EditProfileBtn email={
                         modalData.email
                     }
-                    msg={
+                    firstName={
                         modalData.firstname
                     }
                     saveModalDetails={
