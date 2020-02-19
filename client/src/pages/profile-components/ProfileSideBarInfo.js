@@ -23,7 +23,6 @@ class ProfileSideBarInfo extends Component {
                 <h5>Email</h5>
                 <p>{this.props.email}</p>
                 <br></br>
-                
                 </div>
         );
     }
