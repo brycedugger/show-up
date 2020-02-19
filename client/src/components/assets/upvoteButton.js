@@ -3,26 +3,27 @@ import Button from "react-bootstrap/Button";
 
 const eventList = [{
         id: 1,
-        event: ""
+        event: "Artist",
+        votes: 0
     },
 ]
 
 class UpvoteButton extends Component {
     handleEvent = e => console.log("Event was upvoted" + e);
     render() {
-        return eventList.map(upcomingEvent => <Vote key={upcomingEvent.id}
-            event={upcomingEvent.event} onVote={this.handleEvent} />);
+        return eventList.map(upcomingEvent => (
+        <Vote key={upcomingEvent.id} id={upcomingEvent.id} event={upcomingEvent.event} votes={upcomingEvent.votes} onVote={this.handleEvent} />
+        ));
     }
 }
 
-// Setting onVote to this.props.name so the event object will contain the empty event name component
 class Vote extends Component {
-    handleClick = e => this.props.onVote(this.props.event);
+    handleClick = e => this.props.onVote(this.props.id);
     render() {
         return (
             <div className="UpvoteButton">
                 {this.props.event}
-                <Button onClick={this.handleClick}>+</Button>
+                <Button variant="outline-success" onClick={this.handleClick}>+</Button> {this.props.votes}
             </div>
         );
     }
