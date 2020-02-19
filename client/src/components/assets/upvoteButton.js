@@ -52,7 +52,7 @@ class Vote extends Component {
     }
 }
 
-
+// ==== OLD VERSION OF UPVOTE BUTTON === 
 // function PostButton(props) {
 //     let style = {
 //         width: 24,
