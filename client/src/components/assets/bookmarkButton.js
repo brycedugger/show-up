@@ -17,3 +17,6 @@ class BookmarkButton extends Component {
 }
 
 export default BookmarkButton;
+
+// get user id from profile page
+// and the event id that will be a prop
