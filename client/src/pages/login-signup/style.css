@@ -1,0 +1,18 @@
+h1 {
+    font-family: 'Bangers', cursive;
+
+}
+
+.LoginContainer {
+    background-color: #ffa000;
+}
+
+a {
+    color: black;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #5e2445;
+
+}

@@ -6,6 +6,7 @@ import API from "../../utils/userAPI";
 
 import { Input } from "../../components/assets/form/Input";
 import { FormBtn } from "../../components/assets/form/FormBtn";
+import "./style.css";
 
 
 class SignupForm extends Component {
