@@ -14,5 +14,8 @@ a {
 a:hover{
     text-decoration: none;
     color: #5e2445;
+}
 
+.btn-link {
+    color: #e57373;
 }
