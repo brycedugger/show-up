@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import SmallCalendar from "../assets/smallCalendar/index.js";
-import { Navbar, Nav, Form, Button, FormControl } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import "./style.css";
 
 class MainNav extends Component {
@@ -17,17 +16,7 @@ class MainNav extends Component {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav id="searchSection" className="ml-auto">
-              <Form inline>
-                <FormControl
-                  type="text"
-                  placeholder="Search"
-                  className="searchBar mr-sm-2"
-                />
-                <Button variant="outline-success">Search</Button>
-              </Form>
-              <SmallCalendar />
-            </Nav>
+
             {!this.props.isLoggedIn ? (
               <Nav className="ml-auto">
                 <Nav.Link href="/login">Log In</Nav.Link>
