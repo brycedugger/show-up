@@ -23,7 +23,6 @@ class LoginForm extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-        console.log(this.state);
     };
 
     setRedirect = () => {
@@ -62,7 +61,7 @@ class LoginForm extends Component {
         }
         return (
 
-            <div class="form-container mb-5">
+            <div className="form-container mb-5">
                 <p className="name">Show Up!</p>
                 <p className="motto">Find a show, get out there, and show up!</p>
                 <div className="wrap bg-white p-3 mx-auto rounded">

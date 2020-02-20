@@ -17,6 +17,10 @@ export default {
   //   return axios.get("/api/events" + id);
   // },
 
+  createComment: (req) => {
+    return axios.post("/api/comment", req);
+  },
+
 
   // Saves a event to the database
   saveEvent: (

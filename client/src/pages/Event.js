@@ -1,16 +1,18 @@
 import React, { Component } from "react";
-import { CommentBox, CommentDisplay } from "../components/assets/Comment";
 import EventInfo from "../components/assets/EventInfo";
 import FullCalendar from "../components/assets/FullCalendar";
 import Container from "react-bootstrap/Container";
 import { Row, Col, Card } from "react-bootstrap";
+import CommentForm from "../components/assets/Comment/CommentForm";
+import CommentBlock from "../components/assets/Comment/CommentBlock";
 import API from "../utils/API";
-// import moment from "moment";
+import UserAPI from "../utils/userAPI";
 
 class Event extends Component {
   state = {
     event: {},
-    lastfm: {}
+    lastfm: {},
+    username: ""
   };
 
   componentDidMount() {
@@ -21,7 +23,22 @@ class Event extends Component {
         }, this.searchArtist);
       })
       .catch(err => console.log(err));
+
+    const token = localStorage.getItem("token");
+    this.handleGetUser(token);
   }
+
+  handleGetUser = token => {
+    UserAPI.getUser(token)
+      .then(res => {
+        this.setState({
+          username: res.data.username,
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  };
 
   searchArtist(artist) {
     artist = artist || this.state.event.headliner;
@@ -42,6 +59,27 @@ class Event extends Component {
       console.log("User logged in");
     } else {
       console.log("User not logged in");
+    }
+  }
+
+  displayComments() {
+    if (this.state.event.comments.length >= 1) {
+      return (
+        <React.Fragment>
+          {this.state.event.comments.map(comment => {
+            return (
+              <CommentBlock key={comment._id} {...comment} />
+            )
+          })}
+        </React.Fragment>
+      )
+    }
+    else {
+      return (
+        <React.Fragment>
+          <h3>No Comments</h3>
+        </React.Fragment>
+      )
     }
   }
 
@@ -75,10 +113,10 @@ class Event extends Component {
             {artist}
             {this.state.lastfm.artist && this.displayArtist()}
             <br></br>
-            <div id="commentBox">
-              <CommentBox onClick={() => this.test()} />
-              <br></br>
-              <CommentDisplay></CommentDisplay>
+            <div>
+              <CommentForm eventId={this.state.event._id} />
+              <hr></hr>
+              {this.state.event.comments && this.displayComments()}
             </div>
           </Col>
           <Col md={4}>

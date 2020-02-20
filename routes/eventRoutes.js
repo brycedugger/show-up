@@ -1,4 +1,5 @@
 const db = require("../models");
+var ObjectId = require('mongoose').Types.ObjectId;
 
 module.exports = (app) => {
     const apiKey = process.env.lastfm;
@@ -18,8 +19,10 @@ module.exports = (app) => {
             });
     });
 
+    // Get event by ID
     app.get("/api/events/:_id", (req, res) => {
         db.Event.findById({ _id: req.params._id })
+            .populate("comments")
             .then(events => {
                 res.status(200).json(events);
             })
@@ -54,6 +57,25 @@ module.exports = (app) => {
         .catch(err => {
             res.status(400).json(err);
         });
+    });
+
+    // Create a comment and then link that comment to an event
+    app.post("/api/comment", (req, res) => {        
+        let eventId = req.body.eventId;
+        let comment = {
+            username: req.body.username,
+            body: req.body.body
+        }
+
+        db.Comment.create(comment)
+            .then(dbComment => {
+                let commentId = dbComment._id;
+                return db.Event.findOneAndUpdate({_id: ObjectId(eventId)}, { $push: { comments: ObjectId(commentId) } });
+            })
+            .catch(err => {
+                res.status(400).json(err);
+            })
+
     });
 
     app.post("/api/artistInfo/:artist", (req, res) => {
