@@ -4,7 +4,7 @@ import API from "../../../utils/API";
 import { Form, Row } from "react-bootstrap";
 
 
-class CommentBlock extends Component {
+class CommentForm extends Component {
 
     state = {
         username: "bdugger",
@@ -17,7 +17,7 @@ class CommentBlock extends Component {
         });
     };
 
-    handleFormSubmit = event => {
+    handleFormSubmit = () => {
         if (this.state.user !== "" && this.state.comment !== "") {
             let req = {
                 eventId: this.props.eventId,
@@ -54,4 +54,4 @@ class CommentBlock extends Component {
     }
 }
 
-export default CommentBlock;
+export default CommentForm;
