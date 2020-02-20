@@ -7,7 +7,7 @@ class Footer extends Component {
         return (
             <div className="container">
                 <div className="container mb-5 mt-5">
-                    <p>Hello from Footer</p>
+                    {/* <p>Hello from Footer</p> */}
                 </div>
             </div>
         );

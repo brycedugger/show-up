@@ -20,8 +20,7 @@ class Event extends Component {
       .then(res => {
         this.setState({
           event: res.data
-        });
-        this.searchArtist(res.data.headliner);
+        }, this.searchArtist);
       })
       .catch(err => console.log(err));
 
@@ -42,18 +41,17 @@ class Event extends Component {
   };
 
   searchArtist(artist) {
+    artist = artist || this.state.event.headliner;
+    console.log("Artist name for searching", artist);
     API.artistSearch(artist, process.env.REACT_APP_LAST_FM)
       .then(res => {
-        //const data = res.data;
-        console.log(res.data);
-        console.log(res.data.artist.name);
-
+        console.log("We got an artist", res.data);
+        // console.log(res.data.artist.name);
         this.setState({
           lastfm: res.data
         });
       })
       .catch(err => console.log(err));
-    console.log(this.state.lastfm.artist.name);
   }
 
   checkLogin(loginStatus) {
@@ -85,7 +83,25 @@ class Event extends Component {
     }
   }
 
+  displayArtist() {
+    return (
+      <div>
+        <Card>
+          <Card.Img variant="top" src="/artistImagePlaceHolder.jpg" />
+          <Card.Body>
+            <h2>About Artist</h2>
+            <h3> {this.state.lastfm.artist.name}</h3>
+            <p>{this.state.lastfm.artist.bio.content}</p>
+
+          </Card.Body>
+        </Card>
+      </div>
+    );
+  }
+
   render() {
+    let artist;
+
     return (
       <Container>
         <Row>
@@ -94,15 +110,8 @@ class Event extends Component {
               <EventInfo {...this.state.event} />
             </div>
             <br></br>
-            <div>
-              <Card>
-                <Card.Img variant="top" src="/artistImagePlaceHolder.jpg" />
-                <Card.Body>
-                  <h2>About Artist</h2>
-                  {/* <p>Name: {this.state.lastfm.artist.name}</p> */}
-                </Card.Body>
-              </Card>
-            </div>
+            {artist}
+            {this.state.lastfm.artist && this.displayArtist()}
             <br></br>
             <div>
               <CommentForm eventId={this.state.event._id} />
