@@ -11,7 +11,7 @@ import UserAPI from "../utils/userAPI";
 class Event extends Component {
   state = {
     event: {},
-    lastfm: [],
+    lastfm: {},
     username: ""
   };
 
