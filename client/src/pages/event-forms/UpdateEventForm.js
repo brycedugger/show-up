@@ -36,13 +36,13 @@ class UpdateEventForm extends Component {
     };
 
     componentDidMount() {
-        this.getEvent();
+        this.getEvent(this.props.match.params.id);
     }
 
-    getEvent = () => {
+    getEvent = (eventId) => {
         //this needs to be updated so that stephanie's code has a _id
         //param loaded with the button
-        API.getOneEvent("5e4246534a4a493e84f73da8")
+        API.getOneEvent(eventId)
             .then(res => {
                 const data = res.data
                 // console.log("data" + (JSON.stringify(data)))
