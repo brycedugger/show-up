@@ -63,36 +63,22 @@ module.exports = (app, jwt) => {
     // PUT ROUTES
     //------------------------------------------------------------------
 
-    app.put("/api/user/:_id", verifyToken, (req, res) => {
-        jwt.verify(req.token, secret, (err, token) => {
-            console.log("routes token" + JSON.stringify(token))
+    app.put("/api/user/:_id", (req, res) => {
 
-            if (err) {
-                res.status(403).json({ error: 'Token is invalid.' });
-            } else {
-                console.log("token put route " + (JSON.stringify(token)))
-                db.User.findByIdAndUpdate(
-                    { _id: token.user._id },
-                    { $push: { created: req.params._id } },
-                    { useFindAndModify: false }
-                )
-                    .then(event => {
-                        res.status(200).json(event);
-
-                        // console.log("success")
-                        // res.status(200).json({
-                        //     success:true,
-                        //     redirectUrl: "/profile"
-                        // });
-
-                    })
-                    .catch(err => {
-                        res.status(400).json({ error: err });
-                    });
-            }
-        });
-    })
-};
+        db.User.findByIdAndUpdate(
+            { _id: req.body.userId},
+            { $push: { created: req.params._id } },
+            { useFindAndModify: false }
+        )
+            .then(event => {
+                res.status(200).json(event);
+            })
+            .catch(err => {
+                res.status(400).json({ error: err });
+            });
+            
+    });
+}
 
 // DELETE ROUTES
 //------------------------------------------------------------------
