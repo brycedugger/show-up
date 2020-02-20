@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 
 const eventList = [{
         id: 1,
-        event: "Artist",
+        event: "",
         votes: 0
     },
 ]

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import UpvoteButton from "../upvoteButton";
 import "./style.css";
 
 class EventCard extends Component {
@@ -21,7 +22,7 @@ class EventCard extends Component {
                     <ListGroupItem>Date: {this.props.date}</ListGroupItem>
                 </ListGroup>
                 <Card.Footer>
-                    {/* upvote button */}
+                    <UpvoteButton />
                     {/* favorite button */}
                 </Card.Footer>
             </Card>

@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import ProfileSideBarInfo from "../pages/profile-components/ProfileSideBarInfo";
-import EditProfileBtn from "../pages/profile-components/EditProfileBtn";
 import UserAPI from "../utils/userAPI";
 import EventCard from "../components/assets/EventCard/index";
 import { Row, Col } from "react-bootstrap";
-import UpvoteButton from "../components/assets/upvoteButton";
 
 class Profile extends Component {
   state = {
@@ -76,11 +74,6 @@ class ProfileSideBar extends Component {
           username={this.props.username}
           email={this.props.email}
           />
-          <EditProfileBtn />
-
-        <br></br>
-        <br></br>
-          <UpvoteButton />
         </div>
       </div>
     );
@@ -93,7 +86,7 @@ class ProfileBookmarkContent extends Component {
       <div className="container">
         <div className="mainStyle">
           <h2>Your Bookmarked Events</h2>
-          <EventCard />
+          
         </div>
       </div>
     );
@@ -106,6 +99,7 @@ class ProfileCreatedEventContent extends Component {
       <div className="container">
         <div className="createdEventsStyle">
           <h2>Your Created Events</h2>
+          
         </div>
       </div>
     );
