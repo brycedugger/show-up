@@ -34,7 +34,6 @@ module.exports = (app) => {
 
     // route to create a event in the DB
     app.post("/api/events/", (req, res) => {
-        console.log("req.params" + (JSON.stringify(req.body)))
 
         const {
             title, headliner, openers,
@@ -50,10 +49,7 @@ module.exports = (app) => {
             )
         .then(savedEvent => {
             console.log("savedEvent: " + savedEvent)
-            res.status(200).json({
-                success:true,
-                redirectUrl: "/profile"
-            });
+            res.status(200).json(savedEvent);
         })
         .catch(err => {
             res.status(400).json(err);

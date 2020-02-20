@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const db = require("../models");
+require('dotenv').config();
+const db_name = process.env.DB_NAME;
 
 // This file empties the Events collection and inserts the events below
 
-mongoose.connect(
-  process.env.MONGODB_URI ||
-  "mongodb://localhost/show-up", {
+mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/${db_name}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });

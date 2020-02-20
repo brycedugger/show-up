@@ -1,10 +1,5 @@
 import axios from "axios";
 
-//Script to call our API's via functions in our components.
-
-//Route to which database shall be revised if using more than one db
-//not called events.
-
 export default {
 
   // Gets all events
