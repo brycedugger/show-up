@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ProfileSideBarInfo from "../pages/profile-components/ProfileSideBarInfo";
 import UserAPI from "../utils/userAPI";
-import EventCard from "../components/assets/EventCard/index";
+import CreatedEventCard from "../components/assets/CreatedEventCard";
+import EventCard from "../components/assets/EventCard";
 import { Row, Col } from "react-bootstrap";
 
 class Profile extends Component {
@@ -19,88 +20,99 @@ class Profile extends Component {
     this.handleGetUser(token);
   }
 
-handleGetUser = token => {
-  UserAPI.getUser(token)
-  .then(res => {
-    this.setState({
-      firstName: res.data.firstName,
-      lastName: res.data.lastName,
-      username: res.data.username,
-      email: res.data.email,
-      bookmarkedEvents: res.data.saved,
-      createdEvents: res.data.created
-    });
-  })
-  .catch(err => {
-    console.log(err);
-  })
+  handleGetUser = token => {
+    UserAPI.getUser(token)
+      .then(res => {
+        this.setState({
+          firstName: res.data.firstName,
+          lastName: res.data.lastName,
+          username: res.data.username,
+          email: res.data.email,
+          bookmarkedEvents: res.data.saved,
+          createdEvents: res.data.created
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      })
     // console.log(this.data.state);
-};
+  };
+
+  displayBookmarks = () => {
+    if (this.state.bookmarkedEvents.length >= 1) {
+      return (
+        <React.Fragment>
+          {this.state.bookmarkedEvents.map(event => {
+            return (
+              <EventCard key={event._id} {...event} />
+            )
+          })}
+        </React.Fragment>
+      )
+    }
+    else {
+      return (
+        <React.Fragment>
+          <h5>No Bookmarked Events</h5>
+        </React.Fragment>
+      )
+    }
+  }
+
+  displayCreated = () => {
+    if (this.state.createdEvents.length >= 1) {
+      return (
+        <React.Fragment>
+          {this.state.createdEvents.map(event => {
+            return (
+              <CreatedEventCard key={event._id} {...event} />
+            )
+          })}
+        </React.Fragment>
+      )
+    }
+    else {
+      return (
+        <React.Fragment>
+          <h5>No Created Events</h5>
+        </React.Fragment>
+      )
+    }
+  }
 
   render() {
     return (
       <div className="profileContainer">
         <Row>
           <Col xs={6} md={4}>
-            <ProfileSideBar 
-            firstName={this.state.firstName} 
-            lastName={this.state.lastName}
-            username={this.state.username}
-            email={this.state.email}
-            />
+            <div className="container">
+              <div className="sideBarStyle">
+                <ProfileSideBarInfo
+                  firstName={this.state.firstName}
+                  lastName={this.state.lastName}
+                  username={this.state.username}
+                  email={this.state.email}
+                />
+              </div>
+            </div>
           </Col>
           <Col>
-            <ProfileBookmarkContent />
-            
+            <div className="container">
+              <div className="mainStyle">
+                <h2>Your Bookmarked Events</h2>
+                {this.state.bookmarkedEvents && this.displayBookmarks()}
+              </div>
+            </div>
           </Col>
           <Col md={{ span: 6, offset: 4 }}>
-            <ProfileCreatedEventContent />
-            
+            <div className="container">
+              <div className="createdEventsStyle">
+                <h2>Your Created Events</h2>
+                {this.state.createdEvents && this.displayCreated()}
+              </div>
+            </div>
           </Col>
         </Row>
-      </div>
-    );
-  }
-}
-
-class ProfileSideBar extends Component {
-  render() {
-    return (
-      <div className="container">
-        <div className="sideBarStyle">
-          <ProfileSideBarInfo 
-          firstName={this.props.firstName}
-          lastName={this.props.lastName}
-          username={this.props.username}
-          email={this.props.email}
-          />
-        </div>
-      </div>
-    );
-  }
-}
-
-class ProfileBookmarkContent extends Component {
-  render() {
-    return (
-      <div className="container">
-        <div className="mainStyle">
-          <h2>Your Bookmarked Events</h2>
-          
-        </div>
-      </div>
-    );
-  }
-}
-
-class ProfileCreatedEventContent extends Component {
-  render() {
-    return (
-      <div className="container">
-        <div className="createdEventsStyle">
-          <h2>Your Created Events</h2>
-          
-        </div>
       </div>
     );
   }
