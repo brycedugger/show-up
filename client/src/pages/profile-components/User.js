@@ -20,14 +20,14 @@ class User extends Component {
     }
 
     replaceModalItem(index) {
-        this.setState({requiredItem: index});
+        this.setState({ requiredItem: index });
     }
 
     saveModalDetails(item) {
         const requiredItem = this.state.requiredItem;
         let initialUserInfo = this.state.user;
         initialUserInfo[requiredItem] = item;
-        this.setState({user: initialUserInfo});
+        this.setState({ user: initialUserInfo });
     }
 
     render() {
@@ -43,10 +43,10 @@ class User extends Component {
                         item.firstName
                     }</td>
                     <td>
-                        <button className="primary" data-toggle="modal"
+                        <Button variant="outline-success" data-toggle="modal"
                             onClick={
                                 () => this.replaceModalItem(index)
-                        }>Edit Profile</button>
+                        }>Edit Profile</Button>
                         {" "} </td>
                 </tr>
             )

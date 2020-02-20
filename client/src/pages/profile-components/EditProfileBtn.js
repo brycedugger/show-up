@@ -53,7 +53,6 @@ function EditProfileBtn() {
                             <Form.Control type="text" placeholder="New Password" /> 
                         </Col>
                     </Form.Group>
-
                 </Modal.Body>
 
                 <Modal.Footer>
