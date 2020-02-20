@@ -3,44 +3,6 @@ import {Button, Modal, Form, Row, Col } from 'react-bootstrap';
 // import User from "../../pages/profile-components/User";
 import "./style.css";
 
-class ModalFeature extends Component {
-    constructor(props) {
-        super(props);
-        this.handleSave = this.handleSave.bind(this);
-        this.state = {
-            email: "",
-            firstName: "",
-            lastName: "",
-            password: ""
-        }
-    }
-    // Called when the component may be receiving new props. React may call this even if props have not changed,
-    // so be sure to compare new and existing props if you only want to handle changes.
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            email: nextProps.email,
-            firstName: nextProps.firstName, 
-            lastName: nextProps.lastName,
-            password: nextProps.password,
-        });
-    }
-    emailHandler(e) {
-        this.setState({ email: e.target.value });
-    }
-    firstNameHandler(e) {
-        this.setState({ firstName: e.target.value });
-    }
-    lastNameHandler(e) {
-        this.setState({ lastName: e.target.value });
-    }
-    passwordHandler(e) {
-        this.setState({ password: e.target.value });
-    }
-    handleSave() {
-        const userInfo = this.state;
-        this.props.saveModalDetails(userInfo)
-    }
-}
 function EditProfileBtn() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -88,7 +50,7 @@ function EditProfileBtn() {
                         controlId="formPlaintext">
                         <Form.Label column sm="2">Password</Form.Label>
                         <Col sm="10">
-                            <Form.Control type="text" placeholder="Current Password" /> 
+                            <Form.Control type="text" placeholder="New Password" /> 
                         </Col>
                     </Form.Group>
 
@@ -106,6 +68,45 @@ function EditProfileBtn() {
             </Modal>
         </>
     );
+}
+
+class ModalFeature extends Component {
+  constructor(props) {
+      super(props);
+      this.handleSave = this.handleSave.bind(this);
+      this.state = {
+          email: "",
+          firstName: "",
+          lastName: "",
+          password: ""
+      }
+  }
+  // Called when the component may be receiving new props. React may call this even if props have not changed,
+  // so be sure to compare new and existing props if you only want to handle changes.
+  componentWillReceiveProps(nextProps) {
+      this.setState({
+          email: nextProps.email,
+          firstName: nextProps.firstName, 
+          lastName: nextProps.lastName,
+          password: nextProps.password,
+      });
+  }
+  emailHandler(e) {
+      this.setState({ email: e.target.value });
+  }
+  firstNameHandler(e) {
+      this.setState({ firstName: e.target.value });
+  }
+  lastNameHandler(e) {
+      this.setState({ lastName: e.target.value });
+  }
+  passwordHandler(e) {
+      this.setState({ password: e.target.value });
+  }
+  handleSave() {
+      const userInfo = this.state;
+      this.props.saveModalDetails(userInfo)
+  }
 }
 // // render (<EditProfileBtn />);
 export default EditProfileBtn;
