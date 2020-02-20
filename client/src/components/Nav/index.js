@@ -1,68 +1,40 @@
 import React, { Component } from "react";
-import SmallCalendar from "../assets/smallCalendar/index.js";
-import Button from "react-bootstrap/Button";
+import { Navbar, Nav } from "react-bootstrap";
+import "./style.css";
 
-class Nav extends Component {
-
+class MainNav extends Component {
   clearTokenFromLS() {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
   }
 
-render() {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a className="navbar-brand" href="/">
-        Show Up
-      </a>
-      <ul className="navbar-nav">
-        <form className="form-inline">
-          <div className="md-form my-0">
-            <input
-              type="search"
-              className="form-control ds-input"
-              id="search-input"
-              placeholder="Search..."
-            />
-            <Button variant="secondary" type="submit">
-              Search
-            </Button>
-          </div>
-        </form>
-        <li className="nav-item">
-          <a className="navbar-brand" href="/newevent">
-            New Event
-          </a>
-        </li>
-        <SmallCalendar />
+  render() {
+    return (
+      <React.Fragment>
+        <Navbar className="navbar" expand="lg">
+          <Navbar.Brand href="/" className="navBrand">
+            Show Up
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
 
-        {/* navlinks */}
-
-          {!this.props.isLoggedIn ? (
-            <li className="nav-item ml-auto">
-              <a className="navbar-brand" href="/profile">
-                Profile
-              </a>
-            </li>
-          ) : (
-            <React.Fragment>
-              <li className="nav-item ml-auto">
-                <a className="navbar-brand" href="/profile">
-                  Profile
-                </a>
-              </li>
-
-              <li className="nav-item ml-auto">
-                <a className='navbar-brand' href='/' onClick={this.clearTokenFromLS}>
+            {!this.props.isLoggedIn ? (
+              <Nav className="ml-auto">
+                <Nav.Link href="/login">Log In</Nav.Link>
+              </Nav>
+            ) : (
+              <Nav className="ml-auto">
+                <Nav.Link href="/newevent">Post New Event</Nav.Link>
+                <Nav.Link href="/profile">Profile</Nav.Link>
+                <Nav.Link href="/" onClick={this.clearTokenFromLS}>
                   Logout
-                </a>
-              </li>
-            </React.Fragment>
-          )}
-
-      </ul>
-    </nav>
-  );
+                </Nav.Link>
+              </Nav>
+            )}
+          </Navbar.Collapse>
+        </Navbar>
+      </React.Fragment>
+    );
+  }
 }
-}
 
-export default Nav;
+export default MainNav;
