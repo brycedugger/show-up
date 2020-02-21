@@ -1,6 +1,7 @@
 const db = require("../models");
 const secret = process.env.SECRET_KEY;
 const verifyToken = require('../config/middleware/verifyToken');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 module.exports = (app, jwt) => {
 
@@ -78,7 +79,20 @@ module.exports = (app, jwt) => {
             });
             
     });
-}
 
-// DELETE ROUTES
-//------------------------------------------------------------------
+    // Add event to user's bookmarks
+    app.put("/api/bookmark", (req, res) => {
+        let username = req.body.username;
+        let eventId = req.body.eventId;
+
+        db.User.findOneAndUpdate(
+            { "username": username },
+            { $push: { saved: ObjectId(eventId) } })
+            .then(user => {
+                res.status(200).json(user);
+            })
+            .catch(err => {
+                res.status(200).json(err);
+            });
+    });
+}

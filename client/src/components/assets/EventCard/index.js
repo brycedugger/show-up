@@ -26,7 +26,7 @@ class EventCard extends Component {
                 </ListGroup>
                 <Card.Footer>
                     <UpvoteButton />
-                    <BookmarkButton />
+                    <BookmarkButton username={this.props.username} eventId={this.props._id}></BookmarkButton>
                 </Card.Footer>
             </Card >
 

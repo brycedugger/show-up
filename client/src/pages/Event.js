@@ -107,7 +107,7 @@ class Event extends Component {
         <Row>
           <Col>
             <div>
-              <EventInfo {...this.state.event} />
+              <EventInfo username={this.state.username} eventId={this.state.event._id} {...this.state.event} />
             </div>
             <br></br>
             {artist}
