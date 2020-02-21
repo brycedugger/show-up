@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import UpvoteButton from "../upvoteButton";
 import "./style.css";
 
 class CreatedEventCard extends Component {
 
-    eventRoute = "/update/" + this.props._id;
+    eventRoute = "/event/" + this.props._id;
 
     render() {
         return (
@@ -22,6 +23,9 @@ class CreatedEventCard extends Component {
                     <ListGroupItem>Venue: {this.props.venue}</ListGroupItem>
                     <ListGroupItem>Date: {this.props.date}</ListGroupItem>
                 </ListGroup>
+                <Card.Footer>
+                    <UpvoteButton />
+                </Card.Footer>
             </Card>
         )
     }
