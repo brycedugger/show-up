@@ -21,6 +21,10 @@ export default {
     return axios.post("/api/comment", req);
   },
 
+// Bookmarking event to save event of interest to the user page
+  bookmarkEvent: (req) => {
+    return axios.put("/api/bookmark", req);
+  },
 
   // Saves a event to the database
   saveEvent: (

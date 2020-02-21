@@ -1,17 +1,12 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
+import API from "../utils/API";
+import UserAPI from "../utils/userAPI";
 
 class BookmarkButton extends Component {
   render() {
     return (
-      <Button
-        variant="outline-success"
-        // onClick={() => {
-        //   this.props.onClickFunc();
-        // }}
-      >
-        Bookmark
-      </Button>
+      <Button variant="outline-success">Bookmark</Button>
     );
   }
 }
