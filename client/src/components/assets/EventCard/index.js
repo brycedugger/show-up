@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import UpvoteButton from "../upvoteButton";
+import BookmarkButton from "../bookmarkButton";
 import "./style.css";
 
 class EventCard extends Component {
@@ -10,9 +11,11 @@ class EventCard extends Component {
     render() {
         return (
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={this.props.image} alt={this.props.headliner} />
+                <a style={{ cursor: 'pointer' }} href={this.eventRoute}>
+                    <Card.Img variant="top" src={this.props.image} alt={this.props.headliner} />
+                </a>
                 <Card.Body>
-                    <Card.Title><a href={this.eventRoute}>{this.props.title}</a></Card.Title>
+                    <Card.Title>{this.props.title}</Card.Title>
                     <Card.Text>{this.props.description}</Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
@@ -23,9 +26,10 @@ class EventCard extends Component {
                 </ListGroup>
                 <Card.Footer>
                     <UpvoteButton />
-                    {/* favorite button */}
+                    <BookmarkButton />
                 </Card.Footer>
-            </Card>
+            </Card >
+
         )
     }
 
