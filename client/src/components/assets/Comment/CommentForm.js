@@ -7,7 +7,6 @@ import { Form, Row } from "react-bootstrap";
 class CommentForm extends Component {
 
     state = {
-        username: "bdugger",
         comment: ""
     }
 
@@ -18,18 +17,17 @@ class CommentForm extends Component {
     };
 
     handleFormSubmit = () => {
-        if (this.state.user !== "" && this.state.comment !== "") {
+        if (this.state.comment !== "") {
             let req = {
                 eventId: this.props.eventId,
-                username: this.state.username,
+                username: this.props.username,
                 body: this.state.comment
             }
 
             API.createComment(req)
                 .then(res => {
                     console.log(res);
-                }
-                )
+                })
                 .catch(err => {
                     console.log(err);
                 });

@@ -114,7 +114,7 @@ class Event extends Component {
             {this.state.lastfm.artist && this.displayArtist()}
             <br></br>
             <div>
-              <CommentForm eventId={this.state.event._id} />
+              <CommentForm username={this.state.username} eventId={this.state.event._id} />
               <hr></hr>
               {this.state.event.comments && this.displayComments()}
             </div>
