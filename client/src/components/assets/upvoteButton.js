@@ -44,10 +44,7 @@ class Vote extends Component {
     handleClick = () => this.props.onVote(this.props.id);
     render() {
         return (
-            <div className="UpvoteButton">
-                {this.props.event}
                 <Button variant="outline-success" onClick={this.handleClick}> ^ {this.props.votes} </Button> 
-            </div>
         );
     }
 }

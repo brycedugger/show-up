@@ -126,11 +126,12 @@ render() {
 
     return (
         <div className="wrap bg-white p-3 mx-auto rounded">
-            <p className="cardType"></p>
+            <h1>Post A New Event</h1>
+            <br></br>
             <form>
 
                 <Input
-                    label={"Title (optional):"}
+                    label={"Event Title (optional):"}
                     name="title"
                     value={this.state.title}
                     onChange={this.handleInputChange}
