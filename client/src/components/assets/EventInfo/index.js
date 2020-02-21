@@ -14,7 +14,7 @@ class EventInfo extends Component {
           />
           <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>
-            <BookmarkButton></BookmarkButton>
+            <BookmarkButton username={this.props.username} eventId={this.props.eventId}></BookmarkButton>
             <ListGroup variant="flush">
               <ListGroup.Item>Headliner: {this.props.headliner}</ListGroup.Item>
               <ListGroup.Item>Opener: {this.props.openers}</ListGroup.Item>

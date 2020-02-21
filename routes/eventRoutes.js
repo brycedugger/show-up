@@ -127,21 +127,6 @@ module.exports = (app) => {
             });
     });
 
-    app.put("/api/bookmark", (req, res) => {
-        let userId = req.body.userId;
-        let eventId = req.body.eventId;
-
-        db.User.findOneAndUpdate(
-            { _id: ObjectId(userId) },
-            { $push: { saved: ObjectId(eventId) } })
-            .then(user => {
-                res.status(200).json(user);
-            })
-            .catch(err => {
-                res.status(200).json(err);
-            });
-    });
-
 
     // DELETE ROUTES
     //------------------------------------------------------------------
