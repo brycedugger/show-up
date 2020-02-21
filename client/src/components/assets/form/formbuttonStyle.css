@@ -1,4 +1,6 @@
 .formButton {
     background-color: #5e2445;
     color: #ffa000;
+    padding: 9px;
+    border-radius: 10px;
 }
