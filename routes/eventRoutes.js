@@ -46,21 +46,23 @@ module.exports = (app) => {
         } = req.body;
 
         db.Event.create(
-            {title, headliner, openers,
-            date, time, venue, address,
-            genre, description, image}
-            )
-        .then(savedEvent => {
-            console.log("savedEvent: " + savedEvent)
-            res.status(200).json(savedEvent);
-        })
-        .catch(err => {
-            res.status(400).json(err);
-        });
+            {
+                title, headliner, openers,
+                date, time, venue, address,
+                genre, description, image
+            }
+        )
+            .then(savedEvent => {
+                console.log("savedEvent: " + savedEvent)
+                res.status(200).json(savedEvent);
+            })
+            .catch(err => {
+                res.status(400).json(err);
+            });
     });
 
     // Create a comment and then link that comment to an event
-    app.post("/api/comment", (req, res) => {        
+    app.post("/api/comment", (req, res) => {
         let eventId = req.body.eventId;
         let comment = {
             username: req.body.username,
@@ -70,7 +72,7 @@ module.exports = (app) => {
         db.Comment.create(comment)
             .then(dbComment => {
                 let commentId = dbComment._id;
-                return db.Event.findOneAndUpdate({_id: ObjectId(eventId)}, { $push: { comments: ObjectId(commentId) } });
+                return db.Event.findOneAndUpdate({ _id: ObjectId(eventId) }, { $push: { comments: ObjectId(commentId) } });
             })
             .catch(err => {
                 res.status(400).json(err);
@@ -125,6 +127,21 @@ module.exports = (app) => {
             });
     });
 
+    app.put("/api/bookmark", (req, res) => {
+        let userId = req.body.userId;
+        let eventId = req.body.eventId;
+
+        db.User.findOneAndUpdate(
+            { _id: ObjectId(userId) },
+            { $push: { saved: ObjectId(eventId) } })
+            .then(user => {
+                res.status(200).json(user);
+            })
+            .catch(err => {
+                res.status(200).json(err);
+            });
+    });
+
 
     // DELETE ROUTES
     //------------------------------------------------------------------
@@ -145,23 +162,23 @@ module.exports = (app) => {
     });
 
 
-  //------------------------------------------------------------------
-//   app.post("/api/artistInfo/:artist", (req, res) => {
-//     // let artist = req.body.artistName;
-//     const queryURL =
-//       "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=";
-//     queryURL += artist;
-//     queryURL += "&api_key=";
-//     queryURL += apiKey;
-//     queryURL += "&format=json";
+    //------------------------------------------------------------------
+    //   app.post("/api/artistInfo/:artist", (req, res) => {
+    //     // let artist = req.body.artistName;
+    //     const queryURL =
+    //       "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=";
+    //     queryURL += artist;
+    //     queryURL += "&api_key=";
+    //     queryURL += apiKey;
+    //     queryURL += "&format=json";
 
-//     console.log(queryURL);
+    //     console.log(queryURL);
 
-//     axios.get(queryURL)
-//     .then(function(response) {
-//       console.log(response);
-//       res.json(response);
-//     })
-//     .catch(err => console.log(err));
-//   });
+    //     axios.get(queryURL)
+    //     .then(function(response) {
+    //       console.log(response);
+    //       res.json(response);
+    //     })
+    //     .catch(err => console.log(err));
+    //   });
 };

@@ -6,6 +6,8 @@ import API from "../../utils/userAPI";
 
 import { Input } from "../../components/assets/form/Input";
 import { FormBtn } from "../../components/assets/form/FormBtn";
+import { Jumbotron, Row, Col } from 'react-bootstrap'
+import "./style.css";
 
 
 class LoginForm extends Component {
@@ -60,13 +62,17 @@ class LoginForm extends Component {
             return <Redirect to="/" />
         }
         return (
+            <Row className="justify-content-center">
+            <Col xs lg="8">
+
+            <Jumbotron className="LoginContainer">
 
             <div className="form-container mb-5">
-                <p className="name">Show Up!</p>
-                <p className="motto">Find a show, get out there, and show up!</p>
+                <h1 className="name text-center"><a  href="/">Show Up!</a></h1>
+                <p className="motto text-center">Find a show, get out there, and show up!</p>
                 <div className="wrap bg-white p-3 mx-auto rounded">
                     <p className="cardType"></p>
-                    <form>
+                    <form className="justify-content-center">
 
                         <Input
                             label={"Username:"}
@@ -89,11 +95,14 @@ class LoginForm extends Component {
                         >
                             Login
                         </FormBtn>
-
+                        <br></br>
                         <a href="/signup" className="btn-link">New to Show Up? Sign-up now.</a>
                     </form>
                 </div>
             </div>
+            </Jumbotron>
+            </Col>
+            </Row>
         );
     }
 }

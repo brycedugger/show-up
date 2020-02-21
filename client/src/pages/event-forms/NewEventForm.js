@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-// import { Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 
 import API from "../../utils/API";
 import UserAPI from "../../utils/userAPI";
@@ -28,7 +28,7 @@ class NewEventForm extends Component {
         genre: "",
         description: "",
         image: "",
-        token: "",
+        userId: "",
 
         redirect: false
 
@@ -37,9 +37,22 @@ class NewEventForm extends Component {
 
     componentDidMount() {
 
-        this.setState({ token: localStorage.getItem("token") });
+        const token = localStorage.getItem("token");
+        this.handleGetUser(token);
 
     }
+
+    handleGetUser = token => {
+        UserAPI.getUser(token)
+        .then(res => {
+          this.setState({
+            userId: res.data._id
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      };
 
     handleVenueInputChange = e => {
         this.setState({
@@ -60,13 +73,14 @@ class NewEventForm extends Component {
 
     addEventToUsersDb = data => {
         UserAPI.createdEvent({
-            token: this.state.token,
+            userId: this.state.userId,
             _id: data._id
         })
             .then(
                 res => {
-                    // this.props.history.push(res.data.redirectUrl);
-                    alert("success")
+                    if (res.status === 200) {
+                        this.setRedirect();
+                    }
                 })
             .catch (err => console.log(err));
     }
@@ -107,6 +121,7 @@ class NewEventForm extends Component {
 render() {
 
     if (this.state.redirect === true) {
+        return <Redirect to="/profile" />
     }
 
     return (

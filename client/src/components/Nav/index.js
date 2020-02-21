@@ -16,9 +16,10 @@ class MainNav extends Component {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-
             {!this.props.isLoggedIn ? (
               <Nav className="ml-auto">
+                <Nav.Link href="/signup">Sign Up</Nav.Link>
+
                 <Nav.Link href="/login">Log In</Nav.Link>
               </Nav>
             ) : (
