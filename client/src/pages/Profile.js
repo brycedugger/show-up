@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ProfileSideBarInfo from "../pages/profile-components/ProfileSideBarInfo";
 import UserAPI from "../utils/userAPI";
 import CreatedEventCard from "../components/assets/CreatedEventCard";
-import EventCard from "../components/assets/EventCard";
+import BookmarkedEventCard from "../components/assets/BookmarkedEventCard";
 import { Row, Col } from "react-bootstrap";
 
 class Profile extends Component {
@@ -43,7 +43,7 @@ class Profile extends Component {
         <React.Fragment>
           {this.state.bookmarkedEvents.map(event => {
             return (
-              <EventCard key={event._id} {...event} />
+              <BookmarkedEventCard key={event._id} {...event} />
             )
           })}
         </React.Fragment>
