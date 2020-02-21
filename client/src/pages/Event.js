@@ -120,7 +120,7 @@ class Event extends Component {
             </div>
           </Col>
           <Col md={4}>
-            <FullCalendar />
+            <FullCalendar {...this.state.event}/>
           </Col>
         </Row>
       </Container>

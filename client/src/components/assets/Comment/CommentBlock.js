@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
+import Moment from 'react-moment';
+
 
 class CommentBlock extends Component {
 
@@ -11,7 +13,7 @@ class CommentBlock extends Component {
                     <p>{this.props.body}</p>
                 </div>
                 <div className="media-footer">
-                    <p>{this.props.createdAt}</p>
+                <Moment format="YYYY/MM/DD HH:mm:ss">{this.props.createdAt}</Moment>
                 </div>
             </li>
         )
