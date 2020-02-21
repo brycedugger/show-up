@@ -1,9 +1,8 @@
 h1 {
     font-family: 'Bangers', cursive;
-
 }
 
-.LoginContainer {
+.LoginContainer, .SignupContainer {
     background-color: #ffa000;
 }
 
@@ -14,5 +13,8 @@ a {
 a:hover{
     text-decoration: none;
     color: #5e2445;
+}
 
+.btn-link {
+    color: #e57373;
 }
