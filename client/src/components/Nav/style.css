@@ -1,6 +1,7 @@
 .navbar {
     background-color: #ffa000;
 }
+
 .navBrand {
     color: #5e2445;
     font-family: 'Bangers', cursive;
@@ -10,3 +11,8 @@
 .calender {
     padding-left: 10px;
 }
+
+/* .navBrand:hover {
+    text-decoration: none;
+    color: #5e2445;
+} */
