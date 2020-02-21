@@ -1,7 +1,9 @@
 import React, {Component} from "react";
 import Button from "react-bootstrap/Button";
-import API from "../utils/API";
-import UserAPI from "../utils/userAPI";
+import { Redirect } from "react-router-dom";
+// import API from "../utils/API";
+import UserAPI from "../../utils/userAPI";
+
 
 class BookmarkButton extends Component {
 
@@ -37,7 +39,7 @@ class BookmarkButton extends Component {
         }
 
         return (
-            <Button variant="outline-success">Bookmark</Button>
+            <Button variant="outline-success" {...this.props.eventId} ><i class="fa fa-bookmark" aria-hidden="true"></i></Button>
         );
     }
 }
