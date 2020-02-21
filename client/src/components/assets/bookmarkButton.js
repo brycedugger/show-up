@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import Button from "react-bootstrap/Button";
 import { Redirect } from "react-router-dom";
-// import API from "../utils/API";
 import UserAPI from "../../utils/userAPI";
 
 
@@ -45,7 +44,3 @@ class BookmarkButton extends Component {
 }
 
 export default BookmarkButton;
-
-
-// get user id from profile page
-// and the event id that will be a prop
