@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+
+import { FormBtn } from "../../components/assets/form/FormBtn";
+
 import "./style.css";
 
 class ProfileSideBarInfo extends Component {
@@ -23,7 +26,14 @@ class ProfileSideBarInfo extends Component {
                 <h5>Email</h5>
                 <p>{this.props.email}</p>
                 <br></br>
-                </div>
+                
+            <FormBtn
+                onClick={this.handleEditUser}
+            >
+                Edit Info
+            </FormBtn>
+            
+            </div>
         );
     }
 }

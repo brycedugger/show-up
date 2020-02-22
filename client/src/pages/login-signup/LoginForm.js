@@ -6,7 +6,7 @@ import API from "../../utils/userAPI";
 
 import { Input } from "../../components/assets/form/Input";
 import { FormBtn } from "../../components/assets/form/FormBtn";
-import { Jumbotron, Row, Col } from 'react-bootstrap'
+import { Form, Jumbotron, Row, Col } from 'react-bootstrap'
 import "./style.css";
 
 
@@ -82,13 +82,16 @@ class LoginForm extends Component {
                             placeholder="Username"
                         />
 
-                        <Input
-                            label={"Password:"}
-                            name="password"
-                            value={this.state.password}
-                            onChange={this.handleInputChange}
-                            placeholder="Password"
-                        />
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control 
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                value={this.state.password}
+                                onChange={this.handleInputChange}
+                            />
+                        </Form.Group>
 
                         <FormBtn
                             onClick={this.handleFormSubmit}

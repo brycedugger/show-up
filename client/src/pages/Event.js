@@ -87,7 +87,6 @@ class Event extends Component {
     return (
       <div>
         <Card>
-          <Card.Img variant="top" src="/artistImagePlaceHolder.jpg" />
           <Card.Body>
             <h2>About Artist</h2>
             <h3> {this.state.lastfm.artist.name}</h3>
@@ -107,14 +106,21 @@ class Event extends Component {
         <Row>
           <Col>
             <div>
-              <EventInfo username={this.state.username} eventId={this.state.event._id} {...this.state.event} />
+              <EventInfo 
+                username={this.state.username}
+                eventId={this.state.event._id}
+                {...this.state.event}
+              />
             </div>
             <br></br>
             {artist}
             {this.state.lastfm.artist && this.displayArtist()}
             <br></br>
             <div>
-              <CommentForm username={this.state.username} eventId={this.state.event._id} />
+              <CommentForm 
+                username={this.state.username}
+                eventId={this.state.event._id}
+              />
               <hr></hr>
               {this.state.event.comments && this.displayComments()}
             </div>

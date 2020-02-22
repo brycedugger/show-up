@@ -143,7 +143,8 @@ class UpdateEventForm extends Component {
         }
         return (
             <div className="wrap bg-white p-3 mx-auto rounded">
-                <p className="cardType"></p>
+            <h1>Update Your Event</h1>
+            <br></br>
                 <form>
 
                     <Input

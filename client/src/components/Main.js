@@ -6,6 +6,8 @@ import Event from "../pages/Event"
 import NewEventForm from "../pages/event-forms/NewEventForm";
 import UpdateEventForm from "../pages/event-forms/UpdateEventForm";
 import Profile from "../pages/Profile";
+import EditUserInfo from "../pages/profile-components/EditUserInfo";
+
 
 
 class Books extends Component {
@@ -20,6 +22,7 @@ class Books extends Component {
               <Route path='/newevent' component={NewEventForm} />
               <Route path='/event/:id' component={Event} />
               <Route path='/profile' component={Profile} />
+              <Route path='/EditUserInfo/:id' component={EditUserInfo} />
               <Route path='/update/:id' component={UpdateEventForm} />
               <Route path='/' component={Home}/>
             </Switch>
