@@ -31,24 +31,11 @@ class App extends Component {
 
   render() {
     return (
-
-      <Router basename={process.env.PUBLIC_URL}>
-        <div>
-          <MainNav
-            onClick={this.handleFormSubmit}
-            isLoggedIn={this.state.isLoggedIn} />
-          <Switch>
-            <Route path='/login' component={LoginForm} />
-            <Route path='/signup' component={SignupForm} />
-            <Route path='/newevent' component={NewEventForm} />
-            <Route path='/event/:id' component={Event} />
-            <Route path='/profile' component={Profile} />
-            <Route path='/update/:id' component={UpdateEventForm} />
-            <Route path='/' component={Home} />
-          </Switch>
-          <Footer />
-        </div>
-      </Router>
+      <React.Fragment>
+        <Nav onClick={this.handleFormSubmit} />
+        <Main />
+        <Footer />
+      </React.Fragment>
     );
   }
 }
