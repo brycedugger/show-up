@@ -22,7 +22,7 @@ class Books extends Component {
               <Route path='/newevent' component={NewEventForm} />
               <Route path='/event/:id' component={Event} />
               <Route path='/profile' component={Profile} />
-              <Route path='/EditUserInfo/:id' component={EditUserInfo} />
+              <Route path='/EditUserInfo/' component={EditUserInfo} />
               <Route path='/update/:id' component={UpdateEventForm} />
               <Route path='/' component={Home}/>
             </Switch>

@@ -2,10 +2,30 @@ import React, { Component } from "react";
 
 import { FormBtn } from "../../components/assets/form/FormBtn";
 
+import { Redirect } from "react-router-dom"
+
+
 import "./style.css";
 
+
 class ProfileSideBarInfo extends Component {
+
+    state = {
+        redirect: false
+    };
+
+    setRedirectEditUser = () => {
+        this.setState({
+            redirect: true
+        })
+    }
+
     render() {
+
+        if (this.state.redirect === true) {
+            return <Redirect to="/edituserinfo" />
+        }
+
         return (
             <div>
                 <h2>Welcome!</h2>
@@ -28,7 +48,7 @@ class ProfileSideBarInfo extends Component {
                 <br></br>
                 
             <FormBtn
-                onClick={this.handleEditUser}
+                onClick={this.setRedirectEditUser}
             >
                 Edit Info
             </FormBtn>

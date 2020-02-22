@@ -13,7 +13,7 @@ export default {
     },
 
     // get route that sends our token to the server to get all information from 
-    //db.usersas a response.
+    //db.users as a response.
 
     getUser: (token) => {
         return axios.get("/api/user/", {
@@ -24,28 +24,20 @@ export default {
         });
     },
 
-    // Bookmarking event to save event of interest to the user page
-    bookmarkEvent: (req) => {
-        return axios.put("/api/bookmark", req);
+    updateUser: (obj) => {
+        return axios.put("/api/eUser/" + obj._id, obj);
     },
-
-    // get route that sends our token to the server to update the created array
-    // with the event id of the event the user created
 
     createdEvent: (obj) => {
         return axios.put("/api/user/" + obj._id, obj);
     },
 
-    deleteUser: (userId) => {
-        return axios.delete("/api/user" + userId);
+    deleteUser: (obj) => {
+        return axios.delete("/api/user/" + obj._id);
     },
 
-    saveUser: (firstName, lastName, userName) => {
-        return axios.post("/api/user", firstName, lastName, userName);
-    },
-
-    // Updates user info to the db
-    updateUser: (firstName, lastName, userName) => {
-        return axios.post(`/api/user`, firstName, lastName, userName);
+    // Bookmarking event to save event of interest to the user page
+    bookmarkEvent: (req) => {
+        return axios.put("/api/bookmark", req);
     }
 };
