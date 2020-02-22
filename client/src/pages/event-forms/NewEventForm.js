@@ -131,7 +131,7 @@ render() {
             <form>
 
                 <Input
-                    label={"Event Title (optional):"}
+                    label={"Event Title:"}
                     name="title"
                     value={this.state.title}
                     onChange={this.handleInputChange}
@@ -147,7 +147,7 @@ render() {
                 />
 
                 <Input
-                    label={"Openers (optional):"}
+                    label={"Openers:"}
                     name="openers"
                     value={this.state.openers}
                     onChange={this.handleInputChange}
@@ -159,7 +159,7 @@ render() {
                     name="date"
                     value={this.state.date}
                     onChange={this.handleInputChange}
-                    placeholder="Date (dd/mm/yyyy)"
+                    placeholder="Date (yyyy-mm-dd)"
                 />
 
                 <Input
@@ -186,7 +186,7 @@ render() {
                 />
 
                 <TextArea
-                    label={"Description (optional):"}
+                    label={"Description (Optional):"}
                     name="description"
                     value={this.state.description}
                     onChange={this.handleInputChange}
@@ -194,7 +194,7 @@ render() {
                 />
 
                 <Input
-                    label={"Image (1:1 image ratio):"}
+                    label={"Image Link:"}
                     name="image"
                     value={this.state.image}
                     onChange={this.handleInputChange}
