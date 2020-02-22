@@ -3,7 +3,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const db = require('./models');
 // for tokens
-const jwt = require("jsonwebtoken"); 
+const jwt = require("jsonwebtoken");
 // passport
 const passport = require("passport");
 const session = require("express-session");
@@ -39,9 +39,18 @@ require("./routes/UserData")(app, jwt);
 
 // Send every other request to the React app
 // Define any API routes before this runs
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/public/index.html"));
-});
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("/*", function (req, res) {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  });
+}
+else {
+  app.use(express.static(path.join(__dirname, '/client/public')));
+  app.get("/*", function (req, res) {
+    res.sendFile(path.join(__dirname, "./client/public/index.html"));
+  });
+}
 
 // start the server
 app.listen(PORT, () =>
