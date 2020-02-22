@@ -14,11 +14,16 @@ class UpdateUserInfo extends Component {
         firstName: "",
         lastName: "",
         username: "",
+        email: "",
         // password: "",
 
         redirect: false,
         delete: false
     };
+
+    clearTokenFromLS() {
+        localStorage.removeItem("token");
+      }
 
     componentDidMount() {
         const token = localStorage.getItem("token");
@@ -96,6 +101,7 @@ class UpdateUserInfo extends Component {
         })
             .then(res => {
                 if (res.data.deletedCount === 1) {
+                    this.clearTokenFromLS();
                     this.setRedirectDelete();
                 }
             })
@@ -135,7 +141,7 @@ class UpdateUserInfo extends Component {
 
                     <Input
                         label={"Username:"}
-                        name="Username"
+                        name="username"
                         value={this.state.username}
                         onChange={this.handleInputChange}
                         placeholder="Username"
@@ -143,7 +149,7 @@ class UpdateUserInfo extends Component {
 
                     <Input
                         label={"Email:"}
-                        name="Email"
+                        name="email"
                         value={this.state.email}
                         onChange={this.handleInputChange}
                         placeholder="Email"
