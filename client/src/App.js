@@ -10,7 +10,7 @@ import UpdateEventForm from "./pages/event-forms/UpdateEventForm";
 import Profile from "./pages/Profile";
 import LoginForm from "./pages/login-signup/LoginForm";
 import SignupForm from "./pages/login-signup/SignupForm";
-import EditUserInfo from "../pages/profile-components/EditUserInfo";
+import EditUserInfo from "./pages/profile-components/EditUserInfo";
 import MainNav from "./components/Nav";
 import Footer from "./components/Footer";
 
