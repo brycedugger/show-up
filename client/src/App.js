@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from "./pages/Home";
 import Event from "./pages/Event"
 import NewEventForm from "./pages/event-forms/NewEventForm";
@@ -32,7 +32,7 @@ class App extends Component {
   render() {
     return (
 
-      <Router history={hashHistory}>
+      <Router>
         <div>
           <MainNav
             onClick={this.handleFormSubmit}
