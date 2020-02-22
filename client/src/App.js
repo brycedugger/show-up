@@ -32,7 +32,7 @@ class App extends Component {
   render() {
     return (
 
-      <Router>
+      <Router history={hashHistory}>
         <div>
           <MainNav
             onClick={this.handleFormSubmit}
