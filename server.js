@@ -26,13 +26,13 @@ app.use(passport.initialize());
 require('./config/middleware/passport')(passport, db);
 
 // connect to Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://yaboi:fr3shegg$@ds129010.mlab.com:29010/heroku_2pz0qqd8", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://bdugger:ds149577.mlab.com:49577/heroku_83459jm9", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 mongoose.set("useCreateIndex", true);
 
-// Define API routes here
+// Define API routes heres
 require("./routes/eventRoutes")(app);
 require("./routes/auth")(app, passport, jwt);
 require("./routes/UserData")(app, jwt);
