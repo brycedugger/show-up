@@ -143,11 +143,12 @@ class UpdateEventForm extends Component {
         }
         return (
             <div className="wrap bg-white p-3 mx-auto rounded">
-                <p className="cardType"></p>
+            <h1>Update Your Event</h1>
+            <br></br>
                 <form>
 
                     <Input
-                        label={"Title (optional):"}
+                        label={"Event Title:"}
                         name="title"
                         value={this.state.title}
                         onChange={this.handleInputChange}
@@ -163,7 +164,7 @@ class UpdateEventForm extends Component {
                     />
 
                     <Input
-                        label={"Openers (optional):"}
+                        label={"Openers:"}
                         name="openers"
                         value={this.state.openers}
                         onChange={this.handleInputChange}
@@ -175,7 +176,7 @@ class UpdateEventForm extends Component {
                         name="date"
                         value={this.state.date}
                         onChange={this.handleInputChange}
-                        placeholder="Date (dd/mm/yyyy)"
+                        placeholder="Date (yyyy-mm-dd)"
                     />
 
                     <Input
@@ -204,7 +205,7 @@ class UpdateEventForm extends Component {
                     />
 
                     <TextArea
-                        label={"Description (optional):"}
+                        label={"Description (Optional):"}
                         name="description"
                         value={this.state.description}
                         onChange={this.handleInputChange}
@@ -212,7 +213,7 @@ class UpdateEventForm extends Component {
                     />
 
                     <Input
-                        label={"Image (1:1 image ratio):"}
+                        label={"Image Link:"}
                         name="image"
                         value={this.state.image}
                         onChange={this.handleInputChange}

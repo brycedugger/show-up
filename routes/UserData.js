@@ -80,6 +80,32 @@ module.exports = (app, jwt) => {
             
     });
 
+    app.put("/api/eUser/:_id", (req, res) => {
+
+        console.log("req.body" + (JSON.stringify(req.body)))
+        console.log("req.param" + (req.params._id))
+
+        const {
+            id, firstName, lastName, username,
+            email, password
+        } = req.body;
+
+        db.User.findByIdAndUpdate(
+            { _id: req.params._id },
+
+            { firstName, lastName, username, email, password },
+
+            { useFindAndModify: false })
+
+            .then(dbUser => {
+                res.status(200).json(dbUser);
+            
+            })
+            .catch(err => {
+                res.status(400).json(err);
+            });
+    });
+
     // Add event to user's bookmarks
     app.put("/api/bookmark", (req, res) => {
         let username = req.body.username;
@@ -93,6 +119,23 @@ module.exports = (app, jwt) => {
             })
             .catch(err => {
                 res.status(200).json(err);
+            });
+    });
+
+    // DELETE ROUTES
+    //------------------------------------------------------------------
+
+    // route to delete ONE user from the DB
+    app.delete("/api/user/:_id", (req, res) => {
+
+        console.log("req.params" + (JSON.stringify(req.params._id)))
+
+        db.User.deleteOne({ _id: req.params._id })
+            .then(deletedUser => {
+                res.status(200).json(deletedUser);
+            })
+            .catch(err => {
+                res.status(400).json(err);
             });
     });
 }

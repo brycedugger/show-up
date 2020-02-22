@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./style.css";
 import API from "../../../utils/API";
 import { Form, Row } from "react-bootstrap";
+import { FormBtn } from "../form/FormBtn";
 
 
 class CommentForm extends Component {
@@ -37,15 +38,13 @@ class CommentForm extends Component {
     render() {
         return (
             <Form>
-                <Form.Group as={Row}>
-                    <Form.Label>
-                        Leave a Comment Below!
-                    </Form.Label>
-                    <Form.Control name="comment" onChange={this.handleInputChange} plaintext placeholder="Enter comment here..." />
+                <Form.Group controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Leave a Comment Below!</Form.Label>
+                    <Form.Control as="textarea" rows="2" name="comment" onChange={this.handleInputChange} plaintext placeholder="Enter comment here..."/>
                 </Form.Group>
-                <button variant="primary" onClick={this.handleFormSubmit}>
-                    Submit
-                </button>
+                <FormBtn onClick={this.handleFormSubmit}>
+                        Submit
+                </FormBtn>
 
             </Form>
         )
