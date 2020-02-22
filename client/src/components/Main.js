@@ -15,12 +15,12 @@ class Books extends Component {
 
       <div className="container">
         <div className="container mb-5 mt-5">
-          <Router basename={process.env.PUBLIC_URL}>
+          <Router>
             <Switch>
               <Route path='/newevent' component={NewEventForm} />
               <Route path='/event/:id' component={Event} />
               <Route path='/profile' component={Profile} />
-              <Route path='/update/:id' component={UpdateEventForm} />
+              <Route path='/updateevent' component={UpdateEventForm} />
               <Route path='/' component={Home}/>
             </Switch>
           </Router>
