@@ -10,7 +10,7 @@ import UpdateEventForm from "./pages/event-forms/UpdateEventForm";
 import Profile from "./pages/Profile";
 import LoginForm from "./pages/login-signup/LoginForm";
 import SignupForm from "./pages/login-signup/SignupForm";
-
+import EditUserInfo from "../pages/profile-components/EditUserInfo";
 import MainNav from "./components/Nav";
 import Footer from "./components/Footer";
 
@@ -41,6 +41,7 @@ class App extends Component {
             <Route path='/login' component={LoginForm} />
             <Route path='/signup' component={SignupForm} />
             <Route path='/newevent' component={NewEventForm} />
+            <Route path='/edituserinfo' component={EditUserInfo} />              
             <Route path='/event/:id' component={Event} />
             <Route path='/profile' component={Profile} />
             <Route path='/update/:id' component={UpdateEventForm} />
