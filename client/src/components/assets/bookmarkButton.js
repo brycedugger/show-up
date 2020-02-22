@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Button from "react-bootstrap/Button";
 import UserAPI from "../../utils/userAPI";
+import "./bookmarkBtnStyling.css";
 
 
 class BookmarkButton extends Component {
@@ -23,7 +24,7 @@ class BookmarkButton extends Component {
 
     render() {
         return (
-            <Button variant="outline-success" onClick={() => this.handleOnClick()} >Bookmark<i className="fa fa-bookmark" aria-hidden="true"></i></Button>
+            <Button className="bookmark" onClick={() => this.handleOnClick()} >Bookmark<i className="fa fa-bookmark" aria-hidden="true"></i></Button>
         );
     }
 }

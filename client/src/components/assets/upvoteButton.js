@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Button from "react-bootstrap/Button";
+import "./upvoteButtonStyling.css";
 
 const eventList = [{
         id: 1,
@@ -44,7 +45,7 @@ class Vote extends Component {
     handleClick = () => this.props.onVote(this.props.id);
     render() {
         return (
-                <Button variant="outline-success" onClick={this.handleClick}> ^ {this.props.votes} </Button> 
+                <Button className="upvote" onClick={this.handleClick}> Upvote {this.props.votes} </Button> 
         );
     }
 }
