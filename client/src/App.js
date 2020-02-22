@@ -10,7 +10,7 @@ import UpdateEventForm from "./pages/event-forms/UpdateEventForm";
 import Profile from "./pages/Profile";
 import LoginForm from "./pages/login-signup/LoginForm";
 import SignupForm from "./pages/login-signup/SignupForm";
-
+import EditUserInfo from "../pages/profile-components/EditUserInfo";
 import MainNav from "./components/Nav";
 import Footer from "./components/Footer";
 
@@ -31,11 +31,25 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        <Nav onClick={this.handleFormSubmit} />
-        <Main />
-        <Footer />
-      </React.Fragment>
+
+      <Router basename={process.env.PUBLIC_URL}>
+        <div>
+          <MainNav
+            onClick={this.handleFormSubmit}
+            isLoggedIn={this.state.isLoggedIn} />
+          <Switch>
+            <Route path='/login' component={LoginForm} />
+            <Route path='/signup' component={SignupForm} />
+            <Route path='/newevent' component={NewEventForm} />
+            <Route path='/edituserinfo' component={EditUserInfo} />              
+            <Route path='/event/:id' component={Event} />
+            <Route path='/profile' component={Profile} />
+            <Route path='/update/:id' component={UpdateEventForm} />
+            <Route path='/' component={Home} />
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }

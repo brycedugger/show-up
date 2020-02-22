@@ -26,7 +26,7 @@ app.use(passport.initialize());
 require('./config/middleware/passport')(passport, db);
 
 // connect to Mongo DB
-mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/${process.env.DB_NAME}`, {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://yaboi:fr3shegg$@ds129010.mlab.com:29010/heroku_2pz0qqd8", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
