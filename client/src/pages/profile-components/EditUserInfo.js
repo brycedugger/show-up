@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { Redirect } from "react-router-dom"
 
-import UserAPI from "../../utils/UserAPI";
+import UserAPI from "../../utils/userAPI";
 
 import { Input } from "../../components/assets/form/Input";
 import { FormBtn } from "../../components/assets/form/FormBtn";
@@ -14,18 +14,19 @@ class UpdateUserInfo extends Component {
         firstName: "",
         lastName: "",
         username: "",
-        password: "",
+        // password: "",
 
         redirect: false,
         delete: false
     };
 
     componentDidMount() {
-        this.getUser(this.props.match.params.id);
+        const token = localStorage.getItem("token");
+        this.getUser(token)
     }
 
-    getUser = (userId) => {
-        API.getUser(userId)
+    getUser = (token) => {
+        UserAPI.getUser(token)
             .then(res => {
                 const data = res.data
                 this.setState({
@@ -33,7 +34,8 @@ class UpdateUserInfo extends Component {
                     firstName: data.firstName,
                     lastName: data.lastName,
                     username: data.username,
-                    password: data.password
+                    email: data.email,
+                    // password: data.password
                 });
                 console.log(this.state)
             })
@@ -63,16 +65,16 @@ class UpdateUserInfo extends Component {
         if (this.state.firstName &&
             this.state.lastName &&
             this.state.username &&
-            this.state.email &&
-            this.state.password
+            this.state.email 
+            // this.state.password
         ) {
             UserAPI.updateUser({
                 _id: this.state._id,
-                title: this.state.firstName,
-                headliner: this.state.lastName,
-                openers: this.state.username,
-                date: this.state.email,
-                time: this.state.password
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                username: this.state.username,
+                email: this.state.email,
+                // password: this.state.password
             })
                 .then(
                     res => {
@@ -87,7 +89,7 @@ class UpdateUserInfo extends Component {
         )
     };
 
-    handleDeleteEvent = event => {
+    handleDeleteUser = event => {
         event.preventDefault();
         UserAPI.deleteUser({
             _id: this.state._id
@@ -147,13 +149,13 @@ class UpdateUserInfo extends Component {
                         placeholder="Email"
                     />
 
-                    <Input
+                    {/* <Input
                         label={"Password:"}
                         name="Password"
                         value={this.state.password}
                         onChange={this.handleInputChange}
                         placeholder="Password"
-                    />
+                    /> */}
 
                     <FormBtn
                         onClick={this.handleFormSubmit}
@@ -162,7 +164,7 @@ class UpdateUserInfo extends Component {
                     </FormBtn>
 
                     <FormBtn
-                        onClick={this.handleDeleteEvent}
+                        onClick={this.handleDeleteUser}
                     >
                         Delete User
                     </FormBtn>
