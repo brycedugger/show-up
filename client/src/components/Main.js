@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
 import Home from "../pages/Home";
 import Event from "../pages/Event"
 import NewEventForm from "../pages/event-forms/NewEventForm";
 import UpdateEventForm from "../pages/event-forms/UpdateEventForm";
 import Profile from "../pages/Profile";
+import LoginForm from "../pages/login-signup/LoginForm";
+import SignupForm from "../pages/login-signup/SignupForm";
 
 
 class Books extends Component {
@@ -17,11 +18,13 @@ class Books extends Component {
         <div className="container mb-5 mt-5">
           <Router>
             <Switch>
+              <Route path='/login' component={LoginForm} />
+              <Route path='/signup' component={SignupForm} />
               <Route path='/newevent' component={NewEventForm} />
               <Route path='/event/:id' component={Event} />
               <Route path='/profile' component={Profile} />
               <Route path='/update/:id' component={UpdateEventForm} />
-              <Route path='/' component={Home}/>
+              <Route path='/' component={Home} />
             </Switch>
           </Router>
         </div>
