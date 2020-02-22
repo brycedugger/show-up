@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 import API from "../../../utils/API";
-import { Form, Row } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { FormBtn } from "../form/FormBtn";
 
 
