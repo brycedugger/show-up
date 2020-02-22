@@ -14,7 +14,7 @@ class UpdateUserInfo extends Component {
         firstName: "",
         lastName: "",
         username: "",
-        password: "",
+        // password: "",
 
         redirect: false,
         delete: false
@@ -35,7 +35,7 @@ class UpdateUserInfo extends Component {
                     lastName: data.lastName,
                     username: data.username,
                     email: data.email,
-                    password: data.password
+                    // password: data.password
                 });
                 console.log(this.state)
             })
@@ -149,13 +149,13 @@ class UpdateUserInfo extends Component {
                         placeholder="Email"
                     />
 
-                    <Input
+                    {/* <Input
                         label={"Password:"}
                         name="Password"
                         value={this.state.password}
                         onChange={this.handleInputChange}
                         placeholder="Password"
-                    />
+                    /> */}
 
                     <FormBtn
                         onClick={this.handleFormSubmit}
