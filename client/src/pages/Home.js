@@ -39,13 +39,15 @@ class Home extends Component {
 
     render() {
         return (
-            <CardColumns>
-                {this.state.events.map(event => {
-                    return (
-                        <EventCard key={event._id} username={this.state.username} {...event} />
-                    )
-                })}
-            </CardColumns>
+            <div className="container">
+                <CardColumns>
+                    {this.state.events.map(event => {
+                        return (
+                            <EventCard key={event._id} username={this.state.username} {...event} />
+                        )
+                    })}
+                </CardColumns>
+            </div>
         );
     }
 
