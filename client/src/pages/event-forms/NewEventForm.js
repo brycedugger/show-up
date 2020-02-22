@@ -155,19 +155,19 @@ render() {
                 />
 
                 <Input
-                    label={"Date:"}
+                    label={"Date (yyyy-mm-dd):"}
                     name="date"
                     value={this.state.date}
                     onChange={this.handleInputChange}
-                    placeholder="Date (yyyy-mm-dd)"
+                    placeholder="Date"
                 />
 
                 <Input
-                    label={"Time:"}
+                    label={"Time (hh:mm):"}
                     name="time"
                     value={this.state.time}
                     onChange={this.handleInputChange}
-                    placeholder="Time (hh:mm)"
+                    placeholder="Time"
                 />
 
                 <SelectVenue
