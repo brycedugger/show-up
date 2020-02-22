@@ -12,10 +12,9 @@ export default {
     return axios.get("/api/events/" + _id);
   },
 
-  // Add Event Search by artist
-  // eventSearch: () => {
-  //   return axios.get("/api/events" + id);
-  // },
+  upvoteEvent: (_id) => {
+    return axios.put("/api/upvote/" + _id);
+  },
 
   createComment: (req) => {
     return axios.post("/api/comment", req);
@@ -36,8 +35,6 @@ export default {
 
   // updates one event in the database with id of _id
   updateEvent: (obj) => {
-    console.log("id " + JSON.stringify((obj)))
-    console.log("title" + JSON.stringify((obj.title)))
     return axios.put("/api/events/" + obj._id,
      obj
     );
