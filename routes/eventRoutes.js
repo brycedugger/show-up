@@ -123,8 +123,19 @@ module.exports = (app) => {
                 res.status(200).json(dbEvent);
             })
             .catch(err => {
-                res.status(200).json(err);
+                res.status(400).json(err);
             });
+    });
+
+    // Increment upvotes by 1
+    app.put("/api/upvote/:_id", (req, res) => {
+        db.Event.findByIdAndUpdate({ _id: req.params._id }, { $inc: { upvotes: 1 } })
+        .then(dbEvent => {
+            res.status(200).json(dbEvent);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        });
     });
 
 

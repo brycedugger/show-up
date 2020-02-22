@@ -25,7 +25,7 @@ class EventCard extends Component {
                     <ListGroupItem>Date: {this.props.date}</ListGroupItem>
                 </ListGroup>
                 <Card.Footer>
-                    <UpvoteButton />
+                    <UpvoteButton eventId={this.props._id} />
                     <BookmarkButton username={this.props.username} eventId={this.props._id}></BookmarkButton>
                 </Card.Footer>
             </Card >

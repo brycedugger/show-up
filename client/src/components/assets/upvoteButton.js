@@ -1,50 +1,47 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
-
-const eventList = [{
-        id: 1,
-        event: "",
-        votes: 0
-    },
-]
+import API from "../../utils/API";
 
 class UpvoteButton extends Component {
     state = {
-        events: []
+        votes: 0,
+        clicked: false
     };
 
-    componentDidMount() {
-        this.setState({ events: eventList });
+    componentDidMount = () => {
+        this.updateVotes();
     }
-    
-    handleEvent = (upcomingeventId) => {
-        const updatedVotingList = this.state.events.map(upcomingEvent => {
-            if (upcomingEvent.id === upcomingeventId) {
-                return Object.assign({}, upcomingEvent, {
-                    votes: upcomingEvent.votes + 1
+
+    updateVotes = () => {
+        API.getOneEvent(this.props.eventId)
+            .then(res => {
+                this.setState({
+                    votes: res.data.upvotes
+                })
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+    handleClick = () => {
+        if (!this.state.clicked) {
+            API.upvoteEvent(this.props.eventId)
+                .then(
+                    this.setState({
+                        clicked: true
+                    }),
+                    this.updateVotes()
+                )
+                .catch(err => {
+                    console.log(err);
                 });
-            } else {
-                return upcomingEvent;
-            }
-        });
-
-        this.setState({
-            events: updatedVotingList
-        });
+        }
     };
 
-    render() {
-        return this.state.events.map(upcomingEvent => (
-        <Vote key={upcomingEvent.id} id={upcomingEvent.id} event={upcomingEvent.event} votes={upcomingEvent.votes} onVote={this.handleEvent} />
-        ));
-    }
-}
-
-class Vote extends Component {
-    handleClick = () => this.props.onVote(this.props.id);
     render() {
         return (
-                <Button variant="outline-success" onClick={this.handleClick}> ^ {this.props.votes} </Button> 
+            <Button variant="outline-success" onClick={this.handleClick}> ^ {this.state.votes} </Button>
         );
     }
 }
