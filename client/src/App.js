@@ -8,15 +8,6 @@ import Footer from "./components/Footer";
 
 class App extends Component {
 
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if () {
-  //     API.getSingleEvent()
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
-
   state = {
     isLoggedIn: false
   };

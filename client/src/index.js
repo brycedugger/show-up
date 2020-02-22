@@ -12,7 +12,7 @@ import SignupForm from "./pages/login-signup/SignupForm";
 
 
 ReactDOM.render(
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
         <Switch>
             <Route exact path='/login' component={LoginForm} />
             <Route exact path='/signup' component={SignupForm} />                
